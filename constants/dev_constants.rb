@@ -1,0 +1,1 @@
+DEV_LIB_PATH = Pathname.new File.join(MAIN_PATH, 'dev_lib')
