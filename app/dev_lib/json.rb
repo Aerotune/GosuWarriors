@@ -2,6 +2,7 @@ require 'json'
 
 module JSON
   def self.parse_file file_path
+    # why did I have to go through this...
     begin
       file = File.open(file_path, 'r:bom|utf-8')
       raw = file.read

@@ -18,9 +18,9 @@ begin
   require 'msgpack'
   require 'pathname'
   require 'fileutils'
-  require_relative 'constants'
+  require_relative File.join('app', 'constants')
 
-  dev_constants_path = File.join(MAIN_PATH, 'constants', 'dev_constants.rb')
+  dev_constants_path = File.join(APP_PATH, 'constants', 'dev_constants.rb')
   developer_mode_available = File.exists?(dev_constants_path)
   enable_developer_mode = true
 
@@ -32,7 +32,7 @@ begin
     require dev_constants_path
   end
 
-  require_relative 'window'
+  require File.join(APP_PATH, 'window')
   Window.new.show
   
 rescue Exception => e
@@ -41,7 +41,9 @@ rescue Exception => e
   
 ensure
   begin
-    Resources::Sprites.save_all!
+    if Object.const_defined?("Resources::Sprites") && Resources::Sprites.sprites
+      Resources::Sprites.save_all!
+    end
   rescue Exception => e
     write_error_log e
     raise e

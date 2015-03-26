@@ -1,6 +1,0 @@
-ArgumentError: invalid value
-	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/window_states/game_session/systems/graphics/sprite.rb:36:in `draw'
-	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/window_states/game_session/systems/graphics/sprite.rb:36:in `draw_frame'
-	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/window_states/dev_sprite_editor.rb:283:in `draw'
-	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/window.rb:86:in `draw'
-	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/main.rb:36:in `<main>'
