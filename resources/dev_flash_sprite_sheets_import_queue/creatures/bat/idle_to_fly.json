@@ -1,0 +1,163 @@
+{"frames": [
+
+{
+	"filename": "Bat_fly_start0000",
+	"frame": {"x":0,"y":0,"w":30,"h":37},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0001",
+	"frame": {"x":0,"y":0,"w":30,"h":37},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0002",
+	"frame": {"x":33,"y":0,"w":38,"h":36},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0003",
+	"frame": {"x":74,"y":0,"w":41,"h":27},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":18,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0004",
+	"frame": {"x":118,"y":0,"w":34,"h":33},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":16,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0005",
+	"frame": {"x":155,"y":0,"w":21,"h":41},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":12,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0006",
+	"frame": {"x":179,"y":0,"w":22,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":10,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0007",
+	"frame": {"x":179,"y":0,"w":22,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":10,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0008",
+	"frame": {"x":204,"y":0,"w":22,"h":46},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":8,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0009",
+	"frame": {"x":204,"y":0,"w":22,"h":46},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":8,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0010",
+	"frame": {"x":229,"y":0,"w":18,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":7,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0011",
+	"frame": {"x":229,"y":0,"w":18,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":7,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0012",
+	"frame": {"x":250,"y":0,"w":22,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":7,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0013",
+	"frame": {"x":275,"y":0,"w":30,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":7,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0014",
+	"frame": {"x":308,"y":0,"w":38,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":7,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0015",
+	"frame": {"x":308,"y":0,"w":38,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":7,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0016",
+	"frame": {"x":349,"y":0,"w":45,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":6,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0017",
+	"frame": {"x":349,"y":0,"w":45,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":6,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}
+,{
+	"filename": "Bat_fly_start0018",
+	"frame": {"x":397,"y":0,"w":48,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":6,"w":48,"h":55},
+	"sourceSize": {"w":48,"h":55}
+}],
+"meta": {
+	"app": "Adobe Flash CS6",
+	"version": "12.0.0.481",
+	"image": "idle_to_fly.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

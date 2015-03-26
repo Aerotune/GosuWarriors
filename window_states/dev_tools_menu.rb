@@ -10,6 +10,22 @@ class WindowStates::DevToolsMenu < WindowState
       $window.set_state state
     end
     
+    @menu.add_menu_item "(dev) Import flash sprite sheets (Don't overwrite existing sprites)" do
+      state = WindowStates::DevLoader.new do
+        SpriteSheetImporter.import_all! overwrite: false
+        $window.set_state :main_menu
+      end
+      $window.set_state state      
+    end
+    
+    @menu.add_menu_item "(dev) Import flash sprite sheets (Overwrite existing sprite sheets)" do
+      state = WindowStates::DevLoader.new do
+        SpriteSheetImporter.import_all! overwrite: true
+        $window.set_state :main_menu
+      end
+      $window.set_state state
+    end
+    
     @menu.add_menu_item "<< Back" do
       $window.set_state @previous_menu
     end

@@ -1,0 +1,115 @@
+﻿{"frames": [
+
+{
+	"filename": "stick_1_duck0000",
+	"frame": {"x":0,"y":0,"w":71,"h":211},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":0,"w":108,"h":216},
+	"sourceSize": {"w":108,"h":216}
+}
+,{
+	"filename": "stick_1_duck0001",
+	"frame": {"x":73,"y":0,"w":72,"h":209},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":2,"w":108,"h":216},
+	"sourceSize": {"w":108,"h":216}
+}
+,{
+	"filename": "stick_1_duck0002",
+	"frame": {"x":147,"y":0,"w":76,"h":202},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":10,"w":108,"h":216},
+	"sourceSize": {"w":108,"h":216}
+}
+,{
+	"filename": "stick_1_duck0003",
+	"frame": {"x":225,"y":0,"w":80,"h":190},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":24,"w":108,"h":216},
+	"sourceSize": {"w":108,"h":216}
+}
+,{
+	"filename": "stick_1_duck0004",
+	"frame": {"x":307,"y":0,"w":94,"h":167},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":49,"w":108,"h":216},
+	"sourceSize": {"w":108,"h":216}
+}
+,{
+	"filename": "stick_1_duck0005",
+	"frame": {"x":403,"y":0,"w":103,"h":143},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":73,"w":108,"h":216},
+	"sourceSize": {"w":108,"h":216}
+}
+,{
+	"filename": "stick_1_duck0006",
+	"frame": {"x":508,"y":0,"w":105,"h":127},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":88,"w":108,"h":216},
+	"sourceSize": {"w":108,"h":216}
+}
+,{
+	"filename": "stick_1_duck0007",
+	"frame": {"x":615,"y":0,"w":107,"h":121},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":94,"w":108,"h":216},
+	"sourceSize": {"w":108,"h":216}
+}
+,{
+	"filename": "stick_1_duck0008",
+	"frame": {"x":724,"y":0,"w":106,"h":123},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":92,"w":108,"h":216},
+	"sourceSize": {"w":108,"h":216}
+}
+,{
+	"filename": "stick_1_duck0009",
+	"frame": {"x":832,"y":0,"w":105,"h":129},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":86,"w":108,"h":216},
+	"sourceSize": {"w":108,"h":216}
+}
+,{
+	"filename": "stick_1_duck0010",
+	"frame": {"x":0,"y":213,"w":104,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":82,"w":108,"h":216},
+	"sourceSize": {"w":108,"h":216}
+}
+,{
+	"filename": "stick_1_duck0011",
+	"frame": {"x":106,"y":213,"w":104,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":81,"w":108,"h":216},
+	"sourceSize": {"w":108,"h":216}
+}
+,{
+	"filename": "stick_1_duck0012",
+	"frame": {"x":212,"y":213,"w":104,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":81,"w":108,"h":216},
+	"sourceSize": {"w":108,"h":216}
+}],
+"meta": {
+	"app": "Adobe Flash Professional",
+	"version": "14.0.0.110",
+	"image": "idle_to_duck.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

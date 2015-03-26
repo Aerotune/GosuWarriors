@@ -1,0 +1,83 @@
+{"frames": [
+
+{
+	"filename": "Heretic_idle_part_30000",
+	"frame": {"x":0,"y":0,"w":112,"h":305},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":113,"h":306},
+	"sourceSize": {"w":113,"h":306}
+}
+,{
+	"filename": "Heretic_idle_part_30001",
+	"frame": {"x":115,"y":0,"w":112,"h":305},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":113,"h":306},
+	"sourceSize": {"w":113,"h":306}
+}
+,{
+	"filename": "Heretic_idle_part_30002",
+	"frame": {"x":230,"y":0,"w":112,"h":305},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":113,"h":306},
+	"sourceSize": {"w":113,"h":306}
+}
+,{
+	"filename": "Heretic_idle_part_30003",
+	"frame": {"x":345,"y":0,"w":113,"h":305},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":113,"h":306},
+	"sourceSize": {"w":113,"h":306}
+}
+,{
+	"filename": "Heretic_idle_part_30004",
+	"frame": {"x":461,"y":0,"w":113,"h":304},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":113,"h":306},
+	"sourceSize": {"w":113,"h":306}
+}
+,{
+	"filename": "Heretic_idle_part_30005",
+	"frame": {"x":577,"y":0,"w":113,"h":305},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":113,"h":306},
+	"sourceSize": {"w":113,"h":306}
+}
+,{
+	"filename": "Heretic_idle_part_30006",
+	"frame": {"x":693,"y":0,"w":113,"h":305},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":113,"h":306},
+	"sourceSize": {"w":113,"h":306}
+}
+,{
+	"filename": "Heretic_idle_part_30007",
+	"frame": {"x":809,"y":0,"w":113,"h":304},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":113,"h":306},
+	"sourceSize": {"w":113,"h":306}
+}
+,{
+	"filename": "Heretic_idle_part_30008",
+	"frame": {"x":0,"y":308,"w":113,"h":304},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":113,"h":306},
+	"sourceSize": {"w":113,"h":306}
+}],
+"meta": {
+	"app": "Adobe Flash CS6",
+	"version": "12.0.0.481",
+	"image": "idle_part_3.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

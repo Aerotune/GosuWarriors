@@ -6,7 +6,9 @@ def write_error_log e
   
   File.open(File.join(*log_folder, filename), 'w') do |f|
     f << "#{e.class}: #{e}"
-    f << "\n\t#{e.backtrace.join("\n\t")}"
+    if e.respond_to? :backtrace
+      f << "\n\t#{e.backtrace.join("\n\t")}"
+    end
   end
 end
 
@@ -26,6 +28,7 @@ begin
 
   if DEVELOPER_MODE
     require 'v8'
+    require 'json'
     require dev_constants_path
   end
 
@@ -39,7 +42,7 @@ rescue Exception => e
 ensure
   begin
     Resources::Sprites.save_all!
-  rescue
+  rescue Exception => e
     write_error_log e
     raise e
   end

@@ -1,0 +1,99 @@
+﻿{"frames": [
+
+{
+	"filename": "stick_1_pre_land0000",
+	"frame": {"x":0,"y":0,"w":93,"h":213},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":0,"w":117,"h":213},
+	"sourceSize": {"w":117,"h":213}
+}
+,{
+	"filename": "stick_1_pre_land0001",
+	"frame": {"x":95,"y":0,"w":94,"h":213},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":0,"w":117,"h":213},
+	"sourceSize": {"w":117,"h":213}
+}
+,{
+	"filename": "stick_1_pre_land0002",
+	"frame": {"x":191,"y":0,"w":99,"h":210},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":2,"w":117,"h":213},
+	"sourceSize": {"w":117,"h":213}
+}
+,{
+	"filename": "stick_1_pre_land0003",
+	"frame": {"x":292,"y":0,"w":104,"h":187},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":18,"w":117,"h":213},
+	"sourceSize": {"w":117,"h":213}
+}
+,{
+	"filename": "stick_1_pre_land0004",
+	"frame": {"x":398,"y":0,"w":111,"h":172},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":26,"w":117,"h":213},
+	"sourceSize": {"w":117,"h":213}
+}
+,{
+	"filename": "stick_1_pre_land0005",
+	"frame": {"x":511,"y":0,"w":114,"h":166},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":27,"w":117,"h":213},
+	"sourceSize": {"w":117,"h":213}
+}
+,{
+	"filename": "stick_1_pre_land0006",
+	"frame": {"x":627,"y":0,"w":114,"h":168},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":27,"w":117,"h":213},
+	"sourceSize": {"w":117,"h":213}
+}
+,{
+	"filename": "stick_1_pre_land0007",
+	"frame": {"x":743,"y":0,"w":114,"h":171},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":27,"w":117,"h":213},
+	"sourceSize": {"w":117,"h":213}
+}
+,{
+	"filename": "stick_1_pre_land0008",
+	"frame": {"x":859,"y":0,"w":114,"h":172},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":27,"w":117,"h":213},
+	"sourceSize": {"w":117,"h":213}
+}
+,{
+	"filename": "stick_1_pre_land0009",
+	"frame": {"x":0,"y":215,"w":114,"h":173},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":27,"w":117,"h":213},
+	"sourceSize": {"w":117,"h":213}
+}
+,{
+	"filename": "stick_1_pre_land0010",
+	"frame": {"x":116,"y":215,"w":114,"h":173},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":27,"w":117,"h":213},
+	"sourceSize": {"w":117,"h":213}
+}],
+"meta": {
+	"app": "Adobe Flash Professional",
+	"version": "14.0.0.110",
+	"image": "jump_down.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

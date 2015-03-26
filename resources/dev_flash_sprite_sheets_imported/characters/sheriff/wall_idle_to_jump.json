@@ -1,0 +1,59 @@
+﻿{"frames": [
+
+{
+	"filename": "stick_1_wall_jump0000",
+	"frame": {"x":0,"y":0,"w":91,"h":205},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":5,"w":116,"h":210},
+	"sourceSize": {"w":116,"h":210}
+}
+,{
+	"filename": "stick_1_wall_jump0001",
+	"frame": {"x":93,"y":0,"w":98,"h":195},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":15,"w":116,"h":210},
+	"sourceSize": {"w":116,"h":210}
+}
+,{
+	"filename": "stick_1_wall_jump0002",
+	"frame": {"x":193,"y":0,"w":101,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":19,"w":116,"h":210},
+	"sourceSize": {"w":116,"h":210}
+}
+,{
+	"filename": "stick_1_wall_jump0003",
+	"frame": {"x":296,"y":0,"w":100,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":19,"w":116,"h":210},
+	"sourceSize": {"w":116,"h":210}
+}
+,{
+	"filename": "stick_1_wall_jump0004",
+	"frame": {"x":398,"y":0,"w":100,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":17,"w":116,"h":210},
+	"sourceSize": {"w":116,"h":210}
+}
+,{
+	"filename": "stick_1_wall_jump0005",
+	"frame": {"x":500,"y":0,"w":109,"h":197},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":116,"h":210},
+	"sourceSize": {"w":116,"h":210}
+}],
+"meta": {
+	"app": "Adobe Flash Professional",
+	"version": "14.0.0.110",
+	"image": "wall_idle_to_jump.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

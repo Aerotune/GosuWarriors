@@ -1,0 +1,155 @@
+﻿{"frames": [
+
+{
+	"filename": "stick_1_block_dash_foreward0000",
+	"frame": {"x":0,"y":0,"w":87,"h":185},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0001",
+	"frame": {"x":89,"y":0,"w":83,"h":184},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0002",
+	"frame": {"x":174,"y":0,"w":95,"h":184},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":1,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0003",
+	"frame": {"x":271,"y":0,"w":106,"h":184},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":0,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0004",
+	"frame": {"x":379,"y":0,"w":112,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":1,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0005",
+	"frame": {"x":493,"y":0,"w":116,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":1,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0006",
+	"frame": {"x":611,"y":0,"w":117,"h":181},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":2,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0007",
+	"frame": {"x":730,"y":0,"w":114,"h":180},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":2,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0008",
+	"frame": {"x":846,"y":0,"w":110,"h":180},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":2,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0009",
+	"frame": {"x":0,"y":187,"w":102,"h":179},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":2,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0010",
+	"frame": {"x":104,"y":187,"w":91,"h":179},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":2,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0011",
+	"frame": {"x":197,"y":187,"w":80,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":3,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0012",
+	"frame": {"x":279,"y":187,"w":70,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":4,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0013",
+	"frame": {"x":351,"y":187,"w":74,"h":184},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":3,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0014",
+	"frame": {"x":427,"y":187,"w":77,"h":184},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0015",
+	"frame": {"x":506,"y":187,"w":83,"h":185},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0016",
+	"frame": {"x":591,"y":187,"w":84,"h":185},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}
+,{
+	"filename": "stick_1_block_dash_foreward0017",
+	"frame": {"x":0,"y":0,"w":87,"h":185},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":129,"h":187},
+	"sourceSize": {"w":129,"h":187}
+}],
+"meta": {
+	"app": "Adobe Flash Professional",
+	"version": "14.0.0.110",
+	"image": "block_dash_forward.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

@@ -2,7 +2,7 @@ require 'pathname'
 
 module Resources::Sprites
   class << self
-    attr_reader :sprites
+    attr_accessor :sprites
     
     def require!
       load! unless @sprites
@@ -17,9 +17,7 @@ module Resources::Sprites
         msgpack_paths = Dir[File.join(resource_folder, '*.msgpack')].sort!
               
         msgpack_paths.each do |msgpack_path|
-          sprite_resource_path_name = Pathname.new(msgpack_path).relative_path_from(SPRITE_RESOURCE_PATH)
-          sprite_resource_path      = sprite_resource_path_name.to_s.split(File::SEPARATOR)
-          sprite_resource_path[-1]  = File.basename(sprite_resource_path[-1], '.msgpack')
+          sprite_resource_path = SpriteResourceFileTool.to_a(msgpack_path, SPRITE_RESOURCE_PATH)
           sprite_resource_folder    = sprite_resource_path[0...-1]
           
           msgpack = MessagePack.unpack_file(msgpack_path)
@@ -47,32 +45,43 @@ module Resources::Sprites
       @sprites.select { |sprite_resource_path, sprite| sprite_resource_path[0...-1] == sprite_resource_folder }
     end
     
-    def to_hash sprite_resource_path
-      sprite = @sprites[sprite_resource_path].dup
+    def to_hash sprite_resource_path, sprites=@sprites
+      sprite = sprites[sprite_resource_path].dup
       frames = []
       sprite['frames'].each do |frame|
         frames << frame.select do |key, value|
           case key
-          when 'sheet', 'source', 'offset_x', 'offset_y', 'shapes'; true
+          when 'sheet', 'source', 'offset_x', 'offset_y', 'shapes', 'blending_mode'; true
           end
         end
       end
       sprite['frames'] = frames
       
       return Marshal.load(Marshal.dump(sprite))
+    rescue Exception => e
+      warn "Failed to convert sprite to hash for #{sprite_resource_path}"
+      raise e
     end
     
-    def save_all!
-      @sprites.each do |sprite_resource_path, frames|
+    def save_all! options={sprites: @sprites, overwrite: true}
+      options[:sprites].each do |sprite_resource_path, frames|
         msgpack_path = [SPRITE_RESOURCE_PATH, *sprite_resource_path].join(File::SEPARATOR) + '.msgpack'
-        File.open(msgpack_path, 'wb') do |file|
-          file << to_hash(sprite_resource_path).to_msgpack
+        
+        if options[:overwrite] || !File.exist?(msgpack_path)
+          File.open(msgpack_path, 'wb') do |file|
+            file << to_hash(sprite_resource_path, options[:sprites]).to_msgpack
+          end
         end
       end
+    end
+    
+    def create_shapes_hash
+      Array.new(10) {{'tags' => [], 'outline' => [], 'convexes' => []}}
     end
   
   
     private
+    
     
     def require_sheet sheet_path
       file_path = File.join(SPRITE_RESOURCE_PATH, *sheet_path) + ".png"
@@ -87,7 +96,8 @@ module Resources::Sprites
       loaded_frame['source']         = frame['source']
       loaded_frame['offset_x']       = frame['offset_x']
       loaded_frame['offset_y']       = frame['offset_y']
-      loaded_frame['shapes']         = frame['shapes'] || Array.new(10) {{'tags' => [], 'outline' => [], 'convexes' => []}}
+      loaded_frame['shapes']         = frame['shapes'] || create_shapes_hash
+      loaded_frame['blending_mode']  = frame['blending_mode'] || 'normal'
       
       loaded_frames << loaded_frame
     end

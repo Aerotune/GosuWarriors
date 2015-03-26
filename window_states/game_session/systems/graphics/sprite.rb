@@ -26,7 +26,15 @@ class Systems::Graphics::Sprite
     offset_x         =  frame['offset_x']*factor_x
     offset_y         =  frame['offset_y']
     image            =  frame['image']
-    image.draw x+offset_x, y+offset_y, z, factor_x
+    factor_y         = 1
+    color            = 0xFFFFFFFF
+    blending_mode    =  case frame['blending_mode']
+    when 'normal' ;:default
+    when 'add'    ;:additive
+    else
+      :default
+    end
+    image.draw x+offset_x, y+offset_y, z, factor_x, factor_y, color, blending_mode
   end
   
   def draw_shapes drawable, frame

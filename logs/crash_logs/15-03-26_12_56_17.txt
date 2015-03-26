@@ -1,0 +1,8 @@
+NoMethodError: undefined method `[]' for nil:NilClass
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/window_states/dev_sprite_editor.rb:44:in `block in initialize'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/dev_lib/sprite_list_ui.rb:68:in `call'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/dev_lib/sprite_list_ui.rb:68:in `call_on_click'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/dev_lib/sprite_list_ui.rb:39:in `key_up'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/window_states/dev_sprite_editor.rb:214:in `key_up'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/window.rb:59:in `button_up'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/main.rb:36:in `<main>'

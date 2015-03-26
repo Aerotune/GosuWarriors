@@ -1,0 +1,115 @@
+﻿{"frames": [
+
+{
+	"filename": "stick_1_pre_block instance 10000",
+	"frame": {"x":0,"y":0,"w":70,"h":208},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":0,"w":106,"h":209},
+	"sourceSize": {"w":106,"h":209}
+}
+,{
+	"filename": "stick_1_pre_block instance 10001",
+	"frame": {"x":72,"y":0,"w":75,"h":205},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":3,"w":106,"h":209},
+	"sourceSize": {"w":106,"h":209}
+}
+,{
+	"filename": "stick_1_pre_block instance 10002",
+	"frame": {"x":149,"y":0,"w":96,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":9,"w":106,"h":209},
+	"sourceSize": {"w":106,"h":209}
+}
+,{
+	"filename": "stick_1_pre_block instance 10003",
+	"frame": {"x":247,"y":0,"w":96,"h":195},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":14,"w":106,"h":209},
+	"sourceSize": {"w":106,"h":209}
+}
+,{
+	"filename": "stick_1_pre_block instance 10004",
+	"frame": {"x":345,"y":0,"w":93,"h":192},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":17,"w":106,"h":209},
+	"sourceSize": {"w":106,"h":209}
+}
+,{
+	"filename": "stick_1_pre_block instance 10005",
+	"frame": {"x":440,"y":0,"w":90,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":18,"w":106,"h":209},
+	"sourceSize": {"w":106,"h":209}
+}
+,{
+	"filename": "stick_1_pre_block instance 10006",
+	"frame": {"x":532,"y":0,"w":90,"h":189},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":20,"w":106,"h":209},
+	"sourceSize": {"w":106,"h":209}
+}
+,{
+	"filename": "stick_1_pre_block instance 10007",
+	"frame": {"x":624,"y":0,"w":89,"h":188},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":16,"y":21,"w":106,"h":209},
+	"sourceSize": {"w":106,"h":209}
+}
+,{
+	"filename": "stick_1_pre_block instance 10008",
+	"frame": {"x":715,"y":0,"w":87,"h":187},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":22,"w":106,"h":209},
+	"sourceSize": {"w":106,"h":209}
+}
+,{
+	"filename": "stick_1_pre_block instance 10009",
+	"frame": {"x":804,"y":0,"w":88,"h":187},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":22,"w":106,"h":209},
+	"sourceSize": {"w":106,"h":209}
+}
+,{
+	"filename": "stick_1_pre_block instance 10010",
+	"frame": {"x":894,"y":0,"w":88,"h":187},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":22,"w":106,"h":209},
+	"sourceSize": {"w":106,"h":209}
+}
+,{
+	"filename": "stick_1_pre_block instance 10011",
+	"frame": {"x":0,"y":210,"w":88,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":23,"w":106,"h":209},
+	"sourceSize": {"w":106,"h":209}
+}
+,{
+	"filename": "stick_1_pre_block instance 10012",
+	"frame": {"x":90,"y":210,"w":88,"h":187},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":22,"w":106,"h":209},
+	"sourceSize": {"w":106,"h":209}
+}],
+"meta": {
+	"app": "Adobe Flash Professional",
+	"version": "14.0.0.110",
+	"image": "idle_to_block.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

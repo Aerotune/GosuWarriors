@@ -1,0 +1,171 @@
+﻿{"frames": [
+
+{
+	"filename": "stick_1_run0000",
+	"frame": {"x":0,"y":0,"w":181,"h":181},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0001",
+	"frame": {"x":183,"y":0,"w":181,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":1,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0002",
+	"frame": {"x":366,"y":0,"w":187,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":5,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0003",
+	"frame": {"x":555,"y":0,"w":146,"h":185},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":7,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0004",
+	"frame": {"x":703,"y":0,"w":120,"h":185},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":25,"y":8,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0005",
+	"frame": {"x":825,"y":0,"w":99,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":25,"y":10,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0006",
+	"frame": {"x":0,"y":188,"w":122,"h":185},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":4,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0007",
+	"frame": {"x":124,"y":188,"w":142,"h":181},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":2,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0008",
+	"frame": {"x":268,"y":188,"w":151,"h":177},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":1,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0009",
+	"frame": {"x":421,"y":188,"w":158,"h":174},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":0,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0010",
+	"frame": {"x":581,"y":188,"w":161,"h":172},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":0,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0011",
+	"frame": {"x":744,"y":188,"w":162,"h":173},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":1,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0012",
+	"frame": {"x":0,"y":375,"w":173,"h":181},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":5,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0013",
+	"frame": {"x":175,"y":375,"w":137,"h":178},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":8,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0014",
+	"frame": {"x":314,"y":375,"w":126,"h":177},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":25,"y":9,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0015",
+	"frame": {"x":442,"y":375,"w":118,"h":174},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":25,"y":11,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0016",
+	"frame": {"x":562,"y":375,"w":108,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":25,"y":8,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0017",
+	"frame": {"x":672,"y":375,"w":150,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":5,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0018",
+	"frame": {"x":824,"y":375,"w":171,"h":179},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}
+,{
+	"filename": "stick_1_run0019",
+	"frame": {"x":0,"y":560,"w":178,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":198,"h":193},
+	"sourceSize": {"w":198,"h":193}
+}],
+"meta": {
+	"app": "Adobe Flash Professional",
+	"version": "14.0.0.110",
+	"image": "run.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

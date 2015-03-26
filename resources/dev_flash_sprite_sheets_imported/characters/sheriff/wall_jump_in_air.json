@@ -1,0 +1,195 @@
+﻿{"frames": [
+
+{
+	"filename": "stick_1_wall_jump_air0000",
+	"frame": {"x":0,"y":0,"w":109,"h":187},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0001",
+	"frame": {"x":111,"y":0,"w":106,"h":188},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":0,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0002",
+	"frame": {"x":219,"y":0,"w":110,"h":189},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0003",
+	"frame": {"x":331,"y":0,"w":113,"h":190},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0004",
+	"frame": {"x":446,"y":0,"w":113,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0005",
+	"frame": {"x":561,"y":0,"w":112,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":0,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0006",
+	"frame": {"x":675,"y":0,"w":113,"h":190},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0007",
+	"frame": {"x":790,"y":0,"w":115,"h":188},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0008",
+	"frame": {"x":907,"y":0,"w":115,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0009",
+	"frame": {"x":0,"y":193,"w":116,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0010",
+	"frame": {"x":118,"y":193,"w":118,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0011",
+	"frame": {"x":238,"y":193,"w":121,"h":185},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0012",
+	"frame": {"x":361,"y":193,"w":123,"h":185},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0013",
+	"frame": {"x":486,"y":193,"w":126,"h":185},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0014",
+	"frame": {"x":614,"y":193,"w":128,"h":184},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0015",
+	"frame": {"x":744,"y":193,"w":129,"h":184},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0016",
+	"frame": {"x":875,"y":193,"w":130,"h":184},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0017",
+	"frame": {"x":0,"y":381,"w":131,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0018",
+	"frame": {"x":133,"y":381,"w":131,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0019",
+	"frame": {"x":266,"y":381,"w":132,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0020",
+	"frame": {"x":400,"y":381,"w":133,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0021",
+	"frame": {"x":535,"y":381,"w":133,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}
+,{
+	"filename": "stick_1_wall_jump_air0022",
+	"frame": {"x":670,"y":381,"w":133,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":135,"h":191},
+	"sourceSize": {"w":135,"h":191}
+}],
+"meta": {
+	"app": "Adobe Flash Professional",
+	"version": "14.0.0.110",
+	"image": "wall_jump_in_air.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

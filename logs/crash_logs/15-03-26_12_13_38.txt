@@ -1,0 +1,13 @@
+SyntaxError: /Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/dev_lib/sprite_blending_mode_ui.rb:67: syntax error, unexpected tSTRING_DEND, expecting ':'
+...raw "#{active ? '(x) ' '(  ) '}#{blending_mode}", @x, @y+@fo...
+...                               ^
+	/Users/bue/.rvm/rubies/ruby-2.1.5/lib/ruby/site_ruby/2.1.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	/Users/bue/.rvm/rubies/ruby-2.1.5/lib/ruby/site_ruby/2.1.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/loaders/dev_loader.rb:22:in `block in require_rubies!'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/loaders/dev_loader.rb:22:in `each'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/loaders/dev_loader.rb:22:in `require_rubies!'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/loaders/dev_loader.rb:14:in `load!'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/loaders/dev_loader.rb:10:in `require!'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/window_states/dev_loader.rb:17:in `update'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/window.rb:82:in `update'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/main.rb:36:in `<main>'

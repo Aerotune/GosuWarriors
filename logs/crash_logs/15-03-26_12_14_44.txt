@@ -1,0 +1,5 @@
+NoMethodError: undefined method `call' for nil:NilClass
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/dev_lib/sprite_blending_mode_ui.rb:36:in `key_up'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/window_states/dev_sprite_editor.rb:210:in `key_up'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/window.rb:59:in `button_up'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/main.rb:36:in `<main>'

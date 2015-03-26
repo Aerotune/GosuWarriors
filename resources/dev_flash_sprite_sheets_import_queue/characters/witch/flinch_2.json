@@ -1,0 +1,115 @@
+﻿{"frames": [
+
+{
+	"filename": "stick_1_flinch_20000",
+	"frame": {"x":0,"y":0,"w":69,"h":207},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":0,"w":139,"h":207},
+	"sourceSize": {"w":139,"h":207}
+}
+,{
+	"filename": "stick_1_flinch_20001",
+	"frame": {"x":71,"y":0,"w":113,"h":194},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":13,"w":139,"h":207},
+	"sourceSize": {"w":139,"h":207}
+}
+,{
+	"filename": "stick_1_flinch_20002",
+	"frame": {"x":186,"y":0,"w":133,"h":190},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":17,"w":139,"h":207},
+	"sourceSize": {"w":139,"h":207}
+}
+,{
+	"filename": "stick_1_flinch_20003",
+	"frame": {"x":321,"y":0,"w":139,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":16,"w":139,"h":207},
+	"sourceSize": {"w":139,"h":207}
+}
+,{
+	"filename": "stick_1_flinch_20004",
+	"frame": {"x":462,"y":0,"w":138,"h":190},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":17,"w":139,"h":207},
+	"sourceSize": {"w":139,"h":207}
+}
+,{
+	"filename": "stick_1_flinch_20005",
+	"frame": {"x":602,"y":0,"w":135,"h":190},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":17,"w":139,"h":207},
+	"sourceSize": {"w":139,"h":207}
+}
+,{
+	"filename": "stick_1_flinch_20006",
+	"frame": {"x":739,"y":0,"w":125,"h":193},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":14,"w":139,"h":207},
+	"sourceSize": {"w":139,"h":207}
+}
+,{
+	"filename": "stick_1_flinch_20007",
+	"frame": {"x":866,"y":0,"w":108,"h":198},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":9,"w":139,"h":207},
+	"sourceSize": {"w":139,"h":207}
+}
+,{
+	"filename": "stick_1_flinch_20008",
+	"frame": {"x":0,"y":209,"w":91,"h":203},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":4,"w":139,"h":207},
+	"sourceSize": {"w":139,"h":207}
+}
+,{
+	"filename": "stick_1_flinch_20009",
+	"frame": {"x":93,"y":209,"w":73,"h":205},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":2,"w":139,"h":207},
+	"sourceSize": {"w":139,"h":207}
+}
+,{
+	"filename": "stick_1_flinch_20010",
+	"frame": {"x":168,"y":209,"w":66,"h":206},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":1,"w":139,"h":207},
+	"sourceSize": {"w":139,"h":207}
+}
+,{
+	"filename": "stick_1_flinch_20011",
+	"frame": {"x":236,"y":209,"w":67,"h":207},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":0,"w":139,"h":207},
+	"sourceSize": {"w":139,"h":207}
+}
+,{
+	"filename": "stick_1_flinch_20012",
+	"frame": {"x":0,"y":0,"w":69,"h":207},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":0,"w":139,"h":207},
+	"sourceSize": {"w":139,"h":207}
+}],
+"meta": {
+	"app": "Adobe Flash Professional",
+	"version": "14.0.0.110",
+	"image": "flinch_2.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

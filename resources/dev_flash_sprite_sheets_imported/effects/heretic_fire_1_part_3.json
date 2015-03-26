@@ -1,0 +1,99 @@
+{"frames": [
+
+{
+	"filename": "effect_fire_1_part_30000",
+	"frame": {"x":0,"y":0,"w":356,"h":317},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":0,"w":371,"h":317},
+	"sourceSize": {"w":371,"h":317}
+}
+,{
+	"filename": "effect_fire_1_part_30001",
+	"frame": {"x":358,"y":0,"w":357,"h":256},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":54,"w":371,"h":317},
+	"sourceSize": {"w":371,"h":317}
+}
+,{
+	"filename": "effect_fire_1_part_30002",
+	"frame": {"x":0,"y":319,"w":361,"h":256},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":47,"w":371,"h":317},
+	"sourceSize": {"w":371,"h":317}
+}
+,{
+	"filename": "effect_fire_1_part_30003",
+	"frame": {"x":363,"y":319,"w":362,"h":248},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":46,"w":371,"h":317},
+	"sourceSize": {"w":371,"h":317}
+}
+,{
+	"filename": "effect_fire_1_part_30004",
+	"frame": {"x":0,"y":577,"w":363,"h":242},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":40,"w":371,"h":317},
+	"sourceSize": {"w":371,"h":317}
+}
+,{
+	"filename": "effect_fire_1_part_30005",
+	"frame": {"x":365,"y":577,"w":371,"h":223},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":47,"w":371,"h":317},
+	"sourceSize": {"w":371,"h":317}
+}
+,{
+	"filename": "effect_fire_1_part_30006",
+	"frame": {"x":0,"y":821,"w":363,"h":220},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":50,"w":371,"h":317},
+	"sourceSize": {"w":371,"h":317}
+}
+,{
+	"filename": "effect_fire_1_part_30007",
+	"frame": {"x":0,"y":821,"w":363,"h":220},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":50,"w":371,"h":317},
+	"sourceSize": {"w":371,"h":317}
+}
+,{
+	"filename": "effect_fire_1_part_30008",
+	"frame": {"x":365,"y":821,"w":357,"h":214},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":45,"w":371,"h":317},
+	"sourceSize": {"w":371,"h":317}
+}
+,{
+	"filename": "effect_fire_1_part_30009",
+	"frame": {"x":365,"y":821,"w":357,"h":214},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":45,"w":371,"h":317},
+	"sourceSize": {"w":371,"h":317}
+}
+,{
+	"filename": "effect_fire_1_part_30010",
+	"frame": {"x":365,"y":821,"w":357,"h":214},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":45,"w":371,"h":317},
+	"sourceSize": {"w":371,"h":317}
+}],
+"meta": {
+	"app": "Adobe Flash Professional",
+	"version": "14.0.0.110",
+	"image": "heretic_fire_1_part_3.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

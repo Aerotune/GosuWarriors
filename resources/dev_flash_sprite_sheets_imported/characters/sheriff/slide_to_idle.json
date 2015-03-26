@@ -1,0 +1,179 @@
+﻿{"frames": [
+
+{
+	"filename": "stick_1_slide_toidle0000",
+	"frame": {"x":0,"y":0,"w":99,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":29,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0001",
+	"frame": {"x":101,"y":0,"w":69,"h":190},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":22,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0002",
+	"frame": {"x":172,"y":0,"w":71,"h":192},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":25,"y":20,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0003",
+	"frame": {"x":245,"y":0,"w":80,"h":194},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":18,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0004",
+	"frame": {"x":327,"y":0,"w":89,"h":196},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":17,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0005",
+	"frame": {"x":418,"y":0,"w":99,"h":196},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":17,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0006",
+	"frame": {"x":519,"y":0,"w":107,"h":197},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":16,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0007",
+	"frame": {"x":628,"y":0,"w":113,"h":197},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":16,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0008",
+	"frame": {"x":743,"y":0,"w":116,"h":197},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":16,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0009",
+	"frame": {"x":861,"y":0,"w":118,"h":197},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":16,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0010",
+	"frame": {"x":0,"y":199,"w":118,"h":197},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":16,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0011",
+	"frame": {"x":120,"y":199,"w":117,"h":197},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":16,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0012",
+	"frame": {"x":239,"y":199,"w":115,"h":198},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":15,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0013",
+	"frame": {"x":356,"y":199,"w":111,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":13,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0014",
+	"frame": {"x":469,"y":199,"w":101,"h":202},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":10,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0015",
+	"frame": {"x":572,"y":199,"w":87,"h":206},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":6,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0016",
+	"frame": {"x":661,"y":199,"w":78,"h":208},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":3,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0017",
+	"frame": {"x":741,"y":199,"w":74,"h":209},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":16,"y":2,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0018",
+	"frame": {"x":817,"y":199,"w":72,"h":210},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":1,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0019",
+	"frame": {"x":891,"y":199,"w":72,"h":211},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":0,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}
+,{
+	"filename": "stick_1_slide_toidle0020",
+	"frame": {"x":0,"y":412,"w":71,"h":211},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":0,"w":119,"h":213},
+	"sourceSize": {"w":119,"h":213}
+}],
+"meta": {
+	"app": "Adobe Flash Professional",
+	"version": "14.0.0.110",
+	"image": "slide_to_idle.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

@@ -1,0 +1,67 @@
+{"frames": [
+
+{
+	"filename": "heretic_walk_part_20000",
+	"frame": {"x":0,"y":0,"w":164,"h":284},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":196,"h":287},
+	"sourceSize": {"w":196,"h":287}
+}
+,{
+	"filename": "heretic_walk_part_20001",
+	"frame": {"x":167,"y":0,"w":176,"h":287},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":196,"h":287},
+	"sourceSize": {"w":196,"h":287}
+}
+,{
+	"filename": "heretic_walk_part_20002",
+	"frame": {"x":346,"y":0,"w":185,"h":285},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":2,"w":196,"h":287},
+	"sourceSize": {"w":196,"h":287}
+}
+,{
+	"filename": "heretic_walk_part_20003",
+	"frame": {"x":534,"y":0,"w":193,"h":278},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":5,"w":196,"h":287},
+	"sourceSize": {"w":196,"h":287}
+}
+,{
+	"filename": "heretic_walk_part_20004",
+	"frame": {"x":730,"y":0,"w":191,"h":271},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":8,"w":196,"h":287},
+	"sourceSize": {"w":196,"h":287}
+}
+,{
+	"filename": "heretic_walk_part_20005",
+	"frame": {"x":0,"y":290,"w":188,"h":266},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":10,"w":196,"h":287},
+	"sourceSize": {"w":196,"h":287}
+}
+,{
+	"filename": "heretic_walk_part_20006",
+	"frame": {"x":191,"y":290,"w":175,"h":267},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":10,"w":196,"h":287},
+	"sourceSize": {"w":196,"h":287}
+}],
+"meta": {
+	"app": "Adobe Flash CS6",
+	"version": "12.0.0.481",
+	"image": "walk_part_2.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

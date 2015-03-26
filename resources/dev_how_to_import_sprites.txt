@@ -1,0 +1,22 @@
+You need Flash CS6 or newer
+Right click movieclip in Flash library.
+Select generate sprite sheet.
+Settings:
+JSON Array
+Trim
+padding 2px
+1024x1024 pixels
+
+export it to a directory e.g.
+characters/witch/idle.png
+(characters/witch/idle.json)
+
+
+if your animation is too big to fit in one sprite sheet cut the animations into multiple movieclips and name them like this:
+idle_part_1
+idle_part_2
+idle_part_3
+
+
+copy 'characters' folder into resources/dev_flash_sprite_sheets_import_queue
+open game > Development Tools > Import sprite sheets

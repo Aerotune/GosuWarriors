@@ -1,0 +1,12 @@
+NameError: uninitialized constant WindowStates::DevSpriteEditor::SpriteBlendingModeUi
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/window_states/dev_sprite_editor.rb:57:in `initialize'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/window_states/dev_sprite_folder_list.rb:21:in `new'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/window_states/dev_sprite_folder_list.rb:21:in `block (2 levels) in initialize'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/game_lib/menu_item.rb:39:in `call'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/game_lib/menu_item.rb:39:in `key_up'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/game_lib/menu.rb:12:in `block in key_up'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/game_lib/menu.rb:11:in `each'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/game_lib/menu.rb:11:in `key_up'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/window_states/dev_sprite_folder_list.rb:38:in `key_up'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/window.rb:59:in `button_up'
+	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/main.rb:36:in `<main>'

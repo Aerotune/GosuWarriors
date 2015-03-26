@@ -1,0 +1,179 @@
+{"frames": [
+
+{
+	"filename": "Bat_dive_start0000",
+	"frame": {"x":0,"y":0,"w":48,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":2,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0001",
+	"frame": {"x":51,"y":0,"w":41,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":1,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0002",
+	"frame": {"x":95,"y":0,"w":33,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":1,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0003",
+	"frame": {"x":131,"y":0,"w":30,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":0,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0004",
+	"frame": {"x":164,"y":0,"w":35,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":0,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0005",
+	"frame": {"x":164,"y":0,"w":35,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":0,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0006",
+	"frame": {"x":202,"y":0,"w":42,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":0,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0007",
+	"frame": {"x":202,"y":0,"w":42,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":0,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0008",
+	"frame": {"x":247,"y":0,"w":45,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":16,"y":1,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0009",
+	"frame": {"x":247,"y":0,"w":45,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":16,"y":1,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0010",
+	"frame": {"x":295,"y":0,"w":37,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":2,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0011",
+	"frame": {"x":335,"y":0,"w":39,"h":37},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":8,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0012",
+	"frame": {"x":377,"y":0,"w":55,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":19,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0013",
+	"frame": {"x":435,"y":0,"w":62,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":15,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0014",
+	"frame": {"x":500,"y":0,"w":63,"h":26},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":13,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0015",
+	"frame": {"x":566,"y":0,"w":63,"h":25},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":13,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0016",
+	"frame": {"x":632,"y":0,"w":62,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":14,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0017",
+	"frame": {"x":697,"y":0,"w":61,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":14,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0018",
+	"frame": {"x":697,"y":0,"w":61,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":14,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0019",
+	"frame": {"x":761,"y":0,"w":61,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":14,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}
+,{
+	"filename": "Bat_dive_start0020",
+	"frame": {"x":761,"y":0,"w":61,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":14,"w":64,"h":45},
+	"sourceSize": {"w":64,"h":45}
+}],
+"meta": {
+	"app": "Adobe Flash CS6",
+	"version": "12.0.0.481",
+	"image": "fly_to_dive.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

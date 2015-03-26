@@ -1,0 +1,155 @@
+{"frames": [
+
+{
+	"filename": "Bat_fly_loop0000",
+	"frame": {"x":0,"y":0,"w":48,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0001",
+	"frame": {"x":51,"y":0,"w":42,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":3,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0002",
+	"frame": {"x":96,"y":0,"w":32,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":3,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0003",
+	"frame": {"x":131,"y":0,"w":25,"h":46},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":2,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0004",
+	"frame": {"x":159,"y":0,"w":22,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":1,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0005",
+	"frame": {"x":184,"y":0,"w":23,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":0,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0006",
+	"frame": {"x":210,"y":0,"w":28,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":0,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0007",
+	"frame": {"x":241,"y":0,"w":37,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":0,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0008",
+	"frame": {"x":281,"y":0,"w":50,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0009",
+	"frame": {"x":334,"y":0,"w":57,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0010",
+	"frame": {"x":334,"y":0,"w":57,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0011",
+	"frame": {"x":394,"y":0,"w":56,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0012",
+	"frame": {"x":453,"y":0,"w":56,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0013",
+	"frame": {"x":512,"y":0,"w":54,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0014",
+	"frame": {"x":569,"y":0,"w":54,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0015",
+	"frame": {"x":626,"y":0,"w":55,"h":38},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":3,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0016",
+	"frame": {"x":684,"y":0,"w":55,"h":38},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":3,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}
+,{
+	"filename": "Bat_fly_loop0017",
+	"frame": {"x":742,"y":0,"w":54,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+}],
+"meta": {
+	"app": "Adobe Flash CS6",
+	"version": "12.0.0.481",
+	"image": "fly_loop.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

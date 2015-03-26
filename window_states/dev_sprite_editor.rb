@@ -54,6 +54,15 @@ class WindowStates::DevSpriteEditor < WindowState
       end
     end
     @sprite_direction_switch = SpriteDirectionSwitch.new
+    @sprite_blending_mode_ui = SpriteBlendingModeUI.new
+    @sprite_blending_mode_ui.on_update do |blending_mode|
+      if @current_frame
+        @current_frame['blending_mode'] = blending_mode
+      end
+      @sprite_frames_ui.selected_frames and @sprite_frames_ui.selected_frames.each do |frame|
+        frame['blending_mode'] = blending_mode
+      end
+    end
     
     @font = Resources::Fonts[:Arial12]
     
@@ -88,7 +97,10 @@ class WindowStates::DevSpriteEditor < WindowState
     #@sprite_list_ui.update
     @sprite_frames_ui.update
     @current_frame = @sprite_frames_ui.current_frame
-    @sprite_tag_ui.tags = @current_frame['shapes'][@sprite_layer_ui.layer]['tags'] if @current_frame
+    if @current_frame
+      @sprite_tag_ui.tags = @current_frame['shapes'][@sprite_layer_ui.layer]['tags']
+      @sprite_blending_mode_ui.blending_mode = @current_frame['blending_mode']
+    end
     if @start_drag_x && @start_drag_y
       @delta_drag_x = $window.mouse_x - @start_drag_x
       @delta_drag_y = $window.mouse_y - @start_drag_y
@@ -106,6 +118,7 @@ class WindowStates::DevSpriteEditor < WindowState
     @sprite_layer_ui.key_down key
     @sprite_tag_ui.key_down key
     @sprite_direction_switch.key_down key
+    @sprite_blending_mode_ui.key_down key
     case key
     when 'escape'
       $window.set_state @create_previous_menu.call
@@ -205,6 +218,7 @@ class WindowStates::DevSpriteEditor < WindowState
     @sprite_layer_ui.key_up key
     @sprite_tag_ui.key_up key
     @sprite_direction_switch.key_up key
+    @sprite_blending_mode_ui.key_up key
     
     case key
     when 'mouse_left'
@@ -241,7 +255,7 @@ class WindowStates::DevSpriteEditor < WindowState
       end
       
       if @start_drag_x && @start_drag_y
-        @sprite_frames_ui.selected_frames.each do |frame|
+        @sprite_frames_ui.selected_frames and @sprite_frames_ui.selected_frames.each do |frame|
           frame['offset_x'] = (frame['offset_x'] + @delta_drag_x).to_i
           frame['offset_y'] = (frame['offset_y'] + @delta_drag_y).to_i
         end
@@ -276,6 +290,7 @@ class WindowStates::DevSpriteEditor < WindowState
     @sprite_frames_ui.draw @sprite_layer_ui.layer
     @sprite_list_ui.draw
     @sprite_direction_switch.draw
+    @sprite_blending_mode_ui.draw
     
     x = $window.width
     y = 1

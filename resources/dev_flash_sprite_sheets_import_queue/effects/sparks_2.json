@@ -1,0 +1,115 @@
+﻿{"frames": [
+
+{
+	"filename": "effect_spark_20000",
+	"frame": {"x":0,"y":0,"w":89,"h":57},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":123,"y":70,"w":212,"h":133},
+	"sourceSize": {"w":212,"h":133}
+}
+,{
+	"filename": "effect_spark_20001",
+	"frame": {"x":91,"y":0,"w":144,"h":102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":60,"y":31,"w":212,"h":133},
+	"sourceSize": {"w":212,"h":133}
+}
+,{
+	"filename": "effect_spark_20002",
+	"frame": {"x":237,"y":0,"w":129,"h":91},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":29,"w":212,"h":133},
+	"sourceSize": {"w":212,"h":133}
+}
+,{
+	"filename": "effect_spark_20003",
+	"frame": {"x":368,"y":0,"w":130,"h":94},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":41,"y":24,"w":212,"h":133},
+	"sourceSize": {"w":212,"h":133}
+}
+,{
+	"filename": "effect_spark_20004",
+	"frame": {"x":500,"y":0,"w":141,"h":94},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":21,"w":212,"h":133},
+	"sourceSize": {"w":212,"h":133}
+}
+,{
+	"filename": "effect_spark_20005",
+	"frame": {"x":643,"y":0,"w":139,"h":100},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":17,"w":212,"h":133},
+	"sourceSize": {"w":212,"h":133}
+}
+,{
+	"filename": "effect_spark_20006",
+	"frame": {"x":784,"y":0,"w":141,"h":101},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":13,"w":212,"h":133},
+	"sourceSize": {"w":212,"h":133}
+}
+,{
+	"filename": "effect_spark_20007",
+	"frame": {"x":0,"y":104,"w":146,"h":105},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":9,"w":212,"h":133},
+	"sourceSize": {"w":212,"h":133}
+}
+,{
+	"filename": "effect_spark_20008",
+	"frame": {"x":148,"y":104,"w":120,"h":108},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":20,"y":5,"w":212,"h":133},
+	"sourceSize": {"w":212,"h":133}
+}
+,{
+	"filename": "effect_spark_20009",
+	"frame": {"x":270,"y":104,"w":123,"h":114},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":0,"w":212,"h":133},
+	"sourceSize": {"w":212,"h":133}
+}
+,{
+	"filename": "effect_spark_20010",
+	"frame": {"x":395,"y":104,"w":128,"h":86},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":12,"w":212,"h":133},
+	"sourceSize": {"w":212,"h":133}
+}
+,{
+	"filename": "effect_spark_20011",
+	"frame": {"x":525,"y":104,"w":115,"h":55},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":16,"y":36,"w":212,"h":133},
+	"sourceSize": {"w":212,"h":133}
+}
+,{
+	"filename": "effect_spark_20012",
+	"frame": {"x":642,"y":104,"w":53,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":67,"y":10,"w":212,"h":133},
+	"sourceSize": {"w":212,"h":133}
+}],
+"meta": {
+	"app": "Adobe Flash Professional",
+	"version": "14.0.0.110",
+	"image": "sparks_2.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

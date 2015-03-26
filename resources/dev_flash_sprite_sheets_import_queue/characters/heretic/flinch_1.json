@@ -1,0 +1,171 @@
+{"frames": [
+
+{
+	"filename": "Heretic_hit0000",
+	"frame": {"x":0,"y":0,"w":113,"h":304},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":13,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0001",
+	"frame": {"x":116,"y":0,"w":111,"h":309},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":8,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0002",
+	"frame": {"x":230,"y":0,"w":118,"h":316},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":1,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0003",
+	"frame": {"x":351,"y":0,"w":137,"h":317},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":0,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0004",
+	"frame": {"x":491,"y":0,"w":141,"h":316},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":1,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0005",
+	"frame": {"x":635,"y":0,"w":139,"h":315},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":2,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0006",
+	"frame": {"x":777,"y":0,"w":137,"h":314},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":3,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0007",
+	"frame": {"x":0,"y":320,"w":137,"h":314},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":3,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0008",
+	"frame": {"x":140,"y":320,"w":136,"h":314},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":3,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0009",
+	"frame": {"x":279,"y":320,"w":135,"h":314},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":3,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0010",
+	"frame": {"x":417,"y":320,"w":131,"h":314},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":3,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0011",
+	"frame": {"x":551,"y":320,"w":128,"h":313},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":4,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0012",
+	"frame": {"x":682,"y":320,"w":124,"h":315},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":2,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0013",
+	"frame": {"x":809,"y":320,"w":122,"h":317},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0014",
+	"frame": {"x":0,"y":640,"w":117,"h":317},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":0,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0015",
+	"frame": {"x":120,"y":640,"w":112,"h":317},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0016",
+	"frame": {"x":235,"y":640,"w":111,"h":316},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0017",
+	"frame": {"x":349,"y":640,"w":111,"h":313},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":4,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0018",
+	"frame": {"x":463,"y":640,"w":112,"h":310},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":7,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}
+,{
+	"filename": "Heretic_hit0019",
+	"frame": {"x":0,"y":0,"w":113,"h":304},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":13,"w":150,"h":317},
+	"sourceSize": {"w":150,"h":317}
+}],
+"meta": {
+	"app": "Adobe Flash CS6",
+	"version": "12.0.0.481",
+	"image": “flinch_1.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}
