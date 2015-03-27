@@ -1,3 +1,0 @@
-NoMethodError: undefined method `each' for nil:NilClass
-	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/app/game_lib/resources/sprites.rb:67:in `save_all!'
-	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/main.rb:44:in `<main>'

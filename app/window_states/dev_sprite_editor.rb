@@ -74,7 +74,7 @@ class WindowStates::DevSpriteEditor < WindowState
       shape_tool_for
     end
     
-    @factor_x = 1.0
+    @factor_x = 1
     @anchor_point_x = $window.width/2
     @anchor_point_y = $window.height*2/3
     @delta_drag_x = 0
@@ -276,7 +276,7 @@ class WindowStates::DevSpriteEditor < WindowState
     
     
     if @current_frame
-      Systems::Graphics::Sprite.draw_frame @current_frame, x, y, Z, @factor_x
+      WindowStates::GameSession::Systems::Graphics::Sprite.draw_frame @current_frame, x, y, Z, @factor_x
       shape_tool = get_current_shape_tool
       shape_tool.draw x+@delta_shape_drag_x, y+@delta_shape_drag_y if shape_tool
     end

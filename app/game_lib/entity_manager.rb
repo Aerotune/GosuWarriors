@@ -1,11 +1,10 @@
-require_relative 'identifier'
-
 class EntityManager
   attr_reader :store
   
-  def initialize
+  def initialize components_module
     ## Structure:
     ## @store = { ComponentClass => {entity => [component_instance]}}
+    @components_module = components_module
     @store = Hash.new do |store, component_class|
       store[component_class] = Hash.new do |component_store, entity|
         component_store[entity] = []
@@ -23,16 +22,16 @@ class EntityManager
     @components[component_id]
   end
   
-  def get_component entity, component_class
-    @store[component_class][entity].first
+  def get_component entity, component_class_or_name
+    @store[component_class(component_class_or_name)][entity].first
   end
   
-  def get_components entity, component_class
-    @store[component_class][entity]
+  def get_components entity, component_class_or_name
+    @store[component_class(component_class_or_name)][entity]
   end
   
-  def get_all_components component_class
-    @store[component_class].values.flatten!
+  def get_all_components component_class_or_name
+    @store[component_class(component_class_or_name)].values.flatten!
   end
   
   def add_component entity, component
@@ -59,15 +58,26 @@ class EntityManager
     end    
   end
   
-  def each_entity_with_components component_class
-    @store[component_class].each do |entity, components|
+  def each_entity_with_components component_class_or_name
+    @store[component_class(component_class_or_name)].each do |entity, components|
       yield entity, components unless components.empty?
     end
   end
   
-  def each_entity_with_component component_class
-    @store[component_class].each do |entity, components|
+  def each_entity_with_component component_class_or_name
+    @store[component_class(component_class_or_name)].each do |entity, components|
       yield entity, components.first unless components.empty?
+    end
+  end
+  
+  private
+  
+  def component_class component_class_or_name
+    case component_class_or_name
+    when Symbol, String
+      @components_module.const_get component_class_or_name
+    else
+      component_class_or_name
     end
   end
   

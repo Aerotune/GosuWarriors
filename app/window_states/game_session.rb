@@ -1,33 +1,25 @@
 class WindowStates::GameSession < WindowState
   def initialize
-    @entity_manager = EntityManager.new
+    @entity_manager  = EntityManager.new WindowStates::GameSession::Components
+    @graphics_system = WindowStates::GameSession::Systems::Graphics.new @entity_manager
+    @character_animation_states_system = WindowStates::GameSession::Systems::CharacterAnimationStates.new @entity_manager
     
-    player_entity = @entity_manager.create_entity
-    sprite = Components::Sprite.new(
-      'sprite_resource_path' => %w[characters witch run],
-      'fps' => 27,
-      'start_time' => 0
-    )
-    @drawable = Components::Drawable.new(
-      'draw_component' => sprite,
-      'x' => 400,
-      'y' => 400, 
-      'z_order' => ZOrder::CHARACTER,
-      'factor_x' => -1
-    )
+    player_entity = WindowStates::GameSession::Factories::Character.build @entity_manager, @character_animation_states_system, 'witch', 'player'
     
-    @entity_manager.add_component player_entity, @drawable
-    
-    @graphics_system = Systems::Graphics.new @entity_manager
     @session_timer = SessionTimer.new
     @session_timer.start
   end
   
   def key_down key
+    @character_animation_states_system.key_down key, @session_timer.frame
     case key
     when 'escape'
       $window.set_state :main_menu
     end
+  end
+  
+  def key_up key
+    @character_animation_states_system.key_up key, @session_timer.frame
   end
   
   def update
@@ -35,9 +27,9 @@ class WindowStates::GameSession < WindowState
       case direction
       when 1
         @graphics_system.update time
-        @drawable.x = (time * 1) % $window.width
+        @character_animation_states_system.update time
       when -1
-        
+        raise "Reversing time supported yet."
       end
     end
   end

@@ -10,8 +10,9 @@ module SpriteSheetImporter
       @multi_sheet_sprites = {}
       
       @folders = {}
-      
-      Dir[File.join(DEV_SPRITE_SHEETS_IMPORT_QUEUE_PATH, '**', '*.json')].each do |json_path|
+      json_paths = Dir[File.join(DEV_SPRITE_SHEETS_IMPORT_QUEUE_PATH, '**', '*.json')]
+      return if json_paths.empty?
+      json_paths.each do |json_path|
         sprite_resource_path   = SpriteResourceFileTool.to_a(json_path, DEV_SPRITE_SHEETS_IMPORT_QUEUE_PATH)
         sprite_resource_folder = sprite_resource_path[0...-1]
         

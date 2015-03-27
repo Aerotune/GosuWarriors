@@ -99,6 +99,7 @@ module Resources::Sprites
       loaded_frame['shapes']         = frame['shapes'] || create_shapes_hash
       loaded_frame['blending_mode']  = frame['blending_mode'] || 'normal'
       
+      
       loaded_frames << loaded_frame
     end
     

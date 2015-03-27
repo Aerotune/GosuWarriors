@@ -1,4 +1,4 @@
-class Components::Tint < Component
+class WindowStates::GameSession::Components::Tint < Component
   attr_reader :color
   
   def initialize color

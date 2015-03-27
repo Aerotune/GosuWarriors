@@ -1,4 +1,4 @@
-class Components::Sprite < Component
+class WindowStates::GameSession::Components::Sprite < Component
   attr_accessor \
     :sprite_resource_path,
     :start_time,
@@ -6,7 +6,8 @@ class Components::Sprite < Component
     :duration,
     :fps,
     :mode,
-    :index
+    :index,
+    :done
     
     
   def initialize options
@@ -17,5 +18,6 @@ class Components::Sprite < Component
     @fps                  = options["fps"]
     @mode                 = options["mode"] || "loop"
     @index                = options["index"].to_i
+    @done                 = options["done"]
   end
 end

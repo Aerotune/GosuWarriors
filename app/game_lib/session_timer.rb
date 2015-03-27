@@ -4,6 +4,8 @@ require_relative 'shared_time'
 class SessionTimer
   FPS = 60
   
+  attr_reader :frame
+  
   def initialize initial_frame=0
     @initial_frame  = initial_frame.to_i
     @start_frame    = @initial_frame

@@ -1,0 +1,8 @@
+* Add effects overlay in sprite sheet editor (eg. glow)
+** Spawn (static only to begin with)
+** Follow animation
+
+* Add spawn points in sprite sheet editor
+** Spawn projectiles
+** Spawn particles
+** Spawn dust

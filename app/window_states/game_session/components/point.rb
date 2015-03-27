@@ -1,4 +1,4 @@
-class Components::Point < Component
+class WindowStates::GameSession::Components::Point < Component
   attr_accessor :x, :y
   def initialize x, y
     @x = x

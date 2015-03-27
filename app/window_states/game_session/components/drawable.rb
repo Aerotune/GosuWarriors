@@ -1,4 +1,4 @@
-class Components::Drawable < Component
+class WindowStates::GameSession::Components::Drawable < Component
   attr_accessor :draw_component, :x, :y, :z_order, :factor_x
   
   def initialize options

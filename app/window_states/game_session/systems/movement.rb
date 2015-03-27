@@ -1,4 +1,4 @@
-class Systems::Movement
+class WindowStates::GameSession::Systems::Movement
   def initialize entity_manager
     @entity_manager = entity_manager
   end

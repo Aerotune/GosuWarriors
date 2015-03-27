@@ -15,6 +15,7 @@ end
 begin
   require 'rubygems'
   require 'gosu'
+  require 'yaml'
   require 'msgpack'
   require 'pathname'
   require 'fileutils'

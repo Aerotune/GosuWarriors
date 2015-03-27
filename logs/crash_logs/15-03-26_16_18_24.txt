@@ -1,2 +1,0 @@
-NoMethodError: undefined method `const_defined?' for main:Object
-	/Users/bue/Documents/Documents/Programming/Projects/Ruby/Gosu/ultimatestickfightarena/yar/Source/main.rb:44:in `<main>'

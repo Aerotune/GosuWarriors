@@ -1,0 +1,6 @@
+up: up
+down: down
+left: left
+right: right
+f: attack
+d: special

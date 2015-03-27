@@ -1,4 +1,4 @@
-class WindowStates::Loader
+class WindowStates::Loader < WindowState
   attr_accessor :loaded
   
   def initialize &after_load

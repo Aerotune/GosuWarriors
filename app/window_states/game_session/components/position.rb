@@ -1,6 +1,6 @@
 require_relative 'point'
 
-class Components::Position < Components::Point
+class WindowStates::GameSession::Components::Position < WindowStates::GameSession::Components::Point
   attr_accessor :x, :y, :next_x, :next_y
   
   def initialize x, y
