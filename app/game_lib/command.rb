@@ -1,6 +1,8 @@
 class Command
-  def id
-    @id ||= Identifier.create_id
+  attr_reader :id
+  
+  def initialize
+    @id = Identifier.create_id
   end
   
   def done?

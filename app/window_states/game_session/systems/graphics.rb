@@ -3,24 +3,20 @@ class WindowStates::GameSession::Systems::Graphics
   
   def initialize entity_manager
     @entity_manager = entity_manager
-    @drawables = []
+    @drawable_entities = []
     @sprite_system = WindowStates::GameSession::Systems::Graphics::Sprite.new @entity_manager
   end
   
   def update time
-    sort_drawables!
-    @drawables.each do |drawable|
-      case drawable.draw_component
-      when WindowStates::GameSession::Components::Sprite; @sprite_system.update drawable, time if drawable.draw_component
-      end
+    sort_drawable_entities!
+    @drawable_entities.each do |entity|
+      @sprite_system.update entity, time if @entity_manager.get_component(entity, :Sprite)
     end
   end
   
   def draw
-    @drawables.each do |drawable|
-      case drawable.draw_component
-      when WindowStates::GameSession::Components::Sprite; @sprite_system.draw drawable if drawable.draw_component
-      end
+    @drawable_entities.each do |entity|
+      @sprite_system.draw entity if @entity_manager.get_component(entity, :Sprite)
     end
   end
   
@@ -28,15 +24,20 @@ class WindowStates::GameSession::Systems::Graphics
   private
   
   
-  def sort_drawables!
+  def sort_drawable_entities!
     drawables_store = @entity_manager.store[:Drawable]
     unless @drawables_hash == drawables_store.hash
       @drawables_hash = drawables_store.hash
-      @drawables.clear
+      @drawable_entities.clear
+      drawables = []
       @entity_manager.each_entity_with_component :Drawable do |entity, drawable|
-        @drawables << drawable
+        drawables << {
+          'drawable' => drawable,
+          'entity' => entity
+        }
       end
-      @drawables.sort! { |a,b| a.z_order <=> b.z_order }
+      drawables.sort! { |a,b| a['drawable'].z_order <=> b['drawable'].z_order }
+      @drawable_entities = drawables.map { |drawable| drawable['entity'] }
     end
   end
 end

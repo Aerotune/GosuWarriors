@@ -6,3 +6,5 @@
 ** Spawn projectiles
 ** Spawn particles
 ** Spawn dust
+
+* Level editor, I'm thinking about making it similar to the sprite sheet editor

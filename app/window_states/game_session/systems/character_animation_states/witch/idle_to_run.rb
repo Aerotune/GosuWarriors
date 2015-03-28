@@ -5,16 +5,16 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
   
   def on_set entity, time
     character = @entity_manager.get_component entity, :Character
-    drawable  = @entity_manager.get_component entity, :Drawable
     
-    sprite = WindowStates::GameSession::Components::Sprite.new(
+    set_sprite_command = WindowStates::GameSession::Commands::SetSprite.new @entity_manager, entity, {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
       'fps' => 50,
       'start_time' => time,
-      'mode' => 'forward'
-    )
+      'mode' => 'forward',
+      'index' => 0
+    }
     
-    drawable.draw_component = sprite
+    set_sprite_command.do!
   end
   
   def key_down entity, key, time
@@ -36,7 +36,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
   end
   
   def update entity, time
-    sprite = @entity_manager.get_component(entity, :Drawable).draw_component
+    sprite = @entity_manager.get_component(entity, :Sprite)
     if sprite.done
       character = @entity_manager.get_component(entity, :Character)
       character.set_animation_state = 'run'

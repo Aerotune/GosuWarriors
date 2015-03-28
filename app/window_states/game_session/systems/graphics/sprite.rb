@@ -3,8 +3,8 @@ class WindowStates::GameSession::Systems::Graphics::Sprite
     @entity_manager = entity_manager
   end
   
-  def update drawable, time
-    sprite = drawable.draw_component
+  def update entity, time
+    sprite = @entity_manager.get_component entity, :Sprite
     frames = Resources::Sprites[sprite.sprite_resource_path]['frames']
     sprite_time = time - sprite.start_time
     
@@ -20,13 +20,14 @@ class WindowStates::GameSession::Systems::Graphics::Sprite
     end    
   end
   
-  def draw drawable
-    draw_sprite drawable
+  def draw entity
+    draw_sprite entity
     #draw_shapes drawable
   end
   
-  def draw_sprite drawable
-    sprite          = drawable.draw_component
+  def draw_sprite entity
+    drawable        = @entity_manager.get_component entity, :Drawable
+    sprite          = @entity_manager.get_component entity, :Sprite
     sprite_resource = Resources::Sprites[sprite.sprite_resource_path]
     frame           = sprite_resource['frames'][sprite.index]
     factor_x        = drawable.factor_x * sprite_resource['face_direction']

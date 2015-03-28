@@ -9,17 +9,11 @@ class EntityManager
       store[component_class] = Hash.new do |component_store, entity|
         component_store[entity] = []
       end
-    end
-    
-    @components = {}
+    end    
   end
   
   def create_entity
     Identifier.create_id
-  end
-  
-  def get_component_by_component_id component_id
-    @components[component_id]
   end
   
   def get_component entity, component_class_or_name
@@ -35,7 +29,6 @@ class EntityManager
   end
   
   def add_component entity, component
-    @components[component.id] = component
     components = @store[component.class][entity]
     components << component unless components.include? component
   end
@@ -53,8 +46,7 @@ class EntityManager
       component_class = component_or_class.class
       @store[component_class][entity].delete component_or_class
     else
-      component_class = component_or_class
-      @store[component_class].delete entity
+      @store[component_class(component_or_class)].delete entity
     end    
   end
   

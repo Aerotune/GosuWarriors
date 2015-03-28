@@ -3,7 +3,11 @@ module WindowStates::GameSession::Factories::Character
     def build entity_manager, character_animation_states_system, character_type, control_type, set_animation_state="idle"
       entity = entity_manager.create_entity
       
-      character = WindowStates::GameSession::Components::Character.new(character_type, set_animation_state, control_type)
+      character = WindowStates::GameSession::Components::Character.new(
+        'type' => character_type,
+        'set_animation_state' => set_animation_state, 
+        'control_type' => control_type
+      )
       drawable  = WindowStates::GameSession::Components::Drawable.new(
         'x' => 400,
         'y' => 400, 
