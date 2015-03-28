@@ -26,8 +26,8 @@ class WindowStates::GameSession < WindowState
     @session_timer.update_frame do |time, direction|
       case direction
       when 1
-        @graphics_system.update time
         @character_animation_states_system.update time
+        @graphics_system.update time
       when -1
         raise "Reversing time supported yet."
       end
