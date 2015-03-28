@@ -1,13 +1,22 @@
 class WindowStates::GameSession::Systems::CharacterAnimationStates
   @@animation_state_classes = {}
+  @@generalized_class = {}
   
-  def self.create_class file, &block
+  def self.generalize_class state, &block
+    @@generalized_class[state] = block
+  end
+  
+  def self.create_class file, generalized_class=nil, &block
+    block = @@generalized_class[generalized_class] if generalized_class
+    p @@generalized_class.keys
+    raise "No block given" unless block
     character = File.basename(File.dirname(file))
     state     = File.basename(file, '.rb')
     @@animation_state_classes[character] ||= {}
     @@animation_state_classes[character][state] = Class.new WindowStates::GameSession::Systems::CharacterAnimationState, &block    
   end
   
+  Dir[File.join(GAME_SESSION_PATH, *%w[systems character_animation_states general *.rb])].each { |file| require file }
   Dir[File.join(GAME_SESSION_PATH, *%w[systems character_animation_states ** *.rb])].each { |file| require file }
   
   def initialize entity_manager

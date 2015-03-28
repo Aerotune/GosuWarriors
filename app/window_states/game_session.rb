@@ -4,7 +4,7 @@ class WindowStates::GameSession < WindowState
     @graphics_system = WindowStates::GameSession::Systems::Graphics.new @entity_manager
     @character_animation_states_system = WindowStates::GameSession::Systems::CharacterAnimationStates.new @entity_manager
     @controls_system = WindowStates::GameSession::Systems::Controls.new @entity_manager
-    player_entity = WindowStates::GameSession::Factories::Character.build @entity_manager, @character_animation_states_system, 'witch', 'player'
+    player_entity = WindowStates::GameSession::Factories::Character.build @entity_manager, @character_animation_states_system, 'sheriff', 'player'
     
     @session_timer = SessionTimer.new
     @session_timer.start
