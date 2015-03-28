@@ -17,6 +17,8 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.generalize_class :i
     controls.held.each do |control|
       control_down entity, control, time
     end
+    
+    transition_to_speed_point_10 entity, time, 0, 40
   end
   
   def control_down entity, control, time

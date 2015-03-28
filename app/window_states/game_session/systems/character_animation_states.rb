@@ -8,8 +8,7 @@ class WindowStates::GameSession::Systems::CharacterAnimationStates
   
   def self.create_class file, generalized_class=nil, &block
     block = @@generalized_class[generalized_class] if generalized_class
-    p @@generalized_class.keys
-    raise "No block given" unless block
+    raise "No block given and given generalized class #{generalized_class.inspect}" unless block
     character = File.basename(File.dirname(file))
     state     = File.basename(file, '.rb')
     @@animation_state_classes[character] ||= {}

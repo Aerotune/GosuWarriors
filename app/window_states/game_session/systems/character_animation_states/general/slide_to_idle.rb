@@ -14,10 +14,11 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.generalize_class :s
       'index' => 0,
       'start_index' => 0
     }
+    set_sprite_command.do!
     
     @done_animation_state = 'idle'
     
-    set_sprite_command.do!
+    transition_to_speed_point_10 entity, time, 0, 80
   end
   
   def update entity, time
@@ -42,6 +43,8 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.generalize_class :s
         @done_animation_state = 'run'
     
         set_sprite_command.do!
+        
+        transition_to_speed_point_10 entity, time, 12_000*drawable.factor_x, 40
       end
     end
     

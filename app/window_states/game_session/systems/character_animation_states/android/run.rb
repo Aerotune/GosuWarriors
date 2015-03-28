@@ -1,0 +1,1 @@
+WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE__, :run
