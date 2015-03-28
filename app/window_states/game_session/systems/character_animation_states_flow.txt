@@ -1,4 +1,2 @@
-* key_down, key_up
-* update
-* on_unset, on_set
+* key_up, key_down, update, on_unset, on_set
 * draw

@@ -8,20 +8,21 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
         
     set_sprite_command = WindowStates::GameSession::Commands::SetSprite.new @entity_manager, entity, {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
-      'fps' => 31,
+      'fps' => 32,
       'start_time' => time,
       'mode' => 'loop',
-      'index' => 0
+      'index' => 0,
+      'start_index' => 0
     }
     
     set_sprite_command.do!
   end
   
-  def key_down entity, key, time
+  def control_down entity, control, time
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable
     
-    case key
+    case control
     when 'right'
       if drawable.factor_x < 0
         character.set_animation_state = 'slide_to_idle'
@@ -33,11 +34,11 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     end
   end
   
-  def key_up entity, key, time
+  def control_up entity, control, time
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable
     
-    case key
+    case control
     when 'right'
       if drawable.factor_x > 0
         character.set_animation_state = 'slide_to_idle'
@@ -50,6 +51,18 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
   end
   
   def update entity, time
+    character = @entity_manager.get_component entity, :Character
+    controls  = @entity_manager.get_component entity, :Controls
+    drawable  = @entity_manager.get_component entity, :Drawable
     
+    if drawable.factor_x > 0
+      unless controls.held.include? 'right'
+        character.set_animation_state = 'slide_to_idle'
+      end
+    else
+      unless controls.held.include? 'left'
+        character.set_animation_state = 'slide_to_idle'
+      end
+    end
   end
 end

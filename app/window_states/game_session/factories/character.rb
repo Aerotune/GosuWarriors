@@ -8,6 +8,11 @@ module WindowStates::GameSession::Factories::Character
         'set_animation_state' => set_animation_state, 
         'control_type' => control_type
       )
+      controls  = WindowStates::GameSession::Components::Controls.new(
+        'pressed' => [],
+        'released' => [],
+        'held' => []
+      )
       drawable  = WindowStates::GameSession::Components::Drawable.new(
         'x' => 400,
         'y' => 400, 
@@ -16,6 +21,7 @@ module WindowStates::GameSession::Factories::Character
       )
       
       entity_manager.add_component entity, character
+      entity_manager.add_component entity, controls
       entity_manager.add_component entity, drawable
             
       return entity

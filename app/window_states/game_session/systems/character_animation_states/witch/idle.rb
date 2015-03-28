@@ -1,8 +1,4 @@
 WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE__ do
-  def initialize entity_manager
-    @entity_manager = entity_manager
-  end
-  
   def on_set entity, time
     character = @entity_manager.get_component entity, :Character
         
@@ -11,17 +7,23 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       'fps' => 30,
       'start_time' => time,
       'mode' => 'loop',
-      'index' => 0
+      'index' => 0,
+      'start_index' => 0
     }
     
     set_sprite_command.do!
+    
+    controls = @entity_manager.get_component entity, :Controls
+    controls.held.each do |control|
+      control_down entity, control, time
+    end
   end
   
-  def key_down entity, key, time
+  def control_down entity, control, time
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable
     
-    case key
+    case control
     when 'right'
       character.set_animation_state = 'idle_to_run'
       drawable.factor_x = 1
@@ -29,13 +31,5 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       character.set_animation_state = 'idle_to_run'
       drawable.factor_x = -1
     end    
-  end
-  
-  def key_up entity, key, time
-    
-  end
-  
-  def update entity, time
-    
   end
 end

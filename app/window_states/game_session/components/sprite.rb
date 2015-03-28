@@ -7,6 +7,7 @@ class WindowStates::GameSession::Components::Sprite < Component
     fps
     mode
     index
+    start_index
     done
   ]
 end

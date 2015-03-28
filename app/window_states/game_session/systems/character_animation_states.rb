@@ -21,24 +21,34 @@ class WindowStates::GameSession::Systems::CharacterAnimationStates
     end
   end
   
-  def key_down key, time
-    @entity_manager.each_entity_with_component :Character do |entity, character|
-      next unless character.control_type == "player"
-      animation_state(character).key_down entity, key, time
-    end
-  end
-  
-  def key_up key, time
-    @entity_manager.each_entity_with_component :Character do |entity, character|
-      next unless character.control_type == "player"
-      animation_state(character).key_up entity, key, time
-    end
-  end
+  #def key_down key, time
+  #  @entity_manager.each_entity_with_component :Character do |entity, character|
+  #    next unless character.control_type == "player"
+  #    animation_state(character).key_down entity, key, time
+  #  end
+  #end
+  #
+  #def key_up key, time
+  #  @entity_manager.each_entity_with_component :Character do |entity, character|
+  #    next unless character.control_type == "player"
+  #    animation_state(character).key_up entity, key, time
+  #  end
+  #end
   
   def update time
     @entity_manager.each_entity_with_component :Character do |entity, character|
       animation_state = @animation_state[character.type][character.animation_state]
+      
+      if character.control_type == "player"
+        controls = @entity_manager.get_component entity, :Controls
+        if controls
+          controls.released.each { |control| animation_state.control_up entity, control, time }
+          controls.pressed.each { |control| animation_state.control_down entity, control, time }
+        end
+      end
+      
       animation_state.update entity, time if animation_state
+      
       
       if character.set_animation_state        
         next_animation_state = @animation_state[character.type][character.set_animation_state]
