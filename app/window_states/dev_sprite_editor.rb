@@ -41,7 +41,11 @@ class WindowStates::DevSpriteEditor < WindowState
     @sprite_list_ui   = SpriteListUI.new @sprites
     @sprite_list_ui.on_click do |sprite|
       @sprite_frames_ui.frames = sprite['frames']
+      @sprite_frames_ui.sprite = sprite
       @sprite_direction_switch.sprite = sprite
+      
+      @sprite_fps_selector.key_down 'return'
+      @sprite_fps_selector.sprite = sprite
     end
     @sprite_layer_ui = SpriteLayerUI.new
     @sprite_tag_ui = SpriteTagUI.new
@@ -63,6 +67,7 @@ class WindowStates::DevSpriteEditor < WindowState
         frame['blending_mode'] = blending_mode
       end
     end
+    @sprite_fps_selector = SpriteFPSSelector.new
     
     @font = Resources::Fonts[:Arial12]
     
@@ -113,16 +118,22 @@ class WindowStates::DevSpriteEditor < WindowState
   end
   
   def key_down key
+    if key == 'escape' && !$window.text_input
+      $window.set_state @create_previous_menu.call
+      MouseTrap.release! #!!!
+    end
+    
     @sprite_list_ui.key_down key
     @sprite_frames_ui.key_down key
     @sprite_layer_ui.key_down key
     @sprite_tag_ui.key_down key
     @sprite_direction_switch.key_down key
     @sprite_blending_mode_ui.key_down key
+    @sprite_fps_selector.key_down key
     case key
     when 'escape'
-      $window.set_state @create_previous_menu.call
-      MouseTrap.release! #!!!
+      
+      
       
     when 'mouse_left'
       if MouseTrap.capture(self)
@@ -219,6 +230,7 @@ class WindowStates::DevSpriteEditor < WindowState
     @sprite_tag_ui.key_up key
     @sprite_direction_switch.key_up key
     @sprite_blending_mode_ui.key_up key
+    @sprite_fps_selector.key_up key
     
     case key
     when 'mouse_left'
@@ -291,6 +303,7 @@ class WindowStates::DevSpriteEditor < WindowState
     @sprite_list_ui.draw
     @sprite_direction_switch.draw
     @sprite_blending_mode_ui.draw
+    @sprite_fps_selector.draw
     
     x = $window.width
     y = 1

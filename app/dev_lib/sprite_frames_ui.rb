@@ -1,7 +1,8 @@
 class SpriteFramesUI
   attr_reader :current_frame, :selected_frames
   attr_accessor :paused
-  attr_accessor :frame_delta, :frames, :current_frame_index, :selection_range
+  attr_accessor :frames, :current_frame_index, :selection_range
+  attr_accessor :sprite
   
   def initialize
     @x = 200
@@ -19,7 +20,6 @@ class SpriteFramesUI
     ]
     @selection_range = 0..0
     @current_frame_index = 0
-    @frame_delta = 0.5
     @selected_frames = []
   end
   
@@ -95,8 +95,8 @@ class SpriteFramesUI
   end
   
   def update
-    if @frames && @frames.length > 0
-      @current_frame_index += @frame_delta unless @paused
+    if @sprite && @frames && @frames.length > 0
+      @current_frame_index += @sprite['fps'].to_i / 60.0 unless @paused
       @current_frame_index %= @frames.length
       select_current_frame
       update_current_frames

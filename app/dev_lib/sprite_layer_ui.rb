@@ -16,7 +16,7 @@ class SpriteLayerUI
     when 'mouse_left'
       MouseTrap.capture(self) if mouse_over_layer
     when '0'..'9'
-      @layer = key.to_i
+      @layer = key.to_i unless $window.text_input
     end
   end
   

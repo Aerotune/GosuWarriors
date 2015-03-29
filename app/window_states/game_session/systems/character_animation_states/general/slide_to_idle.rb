@@ -8,7 +8,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.generalize_class :s
     
     set_sprite_command = WindowStates::GameSession::Commands::SetSprite.new @entity_manager, entity, {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
-      'fps' => 60,
+      'fps' => :sprite_resource_fps,
       'start_time' => time,
       'mode' => 'forward',
       'index' => 0,
@@ -36,7 +36,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.generalize_class :s
       if (drawable.factor_x > 0 && left_or_right.last == 'right') || (drawable.factor_x < 0 && left_or_right.last == 'left')
         set_sprite_command = WindowStates::GameSession::Commands::SetSprite.new @entity_manager, entity, {
           'sprite_resource_path' => ["characters", character.type, character.animation_state],
-          'fps' => 50,
+          'fps' => :sprite_resource_fps,
           'start_time' => time,
           'mode' => 'backward',
           'index' => sprite.index,

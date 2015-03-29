@@ -3,9 +3,10 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.generalize_class :i
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable
     
+    
     set_sprite_command = WindowStates::GameSession::Commands::SetSprite.new @entity_manager, entity, {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
-      'fps' => 60,
+      'fps' => :sprite_resource_fps,
       'start_time' => time,
       'mode' => 'forward',
       'index' => 0,

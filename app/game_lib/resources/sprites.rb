@@ -25,6 +25,7 @@ module Resources::Sprites
           @sprites[sprite_resource_path] ||= {
             'id'             => msgpack['id'] || sprite_resource_path.last,
             'face_direction' => msgpack['face_direction'] || -1,
+            'fps'            => msgpack['fps'] || 27,
             'frames'         => []
           }
           

@@ -4,6 +4,9 @@ class WindowStates::GameSession::Commands::SetSprite < Command
     @entity_manager   = entity_manager
     @entity           = entity
     @next_sprite_hash = next_sprite_hash
+    if @next_sprite_hash['fps'] == :sprite_resource_fps
+      @next_sprite_hash['fps'] = Resources::Sprites[@next_sprite_hash['sprite_resource_path']]['fps']
+    end
   end
   
   def do_action

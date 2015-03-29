@@ -9,7 +9,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.generalize_class :r
         
     set_sprite_command = WindowStates::GameSession::Commands::SetSprite.new @entity_manager, entity, {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
-      'fps' => 32,
+      'fps' => :sprite_resource_fps,
       'start_time' => time,
       'mode' => 'loop',
       'index' => 0,
