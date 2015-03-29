@@ -18,7 +18,7 @@ module CloudyUi
   require_relative 'cloudy_ui/dynamic_field'
   
   def self.load_images window, theme = :cloudy
-    load_path = BUILTIN_THEMES.fetch theme, theme.to_s
+    load_path = File.join(DEV_LIB_PATH, 'cloudy_ui', 'images')
     CloudyUi::RadioButton .load_images window, load_path
     CloudyUi::Button      .load_images window, load_path
     CloudyUi::Slider      .load_images window, load_path

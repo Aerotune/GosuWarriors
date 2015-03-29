@@ -7,7 +7,7 @@ class WindowStates::DevCharacterList < WindowState
       character_name = File.basename(msgpack_path, '.msgpack')
       
       @menu.add_menu_item character_name do
-        
+        $window.set_state WindowStates::DevCharacterEditor.new(character_name)
       end
     end
     
