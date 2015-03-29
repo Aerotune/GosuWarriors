@@ -18,7 +18,10 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.generalize_class :i
       control_down entity, control, time
     end
     
-    transition_to_speed_point_10 entity, time, 0, 40
+    _stats = stats(entity)
+    speed           = 0
+    transition_time = _stats['stop_transition_time']
+    transition_to_speed_point_10 entity, time, speed, transition_time
   end
   
   def control_down entity, control, time

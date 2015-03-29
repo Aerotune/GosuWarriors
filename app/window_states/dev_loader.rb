@@ -1,9 +1,11 @@
 class WindowStates::DevLoader < WindowState
   attr_accessor :loaded
   
-  def initialize &after_load
+  def initialize require_sprites=true, &after_load
     @after_load = after_load
     @drawn = false
+    @require_sprites = require_sprites
+    @loader_loaded = false
     Loader.require_fonts!
   end
   
@@ -13,7 +15,13 @@ class WindowStates::DevLoader < WindowState
     if loaded?
       @after_load.call
     else
-      Loader.require!
+      if @require_sprites
+        Loader.require!
+      else
+        Loader.require_rubies!
+        Loader.require_fonts!
+        @loader_loaded = true
+      end
       DevLoader.require!
     end
   end
@@ -23,7 +31,7 @@ class WindowStates::DevLoader < WindowState
   end
   
   def loaded?
-    Loader.loaded? && DevLoader.loaded?
+    (@loader_loaded || Loader.loaded?) && DevLoader.loaded?
   end
   
   def draw

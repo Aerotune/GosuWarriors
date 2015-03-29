@@ -17,7 +17,10 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.generalize_class :r
     }    
     set_sprite_command.do!
     
-    transition_to_speed_point_10 entity, time, 12_000*drawable.factor_x, 40
+    _stats = stats(entity)
+    speed           = _stats['run_speed']*drawable.factor_x
+    transition_time = _stats['run_transition_time']
+    transition_to_speed_point_10 entity, time, speed, transition_time    
   end
   
   def control_down entity, control, time

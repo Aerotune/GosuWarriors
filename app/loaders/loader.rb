@@ -10,13 +10,15 @@ module Loader
       require_rubies!
       Resources::Fonts.load!
       Resources::Sprites.load!
+      Resources::CharacterStats.load!
       @loaded = true
     end
   
     def require!
       require_rubies!
-      Resources::Fonts.require!
-      Resources::Sprites.require!
+      require_fonts!
+      require_sprites!
+      Resources::CharacterStats.require!
       @loaded = true
     end
   
@@ -32,5 +34,11 @@ module Loader
       Dir[File.join(GAME_LIB_PATH,         '*.rb')].each { |file| require file }
       Dir[File.join(GAME_SESSION_PATH,     '*.rb')].each { |file| require file }
     end
+    
+    def require_sprites!
+      Resources::Sprites.require!
+    end
+    
+    
   end
 end

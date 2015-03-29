@@ -23,7 +23,7 @@ module WindowStates::GameSession::Factories::Character
       path_motion_continuous = WindowStates::GameSession::Components::PathMotionContinuous.new(
         'start_time'           => 0,
         'distance'             => 0,
-        'start_speed_point_10' => 9000,
+        'start_speed_point_10' => 0,
         'end_speed_point_10'   => 0,
         'duration'             => 60*3
         

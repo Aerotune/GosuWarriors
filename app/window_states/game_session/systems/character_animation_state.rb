@@ -16,6 +16,11 @@ class WindowStates::GameSession::Systems::CharacterAnimationState
     set_pmc_command.do!
   end
   
+  def stats entity
+    character = @entity_manager.get_component entity, :Character
+    Resources::CharacterStats[character.type]
+  end
+  
   def on_set entity, time
     
   end

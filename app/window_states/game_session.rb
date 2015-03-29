@@ -1,12 +1,12 @@
 class WindowStates::GameSession < WindowState
-  def initialize
+  def initialize character_name
     @entity_manager                    = EntityManager.new WindowStates::GameSession::Components
     @graphics_system                   = WindowStates::GameSession::Systems::Graphics.new                 @entity_manager
     @character_animation_states_system = WindowStates::GameSession::Systems::CharacterAnimationStates.new @entity_manager
     @controls_system                   = WindowStates::GameSession::Systems::Controls.new                 @entity_manager
     @path_motion_system                = WindowStates::GameSession::Systems::PathMotion.new               @entity_manager
     
-    player_entity = WindowStates::GameSession::Factories::Character.build @entity_manager, @character_animation_states_system, 'android', 'player'
+    player_entity = WindowStates::GameSession::Factories::Character.build @entity_manager, @character_animation_states_system, character_name, 'player'
     
     @session_timer = SessionTimer.new
     @session_timer.start
@@ -17,7 +17,7 @@ class WindowStates::GameSession < WindowState
 
     case key
     when 'escape'
-      $window.set_state :main_menu
+      $window.set_state WindowStates::CharacterSelect.new
     end
   end
   

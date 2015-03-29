@@ -18,7 +18,10 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.generalize_class :s
     
     @done_animation_state = 'idle'
     
-    transition_to_speed_point_10 entity, time, 0, 80
+    _stats          = stats(entity)
+    speed           = 0
+    transition_time = _stats['stop_transition_time']
+    transition_to_speed_point_10 entity, time, speed, transition_time
   end
   
   def update entity, time
@@ -44,7 +47,10 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.generalize_class :s
     
         set_sprite_command.do!
         
-        transition_to_speed_point_10 entity, time, 12_000*drawable.factor_x, 40
+        _stats = stats(entity)
+        speed           = _stats['run_speed']*drawable.factor_x
+        transition_time = _stats['run_transition_time']
+        transition_to_speed_point_10 entity, time, speed, transition_time
       end
     end
     

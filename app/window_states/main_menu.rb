@@ -4,7 +4,7 @@ class WindowStates::MainMenu < WindowState
     require File.join(GAME_LIB_PATH, 'menu')
     @menu = Menu.new
     @menu.add_menu_item "Start Game" do
-      $window.set_state :game_session_loader
+      $window.set_state WindowStates::CharacterSelect.new
     end
     
     if DEVELOPER_MODE

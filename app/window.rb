@@ -19,10 +19,7 @@ class Window < Gosu::Window
     $window = self
     @clipboard = []
     @states = {}
-    @states[:main_menu]     = WindowStates::MainMenu.new
-    @states[:game_session_loader] = WindowStates::Loader.new do
-      $window.set_state WindowStates::GameSession.new
-    end
+    @states[:main_menu] = WindowStates::MainMenu.new
     
     if DEVELOPER_MODE
       @states[:dev_tools_menu]         = WindowStates::DevToolsMenu.new

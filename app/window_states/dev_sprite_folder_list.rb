@@ -17,7 +17,7 @@ class WindowStates::DevSpriteFolderList < WindowState
         .to_s
         .split(File::SEPARATOR)
               
-      @menu.add_menu_item "%w[#{sprite_resource_folder_name.join(' ')}]" do
+      @menu.add_menu_item "#{sprite_resource_folder_name.join(File::SEPARATOR)}/" do
         $window.set_state WindowStates::DevSpriteEditor.new(sprite_resource_folder_name)
       end
     end

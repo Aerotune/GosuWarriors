@@ -45,6 +45,9 @@ ensure
     if Object.const_defined?("Resources::Sprites") && Resources::Sprites.sprites
       Resources::Sprites.save_all!
     end
+    if Object.const_defined?("Resources::CharacterStats")
+      Resources::CharacterStats.save_all!
+    end
   rescue Exception => e
     write_error_log e
     raise e
