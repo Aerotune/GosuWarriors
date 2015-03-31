@@ -9,7 +9,7 @@ class WindowStates::GameSession < WindowState
     @path_motion_system                = WindowStates::GameSession::Systems::PathMotion.new               @entity_manager
     @hits_system                       = WindowStates::GameSession::Systems::Hits.new                     @entity_manager
     player_entity = WindowStates::GameSession::Factories::Character.build @entity_manager, @character_animation_states_system, character_name, 'player'
-    WindowStates::GameSession::Factories::Target.build @entity_manager, 150, 350
+    WindowStates::GameSession::Factories::Target.build @entity_manager, 150, 370
     WindowStates::GameSession::Factories::Target.build @entity_manager, $window.width-150, 370
     WindowStates::GameSession::Factories::Target.build @entity_manager, $window.width-305, 370
     
