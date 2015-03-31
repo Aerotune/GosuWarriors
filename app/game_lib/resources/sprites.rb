@@ -2,6 +2,7 @@ require 'pathname'
 
 module Resources::Sprites
   class << self
+    attr_reader :loaded
     attr_accessor :sprites
     
     def require!
@@ -9,6 +10,8 @@ module Resources::Sprites
     end
   
     def load!
+      @loaded = false
+      
       @sprites = {}
       @spritesheets = {}
       
@@ -21,7 +24,7 @@ module Resources::Sprites
           sprite_resource_folder    = sprite_resource_path[0...-1]
           
           msgpack = MessagePack.unpack_file(msgpack_path)
-          
+          p sprite_resource_path
           @sprites[sprite_resource_path] ||= {
             'id'             => msgpack['id'] || sprite_resource_path.last,
             'face_direction' => msgpack['face_direction'] || -1,
@@ -36,6 +39,8 @@ module Resources::Sprites
           end          
         end
       end
+      
+      @loaded = true
     end
   
     def [] sprite_resource_path

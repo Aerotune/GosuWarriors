@@ -1,5 +1,7 @@
 class WindowStates::GameSession < WindowState
   def initialize character_name
+    $window.scoreboard['targets'] = 0
+    $window.scoreboard['time']    = 0 
     @entity_manager                    = EntityManager.new WindowStates::GameSession::Components
     @graphics_system                   = WindowStates::GameSession::Systems::Graphics.new                 @entity_manager
     @character_animation_states_system = WindowStates::GameSession::Systems::CharacterAnimationStates.new @entity_manager
@@ -8,8 +10,10 @@ class WindowStates::GameSession < WindowState
     @hits_system                       = WindowStates::GameSession::Systems::Hits.new                     @entity_manager
     player_entity = WindowStates::GameSession::Factories::Character.build @entity_manager, @character_animation_states_system, character_name, 'player'
     WindowStates::GameSession::Factories::Target.build @entity_manager, 150, 350
-    WindowStates::GameSession::Factories::Target.build @entity_manager, $window.width-150, 350
-    WindowStates::GameSession::Factories::Target.build @entity_manager, $window.width-305, 350
+    WindowStates::GameSession::Factories::Target.build @entity_manager, $window.width-150, 370
+    WindowStates::GameSession::Factories::Target.build @entity_manager, $window.width-305, 370
+    
+    @font = Resources::Fonts[:Arial24]
     
     @session_timer = SessionTimer.new
     @session_timer.start
@@ -45,6 +49,8 @@ class WindowStates::GameSession < WindowState
       updates_every_frame
     end
     
+    $window.scoreboard['time'] = @time if $window.scoreboard['targets'] < 3
+    
     updates_latest_frame
   end
   
@@ -66,5 +72,7 @@ class WindowStates::GameSession < WindowState
   def draw
     $window.fill 0xFF222222
     @graphics_system.draw
+    time = Time.at($window.scoreboard['time']/60.0).strftime("%M:%S:%L")
+    @font.draw_rel time, $window.width-24, 24, Z, 1.0, 0.0
   end
 end

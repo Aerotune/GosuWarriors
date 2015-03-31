@@ -2,6 +2,7 @@ require_relative 'loaders'
 require_relative 'window_states'
 
 class Window < Gosu::Window
+  attr_accessor :scoreboard
   attr_accessor :clipboard
   attr_reader :state, :states
   
@@ -18,6 +19,7 @@ class Window < Gosu::Window
     super _width, _height, false
     $window = self
     @clipboard = []
+    @scoreboard = {}
     @states = {}
     @states[:main_menu] = WindowStates::MainMenu.new
     

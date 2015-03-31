@@ -1,5 +1,5 @@
-attack: '1'
-special: '2'
+attack: 'f'
+special: 'd'
 up: 'up'
 down: 'down'
 left: 'left'

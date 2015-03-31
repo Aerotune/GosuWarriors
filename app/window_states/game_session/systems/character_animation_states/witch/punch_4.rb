@@ -18,34 +18,16 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     _stats = stats(entity)
     speed           = 0
     transition_time = _stats['stop_transition_time']
-    transition_to_speed_point_10 entity, time, speed, transition_time
-    tween entity, time+1, (70<<10)*drawable.factor_x, 15
-  end
-  
-  def control_down entity, control, time
-    character = @entity_manager.get_component entity, :Character
-    sprite = @entity_manager.get_component entity, :Sprite
-    case control
-    when 'attack'
-      character.queued_animation_state = 'punch_3' 
-    when 'left'
-      character.queued_animation_state = 'idle'
-    when 'right'
-      character.queued_animation_state = 'idle'
-    end
+    transition_to_speed_point_10 entity, time, speed, transition_time    
+    tween entity, time, (50<<10)*drawable.factor_x, 16
   end
   
   def update entity, time
     sprite = @entity_manager.get_component(entity, :Sprite)
     character = @entity_manager.get_component(entity, :Character)
-    drawable  = @entity_manager.get_component entity, :Drawable
-    
+    drawable = @entity_manager.get_component entity, :Drawable
     if sprite.index > 16 && sprite.prev_index <= 16
-      tween entity, time, (-70<<10)*drawable.factor_x, 20
-    end
-    
-    if character.queued_animation_state == 'punch_3' && (14...20) === sprite.index
-      character.set_animation_state = character.queued_animation_state
+      tween entity, time, (-50<<10)*drawable.factor_x, 20
     end
     
     if sprite.done

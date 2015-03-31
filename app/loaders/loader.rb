@@ -20,6 +20,7 @@ module Loader
       require_fonts!
       require_sprites!
       Resources::CharacterStats.require!
+      Resources::Sounds.require!
       @loaded = true
     end
   

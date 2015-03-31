@@ -43,7 +43,7 @@ rescue Exception => e
   
 ensure
   begin
-    if Object.const_defined?("Resources::Sprites") && Resources::Sprites.sprites
+    if Object.const_defined?("Resources::Sprites") && Resources::Sprites.loaded
       Resources::Sprites.save_all!
     end
     if Object.const_defined?("Resources::CharacterStats")

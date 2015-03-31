@@ -4,6 +4,9 @@ class WindowStates::GameSession::Systems::CharacterAnimationState
   end
   
   def transition_to_speed_point_10 entity, time, speed_point_10, duration
+    
+    path_start = @entity_manager.get_component entity, :PathStart
+    
     set_pmc_command = WindowStates::GameSession::Commands::SetPathMotionContinuous.new @entity_manager, entity, {
       'start_time'           => time,
       'distance'             => 0,
@@ -11,9 +14,23 @@ class WindowStates::GameSession::Systems::CharacterAnimationState
       'end_speed_point_10'   => speed_point_10,
       'duration'             => duration
     }, {
-      'distance' => WindowStates::GameSession::SystemHelpers::PathMotion.distance(@entity_manager, entity, time)
+      'distance' => path_start.distance + WindowStates::GameSession::SystemHelpers::PathMotion.pmc_distance(@entity_manager, entity, time)
     }
     set_pmc_command.do!
+  end
+  
+  def tween entity, time, distance, duration
+    #!!!
+    # add pmt distance to path_start.distance when you despawn pmt
+    path_start = @entity_manager.get_component entity, :PathStart
+    path_start.distance += WindowStates::GameSession::SystemHelpers::PathMotion.pmt_distance(@entity_manager, entity, time)
+    
+    set_pmt_command = WindowStates::GameSession::Commands::SetPathMotionTween.new @entity_manager, entity, {
+      'start_time'           => time,
+      'distance'             => distance,
+      'duration'             => duration
+    }
+    set_pmt_command.do!
   end
   
   def stats entity

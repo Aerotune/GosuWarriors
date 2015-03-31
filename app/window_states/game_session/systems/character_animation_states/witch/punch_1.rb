@@ -3,7 +3,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     character = @entity_manager.get_component entity, :Character
     #drawable  = @entity_manager.get_component entity, :Drawable
     
-    
+    character.queued_animation_state = 'idle'
     set_sprite_command = WindowStates::GameSession::Commands::SetSprite.new @entity_manager, entity, {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
       'fps' => :sprite_resource_fps,
@@ -18,7 +18,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     _stats = stats(entity)
     speed           = 0
     transition_time = _stats['stop_transition_time']
-    transition_to_speed_point_10 entity, time, speed, transition_time    
+    transition_to_speed_point_10 entity, time, speed, transition_time
   end
   
   def control_down entity, control, time
@@ -26,14 +26,23 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     sprite = @entity_manager.get_component entity, :Sprite
     case control
     when 'attack'
-      character.set_animation_state = 'punch_2' if (13...20) === sprite.index
+      character.queued_animation_state = 'punch_2' 
+    when 'left'
+      character.queued_animation_state = 'idle'
+    when 'right'
+      character.queued_animation_state = 'idle'
     end
   end
   
   def update entity, time
     sprite = @entity_manager.get_component(entity, :Sprite)
+    character = @entity_manager.get_component(entity, :Character)
+    
+    if character.queued_animation_state == 'punch_2' && (13...20) === sprite.index
+      character.set_animation_state = character.queued_animation_state
+    end
+    
     if sprite.done
-      character = @entity_manager.get_component(entity, :Character)
       character.set_animation_state = 'idle'
     end
   end

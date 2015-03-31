@@ -62,23 +62,25 @@ class WindowStates::GameSession::Systems::Hits
         end
       end
       
-      if (entity_1_hit_by.length > 0)
+      entity_1_hit_by.each do |hit|
         entity_1
         Resources::Sounds['target_break'].play
         sprite_1.mode = 'forward'
         sprite_1.start_time = time
         sprite_1.start_index = 1
         sprite_1.index = 1
-        sprite_1.fps = 30
+        sprite_1.fps = 40
+        $window.scoreboard['targets'] += 1
       end
       
-      if entity_2_hit_by.length > 0
+      entity_2_hit_by.each do |hit|
         Resources::Sounds['target_break'].play
         sprite_2.mode = 'forward'
         sprite_2.start_time = time
         sprite_2.start_index = 1
         sprite_2.index = 1
-        sprite_2.fps = 30
+        sprite_2.fps = 40
+        $window.scoreboard['targets'] += 1
       end
     end
   end
