@@ -3,7 +3,37 @@ class WindowStates::DevToolsMenu < WindowState
     @previous_menu = :main_menu
     @menu = Menu.new
     
+    @menu.add_menu_item "Spritesheets" do
+      state = WindowStates::DevLoader.new do
+        $window.set_state WindowStates::DevSpriteFolderList.new
+      end
+      $window.set_state state
+    end
     
+    @menu.add_menu_item "Character Stats" do
+      state = WindowStates::DevLoader.new false do
+        $window.set_state WindowStates::DevCharacterList.new
+      end
+      $window.set_state state
+    end
+    
+    @menu.add_menu_item "" do; end
+    
+    @menu.add_menu_item "Import image sequence (Don't overwrite existing sprites)" do
+      state = WindowStates::DevLoader.new false do
+        ImageSequenceImporter.import_all! overwrite: false
+        $window.set_state :main_menu
+      end
+      $window.set_state state      
+    end
+    
+    @menu.add_menu_item "Import image sequence (Overwrite existing sprite sheets)" do
+      state = WindowStates::DevLoader.new false do
+        ImageSequenceImporter.import_all! overwrite: true
+        $window.set_state :main_menu
+      end
+      $window.set_state state      
+    end
     
     @menu.add_menu_item "Import flash sprite sheets (Don't overwrite existing sprites)" do
       state = WindowStates::DevLoader.new do
@@ -21,19 +51,7 @@ class WindowStates::DevToolsMenu < WindowState
       $window.set_state state
     end
     
-    @menu.add_menu_item "Spritesheets" do
-      state = WindowStates::DevLoader.new do
-        $window.set_state WindowStates::DevSpriteFolderList.new
-      end
-      $window.set_state state
-    end
-    
-    @menu.add_menu_item "Character Stats" do
-      state = WindowStates::DevLoader.new false do
-        $window.set_state WindowStates::DevCharacterList.new
-      end
-      $window.set_state state
-    end
+    @menu.add_menu_item "" do; end
     
     @menu.add_menu_item "<< Back" do
       $window.set_state @previous_menu

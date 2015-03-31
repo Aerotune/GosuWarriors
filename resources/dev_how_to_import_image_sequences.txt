@@ -1,0 +1,19 @@
+You need Flash CS6 or newer
+Right click movieclip in Flash library.
+Select generate sprite sheet.
+Settings:
+JSON Array
+Trim
+padding 2px
+1024x1024 pixels
+
+export it to a directory e.g.
+characters/witch/idle/00.png
+characters/witch/idle/01.png
+characters/witch/idle/02.png
+...
+
+
+
+copy the directory into resources/dev_image_sequences_import_queue
+open game > Development Tools > Import image sequence

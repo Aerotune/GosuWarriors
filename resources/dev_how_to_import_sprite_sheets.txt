@@ -18,5 +18,6 @@ idle_part_2
 idle_part_3
 
 
-copy 'characters' folder into resources/dev_flash_sprite_sheets_import_queue
+copy the directory into "resources/dev_flash_sprite_sheets_import_queue/".
+
 open game > Development Tools > Import sprite sheets

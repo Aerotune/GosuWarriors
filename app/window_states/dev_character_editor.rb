@@ -26,6 +26,7 @@ class WindowStates::DevCharacterEditor < WindowState
     end
     
     def edit key
+      return if @edit_key == key
       enter_edit
       @edit_key = key
       @text_input.text = value_for_key(key)
@@ -52,6 +53,22 @@ class WindowStates::DevCharacterEditor < WindowState
         index = column_index(y)
         return @keys[index] if index
         return nil
+      end
+    end
+    
+    def move_caret x, y
+      if $window.text_input == @text_input
+        width = 0
+        index = 0
+        text = ''
+        @text_input.text.each_char do |char|
+          text_right = @font.text_width(text)
+          text_left  = ((x-row_x_2)-(@font.height/3))
+          break if text_right > text_left
+          text << char
+        end
+        @text_input.caret_pos = text.length
+        @text_input.selection_start = @text_input.caret_pos
       end
     end
     
@@ -148,8 +165,14 @@ class WindowStates::DevCharacterEditor < WindowState
       @row.enter_edit
     when 'tab'
       $window.key_down_match?('shift') ? @row.prev! : @row.next!
+    when 'down'
+      @row.next!
+    when 'up'
+      @row.prev!
     when 'mouse_left'
-      MouseTrap.capture(self)
+      if MouseTrap.capture(self)
+        @row.move_caret $window.mouse_x, $window.mouse_y
+      end
     end
   end
   

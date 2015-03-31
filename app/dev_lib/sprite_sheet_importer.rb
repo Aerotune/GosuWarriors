@@ -68,6 +68,7 @@ module SpriteSheetImporter
       end
 
       Resources::Sprites.save_all! sprites: @sprites, overwrite: options[:overwrite]
+      FileUtils.mkdir_p(DEV_SPRITE_SHEETS_IMPORTED_PATH)
       FileUtils.cp_r "#{DEV_SPRITE_SHEETS_IMPORT_QUEUE_PATH}#{File::SEPARATOR}.", DEV_SPRITE_SHEETS_IMPORTED_PATH
       FileUtils.rm_rf("#{DEV_SPRITE_SHEETS_IMPORT_QUEUE_PATH}/.", secure: true)
       Resources::Sprites.sprites = nil

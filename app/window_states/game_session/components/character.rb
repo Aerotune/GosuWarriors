@@ -4,5 +4,6 @@ class WindowStates::GameSession::Components::Character < Component
     control_type
     animation_state
     set_animation_state
+    queued_animation_state
   ]
 end

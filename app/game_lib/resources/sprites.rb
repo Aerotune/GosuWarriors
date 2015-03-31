@@ -99,7 +99,13 @@ module Resources::Sprites
       loaded_frame['offset_y']       = frame['offset_y']
       loaded_frame['shapes']         = frame['shapes'] || create_shapes_hash
       loaded_frame['blending_mode']  = frame['blending_mode'] || 'normal'
-      
+      loaded_frame['shapes'].each do |shape|
+        shape['convexes'].each do |convex|
+          convex.each_with_index do |point, index|
+            convex[index] = [point[0].to_i, point[1].to_i]
+          end
+        end
+      end
       
       loaded_frames << loaded_frame
     end

@@ -50,10 +50,21 @@ class EntityManager
     end    
   end
   
-  def each_entity_with_components component_class_or_name
-    @store[component_class(component_class_or_name)].each do |entity, components|
-      yield entity, components unless components.empty?
+  def entities_with_components *component_class_or_names
+    component_classes = component_class_or_names.map { |e| component_class e }
+    entities = []
+    entities_missing_component = []
+    component_classes.each do |component_class|
+      @store[component_class].each do |entity, components|
+        if components.empty?
+          entities_missing_component << entity unless entities_missing_component.include? entity
+        else
+          entities << entity unless entities.include? entity
+        end
+      end
     end
+    
+    entities - entities_missing_component
   end
   
   def each_entity_with_component component_class_or_name

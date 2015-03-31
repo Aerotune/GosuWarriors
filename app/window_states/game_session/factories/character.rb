@@ -15,7 +15,7 @@ module WindowStates::GameSession::Factories::Character
       )
       drawable  = WindowStates::GameSession::Components::Drawable.new(
         'x' => 400,
-        'y' => 400, 
+        'y' => 500, 
         'z_order' => ZOrder::CHARACTER,
         'factor_x' => 1
       )
@@ -28,12 +28,13 @@ module WindowStates::GameSession::Factories::Character
         'duration'             => 60*3
         
       )
-      
+            
       entity_manager.add_component entity, character
       entity_manager.add_component entity, controls
       entity_manager.add_component entity, drawable
       entity_manager.add_component entity, path_start
       entity_manager.add_component entity, path_motion_continuous
+      entity_manager.add_component entity, WindowStates::GameSession::Components::HitImmunities.new('hit_ids' => [])
             
       return entity
     end

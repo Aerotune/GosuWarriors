@@ -3,7 +3,10 @@ class Resources::Controls
   
   def initialize settings='default'
     settings_path         = File.join SETTINGS_PATH, 'controls', "#{settings}.yaml"
-    @control_id           = YAML.parse_file(settings_path).to_ruby
+    @control_id           = {}
+    YAML.parse_file(settings_path).to_ruby.each do |key, value|
+      @control_id[key] = value.to_s
+    end
     #@control_id_down_time = {}
     #@control_id_up_time   = {}
     #@buffer               = []

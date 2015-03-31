@@ -1,3 +1,5 @@
 DEV_LIB_PATH = Pathname.new File.join(APP_PATH, 'dev_lib')
-DEV_SPRITE_SHEETS_IMPORT_QUEUE_PATH = Pathname.new File.join(APP_PATH, 'resources', 'dev_flash_sprite_sheets_import_queue')
-DEV_SPRITE_SHEETS_IMPORTED_PATH     = Pathname.new File.join(APP_PATH, 'resources', 'dev_flash_sprite_sheets_imported')
+DEV_SPRITE_SHEETS_IMPORT_QUEUE_PATH   = Pathname.new File.join(MAIN_PATH, 'resources', 'dev_flash_sprite_sheets_import_queue')
+DEV_SPRITE_SHEETS_IMPORTED_PATH       = Pathname.new File.join(MAIN_PATH, 'resources', 'dev_flash_sprite_sheets_imported')
+DEV_IMAGE_SEQUENCES_IMPORT_QUEUE_PATH = Pathname.new File.join(MAIN_PATH, 'resources', 'dev_image_sequences_import_queue')
+DEV_IMAGE_SEQUENCES_IMPORTED_PATH     = Pathname.new File.join(MAIN_PATH, 'resources', 'dev_image_sequences_imported')

@@ -11,6 +11,7 @@ module Loader
       Resources::Fonts.load!
       Resources::Sprites.load!
       Resources::CharacterStats.load!
+      Resources::Sounds.load!
       @loaded = true
     end
   

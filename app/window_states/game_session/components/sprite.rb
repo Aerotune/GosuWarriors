@@ -8,6 +8,7 @@ class WindowStates::GameSession::Components::Sprite < Component
     mode
     index
     start_index
+    prev_index
     done
   ]
 end

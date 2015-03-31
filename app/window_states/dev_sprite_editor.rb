@@ -107,13 +107,13 @@ class WindowStates::DevSpriteEditor < WindowState
       @sprite_blending_mode_ui.blending_mode = @current_frame['blending_mode']
     end
     if @start_drag_x && @start_drag_y
-      @delta_drag_x = $window.mouse_x - @start_drag_x
-      @delta_drag_y = $window.mouse_y - @start_drag_y
+      @delta_drag_x = $window.mouse_x.to_i - @start_drag_x
+      @delta_drag_y = $window.mouse_y.to_i - @start_drag_y
     end
     
     if @start_shape_drag_x && @start_shape_drag_y
-      @delta_shape_drag_x = $window.mouse_x - @start_shape_drag_x
-      @delta_shape_drag_y = $window.mouse_y - @start_shape_drag_y
+      @delta_shape_drag_x = $window.mouse_x.to_i - @start_shape_drag_x
+      @delta_shape_drag_y = $window.mouse_y.to_i - @start_shape_drag_y
     end
   end
   
@@ -142,12 +142,12 @@ class WindowStates::DevSpriteEditor < WindowState
       
     when 'space'
       if $window.key_down_match? 'alt'
-        @start_shape_drag_x = $window.mouse_x
-        @start_shape_drag_y = $window.mouse_y
+        @start_shape_drag_x = $window.mouse_x.to_i
+        @start_shape_drag_y = $window.mouse_y.to_i
         @sprite_frames_ui.paused = true
       else
-        @start_drag_x = $window.mouse_x
-        @start_drag_y = $window.mouse_y
+        @start_drag_x = $window.mouse_x.to_i
+        @start_drag_y = $window.mouse_y.to_i
         @sprite_frames_ui.paused = true
       end
       

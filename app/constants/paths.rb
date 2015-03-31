@@ -2,6 +2,7 @@ SETTINGS_PATH         = Pathname.new File.join(MAIN_PATH, 'settings')
 RESOURCES_PATH        = Pathname.new File.join(MAIN_PATH, 'resources')
 STAGE_RESOURCE_PATH   = Pathname.new File.join(RESOURCES_PATH, 'stages')
 SPRITE_RESOURCE_PATH  = Pathname.new File.join(RESOURCES_PATH, 'sprites')
+SFX_PATH              = Pathname.new File.join(RESOURCES_PATH, 'sound', 'sfx')
 
 GAME_LIB_PATH         = Pathname.new File.join(APP_PATH, 'game_lib')
 LOADERS_PATH          = Pathname.new File.join(APP_PATH, 'loaders')

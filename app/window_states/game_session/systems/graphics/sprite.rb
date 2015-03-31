@@ -10,17 +10,23 @@ class WindowStates::GameSession::Systems::Graphics::Sprite
     
     case sprite.mode
     when 'loop'
+      sprite.prev_index = sprite.index || (frames.length - 1)
       sprite.index = (sprite.start_index + sprite_time * sprite.fps / 60) % frames.length
       sprite.done  = false
     when 'forward'
+      sprite.prev_index = sprite.index || (frames.length - 1)
       last_index = frames.length - 1
       index = sprite.start_index + sprite_time * sprite.fps / 60
       sprite.index = index > last_index ? last_index : index
       sprite.done  = index >= frames.length
     when 'backward'
+      sprite.prev_index = sprite.index || 0
       index = sprite.start_index - sprite_time * sprite.fps / 60
       sprite.index = index < 0 ? 0 : index
       sprite.done  = index <= -1
+    when 'stop'
+      sprite.prev_index = sprite.index || (frames.length - 1)
+      sprite.index      = sprite.start_index
     end    
   end
   
