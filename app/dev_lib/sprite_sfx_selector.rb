@@ -22,22 +22,25 @@ class SpriteSFXSelector
   def key_down key
     case key
     when 'mouse_left'
-      MouseTrap.capture self if @frame && mouse_hover?
-    when 'return'
-      if @frame && $window.text_input == @text_input 
-        #fps = @text_input.text.to_i
-        #@sprite['fps'] = fps if fps > 0
-        #@text_input.text = @sprite['fps'].to_s
-        #$window.text_input = @text_input
-        @frame['sfx'] = @text_input.text
-        $window.text_input = nil
+      if @frame && mouse_hover?
+        MouseTrap.capture self 
+      else
+        enter_text
       end
+    when 'return'
+      
     when 'escape'
       if @frame && $window.text_input == @text_input 
-        #@text_input.text = @sprite['fps'].to_s
         @text_input.text = @frame['sfx']
         $window.text_input = nil
       end
+    end
+  end
+  
+  def enter_text
+    if @frame && $window.text_input == @text_input 
+      @frame['sfx'] = @text_input.text
+      $window.text_input = nil
     end
   end
   

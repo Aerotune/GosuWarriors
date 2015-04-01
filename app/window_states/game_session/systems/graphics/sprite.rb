@@ -47,6 +47,7 @@ class WindowStates::GameSession::Systems::Graphics::Sprite
         (0..index)                    .each { |i| play_sound frames, i }
       end
     end
+    sprite.prev_index = sprite.index #!!!
   end
   
   def play_sound frames, index
