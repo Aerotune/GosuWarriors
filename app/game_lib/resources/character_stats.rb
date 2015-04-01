@@ -7,7 +7,7 @@ module Resources::CharacterStats
   }
   
   class << self
-    attr_reader :stats
+    attr_reader :stats, :loaded
     
     def [] character_name
       @stats[character_name]
@@ -18,6 +18,8 @@ module Resources::CharacterStats
     end
     
     def load!
+      @loaded = false
+      
       Dir[File.join(RESOURCES_PATH, 'stats', 'characters', '*.msgpack')].each do |msgpack_path|
         character_name = File.basename(msgpack_path, '.msgpack')
       

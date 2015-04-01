@@ -66,7 +66,7 @@ class WindowStates::GameSession < WindowState
   end
   
   def updates_every_frame
-    
+    @graphics_system.update_each_frame @time
   end
   
   def draw

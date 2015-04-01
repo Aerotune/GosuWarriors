@@ -43,11 +43,15 @@ rescue Exception => e
   
 ensure
   begin
-    if Object.const_defined?("Resources::Sprites") && Resources::Sprites.loaded
-      Resources::Sprites.save_all!
-    end
-    if Object.const_defined?("Resources::CharacterStats")
-      Resources::CharacterStats.save_all!
+    if Object.const_defined?('Resources')
+      if Resources.const_defined?("Sprites") && Resources::Sprites.loaded
+        puts "Saving Sprites!"
+        Resources::Sprites.save_all!
+      end
+      if Resources.const_defined?("CharacterStats") && Resources::CharacterStats.loaded
+        puts "Saving CharacterStats!"
+        Resources::CharacterStats.save_all!
+      end
     end
   rescue Exception => e
     write_error_log e

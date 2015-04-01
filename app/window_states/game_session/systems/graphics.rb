@@ -14,6 +14,12 @@ class WindowStates::GameSession::Systems::Graphics
     end
   end
   
+  def update_each_frame time
+    @drawable_entities.each do |entity|
+      @sprite_system.update_each_frame entity, time if @entity_manager.get_component(entity, :Sprite)
+    end
+  end
+  
   def draw
     @drawable_entities.each do |entity|
       @sprite_system.draw entity if @entity_manager.get_component(entity, :Sprite)

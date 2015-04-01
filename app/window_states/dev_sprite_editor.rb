@@ -68,6 +68,7 @@ class WindowStates::DevSpriteEditor < WindowState
       end
     end
     @sprite_fps_selector = SpriteFPSSelector.new
+    @sprite_sfx_selector = SpriteSFXSelector.new
     
     @font = Resources::Fonts[:Arial12]
     
@@ -105,6 +106,7 @@ class WindowStates::DevSpriteEditor < WindowState
     if @current_frame
       @sprite_tag_ui.tags = @current_frame['shapes'][@sprite_layer_ui.layer]['tags']
       @sprite_blending_mode_ui.blending_mode = @current_frame['blending_mode']
+      @sprite_sfx_selector.frame = @current_frame
     end
     if @start_drag_x && @start_drag_y
       @delta_drag_x = $window.mouse_x.to_i - @start_drag_x
@@ -123,18 +125,17 @@ class WindowStates::DevSpriteEditor < WindowState
       MouseTrap.release! #!!!
     end
     
-    @sprite_list_ui.key_down key
-    @sprite_frames_ui.key_down key
-    @sprite_layer_ui.key_down key
+    if !$window.text_input
+      @sprite_list_ui.key_down key
+      @sprite_frames_ui.key_down key
+      @sprite_layer_ui.key_down key
+    end
     @sprite_tag_ui.key_down key
     @sprite_direction_switch.key_down key
     @sprite_blending_mode_ui.key_down key
     @sprite_fps_selector.key_down key
+    @sprite_sfx_selector.key_down key if @sprite_frames_ui.paused
     case key
-    when 'escape'
-      
-      
-      
     when 'mouse_left'
       if MouseTrap.capture(self)
         @sprite_frames_ui.paused = true
@@ -203,8 +204,10 @@ class WindowStates::DevSpriteEditor < WindowState
       @sprite_frames_ui.paused = true
       
     when 's'
-      puts "Saving!"
-      Resources::Sprites.save_all!
+      if $window.key_down_match?('ctrl') || $window.key_down_match?('meta')
+        puts "Saving Sprites!"
+        Resources::Sprites.save_all!
+      end
     end
   end
   
@@ -224,13 +227,16 @@ class WindowStates::DevSpriteEditor < WindowState
   end
   
   def key_up key
-    @sprite_list_ui.key_up key
-    @sprite_frames_ui.key_up key
-    @sprite_layer_ui.key_up key
+    if !$window.text_input
+      @sprite_list_ui.key_up key
+      @sprite_frames_ui.key_up key
+      @sprite_layer_ui.key_up key
+    end
     @sprite_tag_ui.key_up key
     @sprite_direction_switch.key_up key
     @sprite_blending_mode_ui.key_up key
     @sprite_fps_selector.key_up key
+    @sprite_sfx_selector.key_up key if @sprite_frames_ui.paused
     
     case key
     when 'mouse_left'
@@ -304,6 +310,7 @@ class WindowStates::DevSpriteEditor < WindowState
     @sprite_direction_switch.draw
     @sprite_blending_mode_ui.draw
     @sprite_fps_selector.draw
+    @sprite_sfx_selector.draw
     
     x = $window.width
     y = 1

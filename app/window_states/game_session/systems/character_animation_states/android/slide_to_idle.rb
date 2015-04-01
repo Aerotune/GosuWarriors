@@ -37,7 +37,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     sprite    = @entity_manager.get_component entity, :Sprite
     character = @entity_manager.get_component entity, :Character
     
-    if character.queued_animation_state == 'idle' && ((5..7) === sprite.index)
+    if character.queued_animation_state == 'idle' && ((5..6) === sprite.index)
       controls  = @entity_manager.get_component entity, :Controls
       drawable  = @entity_manager.get_component entity, :Drawable
       

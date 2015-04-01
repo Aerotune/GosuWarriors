@@ -1,3 +1,6 @@
-Find the precompiled .dll
+Find the precompiled .dll instead of this:
 #To install therubyracer
 #gem install libv8 -v '3.11.8.17' -- --with-system-v8
+
+Fonts are case sensitive on windows only
+

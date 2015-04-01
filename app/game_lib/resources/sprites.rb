@@ -57,7 +57,7 @@ module Resources::Sprites
       sprite['frames'].each do |frame|
         frames << frame.select do |key, value|
           case key
-          when 'sheet', 'source', 'offset_x', 'offset_y', 'shapes', 'blending_mode'; true
+          when 'sheet', 'source', 'offset_x', 'offset_y', 'shapes', 'blending_mode', 'sfx'; true
           end
         end
       end
@@ -104,6 +104,7 @@ module Resources::Sprites
       loaded_frame['offset_y']       = frame['offset_y']
       loaded_frame['shapes']         = frame['shapes'] || create_shapes_hash
       loaded_frame['blending_mode']  = frame['blending_mode'] || 'normal'
+      loaded_frame['sfx']            = frame['sfx'] || ''
       loaded_frame['shapes'].each do |shape|
         shape['convexes'].each do |convex|
           convex.each_with_index do |point, index|

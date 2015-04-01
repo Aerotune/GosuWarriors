@@ -10,24 +10,51 @@ class WindowStates::GameSession::Systems::Graphics::Sprite
     
     case sprite.mode
     when 'loop'
-      sprite.prev_index = sprite.index || (frames.length - 1)
+      sprite.prev_index = sprite.prev_index ? sprite.index : sprite.start_index-1
       sprite.index = (sprite.start_index + sprite_time * sprite.fps / 60) % frames.length
       sprite.done  = false
     when 'forward'
-      sprite.prev_index = sprite.index || (frames.length - 1)
+      sprite.prev_index = sprite.prev_index ? sprite.index : sprite.start_index-1
       last_index = frames.length - 1
       index = sprite.start_index + sprite_time * sprite.fps / 60
       sprite.index = index > last_index ? last_index : index
       sprite.done  = index >= frames.length
     when 'backward'
-      sprite.prev_index = sprite.index || 0
+      sprite.prev_index = sprite.prev_index ? sprite.index : sprite.start_index+1
       index = sprite.start_index - sprite_time * sprite.fps / 60
       sprite.index = index < 0 ? 0 : index
       sprite.done  = index <= -1
     when 'stop'
-      sprite.prev_index = sprite.index || (frames.length - 1)
+      sprite.prev_index = sprite.prev_index ? sprite.index : sprite.start_index-1
       sprite.index      = sprite.start_index
-    end    
+    end
+    
+    
+  end
+  
+  def update_each_frame entity, time
+    sprite = @entity_manager.get_component entity, :Sprite
+    frames = Resources::Sprites[sprite.sprite_resource_path]['frames']
+    
+    index      = sprite.index
+    sprite.prev_index = sprite.prev_index || sprite.start_index-1
+    prev_index = sprite.prev_index
+    if index != prev_index
+      if index > prev_index
+        (prev_index+1..index)         .each { |i| play_sound frames, i }
+      elsif index < prev_index
+        (prev_index+1...frames.length).each { |i| play_sound frames, i }
+        (0..index)                    .each { |i| play_sound frames, i }
+      end
+    end
+  end
+  
+  def play_sound frames, index
+    sfx_pattern = frames[index]['sfx'].strip
+    unless sfx_pattern.empty?
+      sample = Resources::Sounds.sfx(sfx_pattern)
+      sample.play 0.8 if sample
+    end
   end
   
   def draw entity

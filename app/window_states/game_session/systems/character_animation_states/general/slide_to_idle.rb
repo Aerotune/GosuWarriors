@@ -28,7 +28,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.generalize_class :s
     sprite    = @entity_manager.get_component entity, :Sprite
     character = @entity_manager.get_component entity, :Character
     
-    if @done_animation_state == 'idle' && ((5..7) === sprite.index)
+    if @done_animation_state == 'idle' && ((5..6) === sprite.index)
       controls  = @entity_manager.get_component entity, :Controls
       drawable  = @entity_manager.get_component entity, :Drawable
       

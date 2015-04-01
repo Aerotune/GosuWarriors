@@ -19,7 +19,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     speed           = 0
     transition_time = _stats['stop_transition_time']
     transition_to_speed_point_10 entity, time, speed, transition_time
-    tween entity, time+15, (35<<10)*drawable.factor_x, 30
+    tween entity, time+15, (35<<10)*drawable.factor_x, 35
   end
   
   def control_down entity, control, time
@@ -27,7 +27,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     sprite = @entity_manager.get_component entity, :Sprite
     case control
     when 'attack'
-      character.queued_animation_state = 'punch_2' 
+      character.queued_animation_state = 'kick_1' 
     when 'left'
       character.queued_animation_state = 'idle'
     when 'right'
@@ -39,7 +39,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     sprite = @entity_manager.get_component(entity, :Sprite)
     character = @entity_manager.get_component(entity, :Character)
     
-    if character.queued_animation_state == 'punch_2' && (15..16) === sprite.index
+    if character.queued_animation_state == 'kick_1' && (8..15) === sprite.index
       character.set_animation_state = character.queued_animation_state
     end
     

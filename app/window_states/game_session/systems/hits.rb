@@ -71,6 +71,9 @@ class WindowStates::GameSession::Systems::Hits
         sprite_1.index = 1
         sprite_1.fps = 40
         $window.scoreboard['targets'] += 1
+        if $window.scoreboard['targets'] >= 3
+          Resources::Sounds['success'].play
+        end
       end
       
       entity_2_hit_by.each do |hit|
@@ -81,7 +84,12 @@ class WindowStates::GameSession::Systems::Hits
         sprite_2.index = 1
         sprite_2.fps = 40
         $window.scoreboard['targets'] += 1
+        if $window.scoreboard['targets'] >= 3
+          Resources::Sounds['success'].play
+        end
       end
+      
+      
     end
   end
   
