@@ -47,7 +47,7 @@ class WindowStates::GameSession::Systems::CharacterAnimationStates
     @entity_manager.each_entity_with_component :Character do |entity, character|
       animation_state = @animation_state[character.type][character.animation_state]
       
-      if character.control_type == "player"
+      if animation_state && character.control_type == "player"
         controls = @entity_manager.get_component entity, :Controls
         if controls
           controls.released.each { |control| animation_state.control_up entity, control, time }
