@@ -1,0 +1,5 @@
+Fix 32/64-bit yaml, STD-lib error in Gosu 0.7.47 Mac .app wrapper
+https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=887
+
+lipo -remove x86_64 PATH_TO_YOUR_APP_HERE/Contents/MacOS/Ruby -output PATH_TO_YOUR_APP_HERE/Contents/MacOS/Ruby
+
