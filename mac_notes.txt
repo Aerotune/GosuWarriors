@@ -1,3 +1,8 @@
+Note to self:
+* for now simply avoid using yaml
+
+Maybe this solution is outdated but I ran into it.
+
 Fix 32/64-bit yaml, STD-lib error in Gosu 0.7.47 Mac .app wrapper
 https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=887
 

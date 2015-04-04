@@ -14,12 +14,12 @@ module WindowStates::GameSession::Factories::Character
         'held' => []
       )
       drawable  = WindowStates::GameSession::Components::Drawable.new(
-        'x' => 400,
-        'y' => 500, 
+        'x' => 0,
+        'y' => 0, 
         'z_order' => ZOrder::CHARACTER,
         'factor_x' => 1
       )
-      path_start = WindowStates::GameSession::Components::PathStart.new 'distance' => 400
+      path_start = WindowStates::GameSession::Components::PathStart.new 'distance' => 0
       path_motion_continuous = WindowStates::GameSession::Components::PathMotionContinuous.new(
         'start_time'           => 0,
         'distance'             => 0,

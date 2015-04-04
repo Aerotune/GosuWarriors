@@ -17,6 +17,13 @@ class WindowStates::DevToolsMenu < WindowState
       $window.set_state state
     end
     
+    @menu.add_menu_item "Level Editor" do
+      state = WindowStates::DevLoader.new false do
+        $window.set_state WindowStates::DevLevelEditor.new
+      end
+      $window.set_state state
+    end
+    
     @menu.add_menu_item "" do; end
     
     @menu.add_menu_item "Import image sequence (Don't overwrite existing sprites)" do

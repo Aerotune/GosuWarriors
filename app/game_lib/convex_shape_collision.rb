@@ -48,53 +48,6 @@ module ConvexShapeCollision
     end
     
     
-    def nearest_point_on_surface vertices, x, y
-      x = x.to_i
-      y = y.to_i
-    
-      min_distance = 1.0/0.0
-      nearest_x = nil
-      nearest_y = nil
-      nearest_vertex = nil
-        
-      vertices.each_with_index do |vertex, index|
-        next_vertex = vertices[(index+1) % vertices.length]
-        if vertex.surface?
-          surface_distance_point_12 = vertex.normal_x_point_12*vertex.x + vertex.normal_y_point_12*vertex.y
-          point_distance_point_12   = vertex.normal_x_point_12*x        + vertex.normal_y_point_12*y
-          distance_point_12 = surface_distance_point_12 - point_distance_point_12
-      
-          surface_x = x + ((distance_point_12 * vertex.normal_x_point_12) >> 24)
-          surface_y = y + ((distance_point_12 * vertex.normal_y_point_12) >> 24)
-      
-          if vertex.bounding_box.hits_point? surface_x, surface_y
-            distance_to_surface = (distance_point_12 >> 12).abs
-            if distance_to_surface < min_distance
-              min_distance = distance_to_surface
-              nearest_x = surface_x
-              nearest_y = surface_y
-              nearest_vertex = vertex
-            end
-          end
-        end
-      
-        nearby_vertex = (vertex.surface? && vertex) || (next_vertex.surface? && next_vertex)
-        if nearby_vertex
-          distance_to_vertex = distance(x, y, vertex.x, vertex.y)
-          if distance_to_vertex < min_distance
-            min_distance = distance_to_vertex
-            nearest_x = vertex.x
-            nearest_y = vertex.y
-            nearest_vertex = nearby_vertex
-          end
-        end
-        
-      end
-    
-      return nearest_vertex, nearest_x, nearest_y
-    end
-    
-    
     private
     
     

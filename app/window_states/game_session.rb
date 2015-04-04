@@ -17,6 +17,9 @@ class WindowStates::GameSession < WindowState
     
     @session_timer = SessionTimer.new
     @session_timer.start
+    
+    @stage         = Resources::Stages['test_level']
+    @current_shape = @stage['shapes'][0]
   end
   
   def key_down key
@@ -72,6 +75,7 @@ class WindowStates::GameSession < WindowState
   def draw
     $window.fill 0xFF222222
     @graphics_system.draw
+    ShapeLib.draw_terrain @current_shape
     time = Time.at($window.scoreboard['time']/60.0).strftime("%M:%S:%L")
     @font.draw_rel time, $window.width-24, 24, Z, 1.0, 0.0
   end

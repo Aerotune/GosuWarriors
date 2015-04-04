@@ -44,6 +44,7 @@ rescue Exception => e
 ensure
   begin
     if Object.const_defined?('Resources')
+      puts "Resources!"
       if Resources.const_defined?("Sprites") && Resources::Sprites.loaded
         puts "Saving Sprites!"
         Resources::Sprites.save_all!
@@ -51,6 +52,10 @@ ensure
       if Resources.const_defined?("CharacterStats") && Resources::CharacterStats.loaded
         puts "Saving CharacterStats!"
         Resources::CharacterStats.save_all!
+      end
+      if Resources.const_defined?("Stages") && Resources::Stages.loaded
+        puts "Saving Stages!"
+        Resources::Stages.save_all!
       end
     end
   rescue Exception => e

@@ -12,6 +12,7 @@ module Loader
       Resources::Sprites.load!
       Resources::CharacterStats.load!
       Resources::Sounds.load!
+      Resources::Stages.load!
       @loaded = true
     end
   
@@ -21,6 +22,7 @@ module Loader
       require_sprites!
       Resources::CharacterStats.require!
       Resources::Sounds.require!
+      Resources::Stages.require!
       @loaded = true
     end
   

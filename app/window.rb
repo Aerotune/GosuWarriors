@@ -6,6 +6,8 @@ class Window < Gosu::Window
   attr_accessor :clipboard
   attr_reader :state, :states
   
+  attr_accessor :cursor_visible
+  
   def initialize
     _width  = 0#Gosu.available_width*7/8
     _height = 0#Gosu.available_height*7/8
@@ -15,6 +17,8 @@ class Window < Gosu::Window
     
     _width = min_width if _width < min_width
     _height = min_height if _height < min_height
+    
+    @cursor_visible = true
     
     super _width, _height, false
     $window = self
@@ -34,7 +38,15 @@ class Window < Gosu::Window
   end
   
   def needs_cursor?
-    true
+    @cursor_visible
+  end
+  
+  def mouse_x
+    super.to_i
+  end
+  
+  def mouse_y
+    super.to_i
   end
   
   def set_state symbol_or_state
