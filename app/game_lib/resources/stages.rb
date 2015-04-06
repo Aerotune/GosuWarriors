@@ -25,10 +25,12 @@ module Resources::Stages
     end
     
     def [] stage_id
-      @stages[stage_id] ||= {
-        'id' => stage_id,
-        'shapes' => []
-      }
+      @stages[stage_id]
+      #@stages[stage_id] ||= {
+      #  'id' => stage_id,
+      #  'shapes' => [],
+      #  'spawn' => {}
+      #}
     end
     
     def save_all!

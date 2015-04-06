@@ -12,7 +12,7 @@ module Loader
       Resources::Sprites.load!
       Resources::CharacterStats.load!
       Resources::Sounds.load!
-      Resources::Stages.load!
+      Resources::Stages.require!
       @loaded = true
     end
   

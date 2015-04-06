@@ -27,14 +27,16 @@ class WindowStates::DevLevelEditor < WindowState
       MouseTrap.release!
       $window.cursor_visible = true
       $window.set_state :main_menu
-    when 'space'
-      start_point_index, x, y = IntMath.nearest_point_on_surface @current_shape['outline'], $window.mouse_x, $window.mouse_y
+    when 's'
+      puts "Setting Spawn"
+      outline = @current_shape['outline']
       
-      @stage['spawn'] = {
+      Resources::Stages['test_level']['spawn'] = {
         'shape_index' => 0,
-        'start_point_index' => start_point_index,
-        'distance' => IntMath.distance(x, y, *@current_shape['outline'][start_point_index])
+        'x' => $window.mouse_x,
+        'y' => $window.mouse_y
       }
+      p @stage['spawn']
     end
   end
   

@@ -44,7 +44,8 @@ class EditShapeTool
         if drag_point_index = mouse_over_point_index
           @drag_point_index = drag_point_index
         else
-          index, x, y = *IntMath.nearest_point_on_surface(outline, $window.mouse_x, $window.mouse_y)
+          index, _axis_distance = *ShapeLib.surface_point_index_and_distance(outline, $window.mouse_x, $window.mouse_y)
+          index = (index + 1) % outline.length
           if index
             outline.insert index, new_point
             @drag_point_index = index
@@ -61,6 +62,10 @@ class EditShapeTool
     @shape['outline']
   end
   
+  def convexes
+    @shape['convexes']
+  end
+  
   def key_up key
     case key
     when 'mouse_left'
@@ -68,6 +73,11 @@ class EditShapeTool
         if @drag_point_index
           @drag_point_index = nil
         end
+        
+        ConvexDecomposer.set_polygon outline
+        convexes = ConvexDecomposer.decompose
+        convexes.clear
+        convexes.push *convexes if ConvexDecomposer.is_simple?
       end
     end
   end
