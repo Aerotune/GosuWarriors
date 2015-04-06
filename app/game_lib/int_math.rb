@@ -55,7 +55,7 @@ module IntMath
       factor = y_over_x_point_12 >= 0 ? 1 : -1
       index = y_over_x_point_12.abs >> 6
       
-      if index > ATAN_TABLE_POINT_12.length
+      if index > ATAN_TABLE_POINT_12.length-1
         extension = index - ATAN_TABLE_POINT_12.length
         result = ATAN_TABLE_POINT_12.last + (extension / 400)
         result = QUARTER_CIRCLE_POINT_12 if result > QUARTER_CIRCLE_POINT_12

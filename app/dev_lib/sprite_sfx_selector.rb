@@ -28,7 +28,7 @@ class SpriteSFXSelector
         enter_text
       end
     when 'return'
-      
+      enter_text
     when 'escape'
       if @frame && $window.text_input == @text_input 
         @text_input.text = @frame['sfx']

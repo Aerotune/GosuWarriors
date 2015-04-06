@@ -13,22 +13,15 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     }
         
     _stats = stats(entity)
-    speed           = 0
-    transition_time = _stats['stop_transition_time']
-    transition_to_speed_point_10 entity, time, speed, transition_time    
-    tween entity, time, (50<<10)*drawable.factor_x, 16
+    #speed           = 0
+    #transition_time = _stats['stop_transition_time']
+    #transition_to_speed_point_10 entity, time, speed, transition_time    
+    #tween entity, time, (50<<10)*drawable.factor_x, 16
   end
   
   def update entity, time
-    sprite = @entity_manager.get_component(entity, :Sprite)
-    character = @entity_manager.get_component(entity, :Character)
-    drawable = @entity_manager.get_component entity, :Drawable
-    if sprite.index > 16 && sprite.prev_index <= 16
-      tween entity, time, (-50<<10)*drawable.factor_x, 20
-    end
-    
-    if sprite.done
-      character.set_animation_state = 'idle'
-    end
+    sprite    = @entity_manager.get_component entity, :Sprite
+    character = @entity_manager.get_component entity, :Character
+    drawable  = @entity_manager.get_component entity, :Drawable
   end
 end

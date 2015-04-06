@@ -7,15 +7,13 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable
         
-    set_sprite_command = WindowStates::GameSession::Commands::SetSprite.new @entity_manager, entity, {
+    WindowStates::GameSession::Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
-      'fps' => :sprite_resource_fps,
       'start_time' => time,
       'mode' => 'loop',
       'index' => 0,
       'start_index' => 0
-    }    
-    set_sprite_command.do!
+    }
     
     _stats = stats(entity)
     speed           = _stats['run_speed']*drawable.factor_x
@@ -38,6 +36,8 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       end
     when 'attack'
       character.set_animation_state = 'punch_1'
+    when 'jump'
+      character.set_animation_state = 'jump_up'
     end
   end
   

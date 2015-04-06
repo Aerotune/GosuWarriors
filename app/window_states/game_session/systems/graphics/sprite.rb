@@ -4,6 +4,12 @@ class WindowStates::GameSession::Systems::Graphics::Sprite
   end
   
   def update entity, time
+    
+    
+    
+  end
+  
+  def update_each_frame entity, time
     sprite = @entity_manager.get_component entity, :Sprite
     frames = Resources::Sprites[sprite.sprite_resource_path]['frames']
     sprite_time = time - sprite.start_time
@@ -29,25 +35,13 @@ class WindowStates::GameSession::Systems::Graphics::Sprite
       sprite.index      = sprite.start_index
     end
     
-    
-  end
-  
-  def update_each_frame entity, time
-    sprite = @entity_manager.get_component entity, :Sprite
-    frames = Resources::Sprites[sprite.sprite_resource_path]['frames']
-    
     index      = sprite.index
-    sprite.prev_index = sprite.prev_index || sprite.start_index-1
     prev_index = sprite.prev_index
     if index != prev_index
       if index > prev_index
         (prev_index+1..index)         .each { |i| play_sound frames, i }
-      elsif index < prev_index
-        (prev_index+1...frames.length).each { |i| play_sound frames, i }
-        (0..index)                    .each { |i| play_sound frames, i }
       end
     end
-    sprite.prev_index = sprite.index #!!!
   end
   
   def play_sound frames, index

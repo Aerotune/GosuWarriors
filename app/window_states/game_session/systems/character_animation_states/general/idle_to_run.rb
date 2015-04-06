@@ -4,17 +4,14 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.generalize_class :i
     drawable  = @entity_manager.get_component entity, :Drawable
     
     
-    set_sprite_command = WindowStates::GameSession::Commands::SetSprite.new @entity_manager, entity, {
+    WindowStates::GameSession::Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
-      'fps' => :sprite_resource_fps,
       'start_time' => time,
       'mode' => 'forward',
       'index' => 0,
       'start_index' => 0
     }
-    
-    set_sprite_command.do!
-    
+        
     _stats = stats(entity)
     speed           = _stats['run_speed']*drawable.factor_x
     transition_time = _stats['run_transition_time']

@@ -14,8 +14,8 @@ class Component
   end
   
   def mirror component_or_hash
-   component_or_hash.to_hash.each do |key, value|
-      instance_variable_set "@#{key}", value
+    component_or_hash.to_hash.each do |key, value|
+      instance_variable_set "@#{key}", value if self.class.attributes.include? key
     end
   end
   

@@ -20,7 +20,7 @@ class Window < Gosu::Window
     
     @cursor_visible = true
     
-    super _width, _height, false
+    super _width, _height, false#, 1000.0/20.0
     $window = self
     @clipboard = []
     @scoreboard = {}

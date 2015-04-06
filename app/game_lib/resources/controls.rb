@@ -10,7 +10,8 @@ class Resources::Controls
       'up' => 'up',
       'down' => 'down',
       'left' => 'left',
-      'right' => 'right'
+      'right' => 'right',
+      'jump' => 'space'
     }
     #YAML.parse_file(settings_path).to_ruby.each do |key, value|
     #  @control_id[key] = value.to_s

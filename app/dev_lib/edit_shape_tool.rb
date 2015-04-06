@@ -62,10 +62,6 @@ class EditShapeTool
     @shape['outline']
   end
   
-  def convexes
-    @shape['convexes']
-  end
-  
   def key_up key
     case key
     when 'mouse_left'
@@ -76,8 +72,8 @@ class EditShapeTool
         
         ConvexDecomposer.set_polygon outline
         convexes = ConvexDecomposer.decompose
-        convexes.clear
-        convexes.push *convexes if ConvexDecomposer.is_simple?
+        @shape['convexes'].clear
+        @shape['convexes'].push *convexes if ConvexDecomposer.is_simple?
       end
     end
   end

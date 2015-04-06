@@ -23,20 +23,22 @@ module ConvexShapeCollision
       true
     end
     
-    def hits_point? vertices, x, y
+    def hits_point? points, x, y
       x = x.to_i
       y = y.to_i
       
-      vertices.each do |v|
-        axis_x_point_12 = v.normal_x_point_12
-        axis_y_point_12 = v.normal_y_point_12
+      points.each_with_index do |point, index|
+        next_point = points[(index+1)%points.length]
+        length, axis_x_point_12, axis_y_point_12 = ShapeLib.line_length_and_axis_point_12 point, next_point
+        normal_x_point_12 = -axis_y_point_12
+        normal_y_point_12 =  axis_x_point_12
         min_point_12    =  1.0/0.0
         max_point_12    = -1.0/0.0
         
-        point_dot_product_point_12 = x * axis_x_point_12 + y * axis_y_point_12
+        point_dot_product_point_12 = x * normal_x_point_12 + y * normal_y_point_12
         
-        vertices.each do |vertex|
-          dot_product_point_12 = vertex.x * axis_x_point_12 + vertex.y * axis_y_point_12
+        points.each do |p|
+          dot_product_point_12 = p[0] * normal_x_point_12 + p[1] * normal_y_point_12
           min_point_12 = dot_product_point_12 if dot_product_point_12 < min_point_12
           max_point_12 = dot_product_point_12 if dot_product_point_12 > max_point_12
         end
