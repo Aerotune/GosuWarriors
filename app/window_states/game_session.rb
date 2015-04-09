@@ -12,7 +12,7 @@ class WindowStates::GameSession < WindowState
     @character_stage_collision_system  = WindowStates::GameSession::Systems::CharacterStageCollisionSystem.new @entity_manager
     player_entity = WindowStates::GameSession::Factories::Character.build @entity_manager, @character_animation_states_system, character_name, 'player'
     WindowStates::GameSession::Factories::Target.build @entity_manager, 150, 370
-    WindowStates::GameSession::Factories::Target.build @entity_manager, $window.width+150, 320
+    WindowStates::GameSession::Factories::Target.build @entity_manager, $window.width+100, 320
     WindowStates::GameSession::Factories::Target.build @entity_manager, $window.width-305, 370
     
     @font = Resources::Fonts[:Arial24]

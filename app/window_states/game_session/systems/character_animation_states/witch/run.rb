@@ -37,7 +37,15 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     when 'attack'
       character.set_animation_state = 'punch_1'
     when 'jump'
-      character.set_animation_state = 'jump_up'
+      controls = @entity_manager.get_component entity, :Controls
+      left_or_right = controls.held.select { |control| ['left', 'right'].include? control }
+      if left_or_right.last
+        drawable = @entity_manager.get_component entity, :Drawable
+        drawable.factor_x = left_or_right.last == 'right' ? 1 : -1
+        character.set_animation_state = 'jump_up'
+      else
+        character.set_animation_state = 'jump_up'
+      end
     end
   end
   

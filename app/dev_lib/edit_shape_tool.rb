@@ -44,7 +44,7 @@ class EditShapeTool
         if drag_point_index = mouse_over_point_index
           @drag_point_index = drag_point_index
         else
-          index, _axis_distance = *ShapeLib.surface_point_index_and_distance(outline, $window.mouse_x, $window.mouse_y)
+          index, _axis_distance = *ShapeLib.path_point_index_and_distance(outline, $window.mouse_x, $window.mouse_y)
           index = (index + 1) % outline.length
           if index
             outline.insert index, new_point
@@ -73,7 +73,11 @@ class EditShapeTool
         ConvexDecomposer.set_polygon outline
         convexes = ConvexDecomposer.decompose
         @shape['convexes'].clear
-        @shape['convexes'].push *convexes if ConvexDecomposer.is_simple?
+        if ConvexDecomposer.is_simple?
+          @shape['convexes'].push *convexes 
+        else
+          puts "INVALID LEVEL #{Time.now}"
+        end
       end
     end
   end

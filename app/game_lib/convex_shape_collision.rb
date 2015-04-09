@@ -1,23 +1,27 @@
 module ConvexShapeCollision
   class << self
     
-    def overlap? vertices_1, vertices_2
-      vertices_1.each do |vertex_for_axis|
-        axis_x_point_12 = vertex_for_axis.normal_x_point_12
-        axis_y_point_12 = vertex_for_axis.normal_y_point_12
+    def overlap? points_1, points_2
+      points_1.each_with_index do |point, index|
+        next_point = points_1[(index+1)%points_1.length]
+        length, axis_x_point_12, axis_y_point_12 = ShapeLib.line_length_and_axis_point_12 point, next_point
+        normal_x_point_12 = -axis_y_point_12
+        normal_y_point_12 =  axis_x_point_12
         
-        vertices_1_min, vertices_1_max = *project(vertices_1, axis_x_point_12, axis_y_point_12)
-        vertices_2_min, vertices_2_max = *project(vertices_2, axis_x_point_12, axis_y_point_12)
-        return false unless (vertices_1_min <= vertices_2_max) && (vertices_2_min <= vertices_1_max)
+        points_1_min, points_1_max = *project(points_1, normal_x_point_12, normal_y_point_12)
+        points_2_min, points_2_max = *project(points_2, normal_x_point_12, normal_y_point_12)
+        return false unless (points_1_min <= points_2_max) && (points_2_min <= points_1_max)
       end
       
-      vertices_2.each do |vertex_for_axis|
-        axis_x_point_12 = vertex_for_axis.normal_x_point_12
-        axis_y_point_12 = vertex_for_axis.normal_y_point_12
+      points_2.each do |point, index|
+        next_point = points_2[(index+1)%points_2.length]
+        length, axis_x_point_12, axis_y_point_12 = ShapeLib.line_length_and_axis_point_12 point, next_point
+        normal_x_point_12 = -axis_y_point_12
+        normal_y_point_12 =  axis_x_point_12
         
-        vertices_1_min, vertices_1_max = *project(vertices_1, axis_x_point_12, axis_y_point_12)
-        vertices_2_min, vertices_2_max = *project(vertices_2, axis_x_point_12, axis_y_point_12)
-        return false unless (vertices_1_min <= vertices_2_max) && (vertices_2_min <= vertices_1_max)
+        points_1_min, points_1_max = *project(points_1, normal_x_point_12, normal_y_point_12)
+        points_2_min, points_2_max = *project(points_2, normal_x_point_12, normal_y_point_12)
+        return false unless (points_1_min <= points_2_max) && (points_2_min <= points_1_max)
       end
       
       true
@@ -53,17 +57,16 @@ module ConvexShapeCollision
     private
     
     
-    def project vertices, axis_x, axis_y
+    def project points, axis_x, axis_y
       min = 1.0/0.0
       max = -1.0/0.0
     
-      vertices.each do |vertex|
-        x = vertex.x
-        y = vertex.y
-        dot = x*axis_x + y*axis_y
+      points.each do |point|
+        dot = point[0]*axis_x + point[1]*axis_y
         min = dot if dot < min
         max = dot if dot > max
       end
+      
       return min, max
     end
     

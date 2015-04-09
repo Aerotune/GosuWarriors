@@ -129,42 +129,50 @@ module ShapeLib
       if delta_distance > 0
         next_index = (index + 1) % points.length
         
-        loop do
-          point1 = points[index]
-          point2 = points[next_index]
-          distance_between_points = IntMath.distance(*point1, *point2)
-          
-          break if distance_traveled + distance_between_points > delta_distance
-          unless walkable? point2, points[(next_index+1)%points.length]
-            #distance_traveled = delta_distance-distance_between_points
-            delta_distance = distance_traveled+distance_between_points
-            break
-          end
-          
-          distance_traveled += distance_between_points
-          index = next_index
-          next_index = (index + 1) % points.length
-        end
+        if walkable? points[index], points[next_index]
+          loop do
+            point1 = points[index]
+            point2 = points[next_index]
+            distance_between_points = IntMath.distance(*point1, *point2)
+            
+            break if distance_traveled + distance_between_points > delta_distance
+            unless walkable? point2, points[(next_index+1)%points.length]
+              #distance_traveled = delta_distance-distance_between_points
+              delta_distance = distance_traveled+distance_between_points
+              break
+            end
+            
+            distance_traveled += distance_between_points
+            index = next_index
+            next_index = (index + 1) % points.length
+          end # loop
+        end # if
         
       elsif delta_distance < 0
         next_index = (index - 1) % points.length
         
-        loop do
-          point1 = points[index]
-          point2 = points[next_index]
-          distance_between_points = IntMath.distance(*point1, *point2)
-          
-          break if distance_traveled - distance_between_points < delta_distance
-          unless walkable? points[(next_index-1)%points.length], point2
-            #distance_traveled = delta_distance+distance_between_points
-            delta_distance = distance_traveled-distance_between_points
-            break
-          end
-          
-          distance_traveled -= distance_between_points
-          index = next_index
-          next_index = (next_index - 1) % points.length
-        end
+        if walkable? points[next_index], points[index]
+          loop do
+            point1 = points[index]
+            point2 = points[next_index]
+            distance_between_points = IntMath.distance(*point1, *point2)
+            
+            break if distance_traveled - distance_between_points < delta_distance
+            unless walkable? points[(next_index-1)%points.length], point2
+              #distance_traveled = delta_distance+distance_between_points
+              delta_distance = distance_traveled-distance_between_points
+              break
+            end
+            
+            distance_traveled -= distance_between_points
+            index = next_index
+            next_index = (next_index - 1) % points.length
+          end # loop
+        else
+          puts "HMM"
+          return 0, points[index]
+        end # if
+        
       else
         return 0, points[index]
       end
@@ -182,6 +190,74 @@ module ShapeLib
     end
     
     def surface_point_index_and_distance points, x, y
+      result_distance      = nil
+      result_index         = nil
+      result_axis_distance = nil
+      result_on_surface    = false
+      result_factor        = 1
+      return 0, 0 if points.length <= 1
+        
+      points.each_with_index do |point, index|
+        next_point            = points[(index+1)%points.length]
+        
+        next unless walkable? point, next_point
+        
+        line_length, axis_x_point_12, axis_y_point_12 = line_length_and_axis_point_12 point, next_point
+        
+        dx = x - point[0]
+        dy = y - point[1]
+        
+        axis_distance = distance_along_axis(dx, dy, axis_x_point_12, axis_y_point_12) >> 12
+        
+        if axis_distance > 0 && axis_distance < line_length
+          # distance along normal axis
+          normal_x_point_12   = -axis_y_point_12
+          normal_y_point_12   =  axis_x_point_12
+          distance_to_surface = distance_along_axis(dx, dy, normal_x_point_12, normal_y_point_12) >> 12
+          distance_to_surface = distance_to_surface.abs
+          if result_distance.nil? || (result_on_surface ? (distance_to_surface < result_distance) : (distance_to_surface < result_distance+14))
+            result_distance      = axis_distance#distance_to_surface
+            result_index         = index
+            result_on_surface    = true
+          end
+        else
+          distance_to_point = IntMath.distance x, y, point[0], point[1]
+          if (result_distance.nil? || distance_to_point < result_distance)
+            result_distance      = distance_to_point
+            result_index         = index
+            result_on_surface    = false
+            result_factor = x > point[0] ? 1 : -1
+          end
+        end   
+      end
+      
+      return result_index, result_distance*result_factor
+    end
+    
+    # Line in the format:
+    # [[start_x, start_y], [dx, dy]]
+    def line_intersection line_1, line_2
+      det = (line_2[1][0] * line_1[1][1]) - (line_1[1][0] * line_2[1][1])
+      
+      # lines are parallel
+      return false, nil, nil if det == 0
+            
+      progress_1_point_12 = (-(-(line_1[0][0] - line_2[0][0]) * line_2[1][1] + (line_1[0][1] - line_2[0][1]) * line_2[1][0]) << 12) / det
+      progress_2_point_12 = ( ( (line_1[0][0] - line_2[0][0]) * line_1[1][1] - (line_1[0][1] - line_2[0][1]) * line_1[1][0]) << 12) / det
+      
+      if progress_1_point_12 > 0 && progress_1_point_12 < (1<<12)
+        if progress_2_point_12 > 0 && progress_2_point_12 < (1<<12)
+          x = line_1[0][0] + ((line_1[1][0] * progress_1_point_12)>>12)
+          y = line_1[0][1] + ((line_1[1][1] * progress_1_point_12)>>12)
+          
+          return true, x, y
+        end
+      end
+      
+      return false, nil, nil
+    end
+    
+    def path_point_index_and_distance points, x, y
       result_distance = 1.0/0.0
       result_index = nil
       result_axis_distance = nil
@@ -239,7 +315,7 @@ module ShapeLib
     end
     
     def line_length_and_axis_point_12 point1, point2
-      length                = IntMath.distance(*point1, *point2)
+      length                = IntMath.distance(point1[0], point1[1], point2[0], point2[1])
       axis_x_point_12       = ((point2[0] - point1[0]) << 12) / length
       axis_y_point_12       = ((point2[1] - point1[1]) << 12) / length
       return length, axis_x_point_12, axis_y_point_12

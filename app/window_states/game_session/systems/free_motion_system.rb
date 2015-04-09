@@ -6,11 +6,19 @@ class WindowStates::GameSession::Systems::FreeMotion
   def update time
     stage = Resources::Stages['test_level']
     
-    @entity_manager.each_entity_with_component :FreeMotion do |entity, free_motion|
+    @entity_manager.each_entity_with_component :FreeMotionX do |entity, free_motion_x|
       drawable = @entity_manager.get_component entity, :Drawable
       
       if drawable
-        drawable.x, drawable.y = WindowStates::GameSession::SystemHelpers::FreeMotion.position(@entity_manager, entity, time)
+        drawable.x = WindowStates::GameSession::SystemHelpers::FreeMotion.x(@entity_manager, entity, time)
+      end
+    end
+    
+    @entity_manager.each_entity_with_component :FreeMotionY do |entity, free_motion_Y|
+      drawable = @entity_manager.get_component entity, :Drawable
+      
+      if drawable
+        drawable.y = WindowStates::GameSession::SystemHelpers::FreeMotion.y(@entity_manager, entity, time)
       end
     end
   end

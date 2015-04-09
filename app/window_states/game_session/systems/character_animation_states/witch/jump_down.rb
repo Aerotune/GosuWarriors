@@ -19,9 +19,45 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     #tween entity, time, (50<<10)*drawable.factor_x, 16
   end
   
+  def control_down entity, control, time
+    case control
+    when 'left'
+      float_speed entity, time, -1
+    when 'right'
+      float_speed entity, time, 1
+    end
+  end
+  
+  def control_up entity, control, time
+    controls = @entity_manager.get_component entity, :Controls
+    case control
+    when 'right'
+      if controls.held.detect { |control| control == 'left' }
+        float_speed entity, time, -1
+      else
+        float_speed entity, time, 0
+      end
+    when 'left'
+      if controls.held.detect { |control| control == 'right' }
+        float_speed entity, time, 1
+      else
+        float_speed entity, time, 0
+      end
+    end
+  end
+  
   def update entity, time
     sprite    = @entity_manager.get_component entity, :Sprite
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable
+  end
+  
+  def float_speed entity, time, factor_x
+    speed_x_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_x_point_10 @entity_manager, entity, time
+    _stats = stats(entity)
+    free_motion_x entity, time, \
+      'start_speed_point_10' => speed_x_point_10,
+      'end_speed_point_10' => _stats['run_speed']*factor_x,
+      'transition_time' => 3_7
   end
 end

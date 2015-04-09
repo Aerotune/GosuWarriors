@@ -40,7 +40,10 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       character.queued_animation_state = 'run'
     end
     
-    if control == 'attack'
+    case control
+    when 'jump'
+      character.set_animation_state = 'jump_up'
+    when 'attack'
       character.queued_animation_state = 'punch_1'
     end
   end

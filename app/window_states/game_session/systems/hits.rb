@@ -147,18 +147,26 @@ class WindowStates::GameSession::Systems::Hits
     shape_2_convexes = []
     
     shape_1['convexes'].each do |convex|
-      shape_1_convexes << ShapeVertex.vertices_from_convex(convex.map { |point| [point[0]*factor_x_1, point[1]] })
+      c = []
+      convex.each do |point|
+        c << [point[0]*factor_x_1, point[1]]
+      end
+      shape_1_convexes << c
     end
     
     shape_2['convexes'].each do |convex|
-      shape_2_convexes << ShapeVertex.vertices_from_convex(convex.map { |point| [point[0]*factor_x_2+distance_x, point[1]+distance_y] })
+      c = []
+      convex.each do |point|
+        c << [point[0]*factor_x_2+distance_x, point[1]+distance_y]
+      end
+      shape_2_convexes << c
     end
     
     shape_1_convexes.each do |convex_1|
       shape_2_convexes.each do |convex_2|
         return true if ConvexShapeCollision.overlap? convex_1, convex_2
       end
-    end      
+    end
     
     return false
   end
