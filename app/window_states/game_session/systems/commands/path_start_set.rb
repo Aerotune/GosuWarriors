@@ -6,7 +6,18 @@ module WindowStates::GameSession::Systems::Commands::PathStartSet
       shape       = stage['shapes'][shape_index]
       
       #if options['surface_only']
-      start_point_index, start_point_distance = ShapeLib.surface_point_index_and_distance shape['outline'], options['x'], options['y']
+      #start_point_index, start_point_distance = ShapeLib.surface_point_index_and_distance shape['outline'], options['x'], options['y']
+      start_point_index, start_point_distance = ShapeHelper::LineCollision.point_index_and_distance_along_line shape['outline'], options['line'] do |point_1, point_2|
+        ShapeHelper::Walk.walkable? point_1, point_2
+      end
+      
+      if start_point_index.nil?
+        x = (options['line'][0][0] + options['line'][1][0])/2
+        y = (options['line'][0][1] + options['line'][1][1])/2
+        start_point_index, start_point_distance = ShapeHelper::Point.point_index_and_distance_along_line shape['outline'], x, y do |point_1, point_2|
+          ShapeHelper::Walk.walkable? point_1, point_2
+        end
+      end
       
       #p 
       #else

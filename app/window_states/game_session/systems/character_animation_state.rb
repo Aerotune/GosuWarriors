@@ -36,7 +36,28 @@ class WindowStates::GameSession::Systems::CharacterAnimationState
       'duration'             => duration
   end
   
+  def set_free_motion entity
+    drawable = @entity_manager.get_component entity, :Drawable
+    free_motion_x = WindowStates::GameSession::Components::FreeMotionX.new \
+      'start_time'            => 0,
+      'start_x'               => drawable.x,
+      'start_speed_point_10'  => 0,
+      'end_speed_point_10'    => 0,
+      'transition_time'       => 10
+        
+    free_motion_y = WindowStates::GameSession::Components::FreeMotionY.new \
+      'start_time'            => 0,
+      'start_y'               => drawable.y,
+      'start_speed_point_10'  => 0,
+      'end_speed_point_10'    => 0,
+      'transition_time'       => 10
+    
+    @entity_manager.add_component entity, free_motion_x
+    @entity_manager.add_component entity, free_motion_y
+  end
+  
   def free_motion_x entity, time, options
+    return unless @entity_manager.get_component(entity, :FreeMotionX)
     drawable = @entity_manager.get_component entity, :Drawable
     @entity_manager.remove_component entity, :PathStart
     @entity_manager.remove_component entity, :PathMotionContinuous
@@ -54,6 +75,7 @@ class WindowStates::GameSession::Systems::CharacterAnimationState
   end
   
   def free_motion_y entity, time, options
+    return unless @entity_manager.get_component(entity, :FreeMotionY)
     drawable = @entity_manager.get_component entity, :Drawable
     @entity_manager.remove_component entity, :PathStart
     @entity_manager.remove_component entity, :PathMotionContinuous

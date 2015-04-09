@@ -164,7 +164,7 @@ class WindowStates::GameSession::Systems::Hits
     
     shape_1_convexes.each do |convex_1|
       shape_2_convexes.each do |convex_2|
-        return true if ConvexShapeCollision.overlap? convex_1, convex_2
+        return true if ShapeHelper::ShapeCollision.overlap? convex_1, convex_2
       end
     end
     

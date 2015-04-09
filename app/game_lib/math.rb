@@ -1,0 +1,1 @@
+Dir[File.join(GAME_LIB, 'math', '*.rb')].each { |rb| require rb }

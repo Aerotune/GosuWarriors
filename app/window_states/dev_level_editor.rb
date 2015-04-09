@@ -6,7 +6,7 @@ class WindowStates::DevLevelEditor < WindowState
   def initialize
     Resources::Stages.require!
     @stage         = Resources::Stages['test_level']
-    @stage['shapes'][0] ||= ShapeLib.create_shape
+    @stage['shapes'][0] ||= ShapeHelper.create_shape
     @current_shape = @stage['shapes'][0]
     
     @draw_tool = EditShapeTool.new @current_shape
@@ -61,7 +61,8 @@ class WindowStates::DevLevelEditor < WindowState
       #  ShapeLib.draw_outline shape, 0xAAFF0000
       #end
       if @current_shape
-        ShapeLib.draw_terrain @current_shape
+        ShapeHelper::WalkRender.draw_non_walkable @current_shape, 0xFFFF0000
+        ShapeHelper::WalkRender.draw_walkable @current_shape, 0xFF00FF00
       end
       
       @current_shape['outline'].each do |point|

@@ -72,17 +72,19 @@ class WindowStates::GameSession < WindowState
     @controls_system.update
     @graphics_system                    .update_each_frame @time
     @free_motion_system                 .update @time
+    @character_animation_states_system  .update @time
     @character_stage_collision_system   .update @time
     @path_motion_system                 .update @time    
     @graphics_system                    .update @time
     @hits_system                        .update @time
-    @character_animation_states_system  .update @time
+    
   end
   
   def draw
     $window.fill 0xFF222222
     $window.translate -$drawable.x+$window.width/2, -$drawable.y+$window.height*2/3 do
-      ShapeLib.draw_terrain @current_shape
+      ShapeHelper::WalkRender.draw_non_walkable @current_shape, 0xFFFF0000
+      ShapeHelper::WalkRender.draw_walkable @current_shape, 0xFF00FF00
       @graphics_system.draw
       
     end

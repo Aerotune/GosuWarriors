@@ -5,7 +5,9 @@ module WindowStates::GameSession::Systems::Commands::PathStartSpawn
       spawn       = stage['spawn']
       shape_index = spawn['shape_index']
       shape       = stage['shapes'][shape_index]
-      start_point_index, start_point_distance = ShapeLib.surface_point_index_and_distance shape['outline'], spawn['x'], spawn['y']
+      start_point_index, start_point_distance = ShapeHelper::Point.point_index_and_distance_along_line shape['outline'], spawn['x'], spawn['y'] do |point_1, point_2|
+        ShapeHelper::Walk.walkable? point_1, point_2
+      end
       
       path_start = WindowStates::GameSession::Components::PathStart.new \
         'id'                => 0,

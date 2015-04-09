@@ -11,7 +11,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       'index' => 0,
       'start_index' => 0
     }
-        
+    set_free_motion entity
     #_stats = stats(entity)
     #speed           = 0
     #transition_time = _stats['stop_transition_time']*2

@@ -44,7 +44,7 @@ class EditShapeTool
         if drag_point_index = mouse_over_point_index
           @drag_point_index = drag_point_index
         else
-          index, _axis_distance = *ShapeLib.path_point_index_and_distance(outline, $window.mouse_x, $window.mouse_y)
+          index, _axis_distance = *ShapeHelper::Point.point_index_and_distance_along_line(outline, $window.mouse_x, $window.mouse_y)
           index = (index + 1) % outline.length
           if index
             outline.insert index, new_point

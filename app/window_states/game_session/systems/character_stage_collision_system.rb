@@ -30,7 +30,7 @@ class WindowStates::GameSession::Systems::CharacterStageCollisionSystem
       hit_shape_index = nil
       stage['shapes'].each_with_index do |shape, shape_index|
         shape['convexes'].each do |convex_points|
-          if ConvexShapeCollision.overlap? convex_points, feet_hit_shape
+          if ShapeHelper::ShapeCollision.overlap? convex_points, feet_hit_shape
             hit = true
             hit_shape_index = shape_index
           end
@@ -44,8 +44,7 @@ class WindowStates::GameSession::Systems::CharacterStageCollisionSystem
         WindowStates::GameSession::Systems::Commands::PathStartSet.do @entity_manager, entity, \
           'stage' => 'test_level',
           'shape_index' => hit_shape_index,
-          'x' => (x+prev_x)/2,
-          'y' => (y+prev_y)/2,
+          'line' => [[prev_x, prev_y], [x, y]],
           'surface_only' => true
         
         @entity_manager.add_component entity, WindowStates::GameSession::Components::PathMotionContinuous.new(

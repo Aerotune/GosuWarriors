@@ -14,7 +14,8 @@ class WindowStates::GameSession::Systems::PathMotion
       distance = WindowStates::GameSession::SystemHelpers::PathMotion.distance @entity_manager, entity, time
       shape    = stage['shapes'][path_start['shape_index']]
       
-      distance_traveled, position = ShapeLib.position_on_surface shape['outline'], path_start['start_point_index'], distance
+      position = ShapeHelper::Walk.position shape['outline'], path_start['start_point_index'], distance
+      
       drawable.x = position[0]
       drawable.y = position[1]
     end

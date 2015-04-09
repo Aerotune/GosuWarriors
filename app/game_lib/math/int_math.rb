@@ -13,7 +13,16 @@ module IntMath
   
   class << self
     def distance x1, y1, x2, y2
-      Gosu.distance(x1, y1, x2, y2).round
+      sqrt((x2-x1)**2 + (y2-y1)**2)
+    end
+    
+    def sqrt n
+      x = 2**(n.to_s(2).length/2 + 1)
+      loop do
+        y = (x + (n/x)) / 2
+        return x if y >= x
+        x = y 
+      end
     end
     
     def sin_point_16 rotation_point_12
@@ -55,8 +64,10 @@ module IntMath
       factor = y_over_x_point_12 >= 0 ? 1 : -1
       index = y_over_x_point_12.abs >> 6
       
-      if index > ATAN_TABLE_POINT_12.length-1
-        extension = index - ATAN_TABLE_POINT_12.length
+      last_index = ATAN_TABLE_POINT_12.length-1
+      
+      if index > last_index
+        extension = index - last_index
         result = ATAN_TABLE_POINT_12.last + (extension / 400)
         result = QUARTER_CIRCLE_POINT_12 if result > QUARTER_CIRCLE_POINT_12
         result * factor
