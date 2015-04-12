@@ -13,6 +13,13 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     }
         
     _stats = stats(entity)
+    
+  #speed_y_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_y_point_10 @entity_manager, entity, time
+    free_motion_y entity, time, \
+      'start_speed_point_10' => 0, 
+      'end_speed_point_10' => 19_500,
+      'transition_time' => 29,
+      'easer' => 'sin_in'
     #speed           = 0
     #transition_time = _stats['stop_transition_time']
     #transition_to_speed_point_10 entity, time, speed, transition_time    
@@ -58,6 +65,6 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     free_motion_x entity, time, \
       'start_speed_point_10' => speed_x_point_10,
       'end_speed_point_10' => _stats['run_speed']*factor_x,
-      'transition_time' => 3_7
+      'transition_time' => 5_0
   end
 end

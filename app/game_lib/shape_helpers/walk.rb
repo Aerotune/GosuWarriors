@@ -20,9 +20,16 @@ module ShapeHelper::Walk
     
     
     def point_index_and_distance_along_line points, start_point_index, walk_distance, max_walkable_degrees=MAX_WALKABLE_DEGREES
-      point_index, distance_to_point = point_index points, start_point_index, walk_distance, max_walkable_degrees
+      #point_index, distance_to_point = point_index points, start_point_index, walk_distance, max_walkable_degrees
+      point_index, distance_to_point = ShapeHelper::Path.point_index_and_distance_to_point points, start_point_index, walk_distance do |point_1, point_2|
+        walkable? point_1, point_2, max_walkable_degrees
+      end
       
-      distance_along_line = ShapeHelper::Path.distance_along_line points, point_index, distance_to_point, walk_distance
+      #p [point_index, distance_to_point, walk_distance]
+      
+      distance_along_line = ShapeHelper::Path.distance_along_line points, point_index, distance_to_point, walk_distance do |point_1, point_2|
+        walkable? point_1, point_2, max_walkable_degrees
+      end
       
       return point_index, distance_along_line
     end

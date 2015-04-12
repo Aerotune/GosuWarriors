@@ -17,6 +17,11 @@ module IntMath
     end
     
     def sqrt n
+      if n == 0
+        return 0
+      elsif n < 0
+        raise Math::DomainError, "Numerical argument is out of domain. Can't take square root of negative number"
+      end
       x = 2**(n.to_s(2).length/2 + 1)
       loop do
         y = (x + (n/x)) / 2

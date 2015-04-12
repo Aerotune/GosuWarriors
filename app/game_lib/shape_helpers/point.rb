@@ -20,26 +20,22 @@ module ShapeHelper::Point
       true
     end
     
-    def point_index_and_distance_along_line points, x, y, &condition
+    def point_index_and_distance_along_line points, x, y, &condition      
       result_distance = 1.0/0.0
       result_index = nil
       result_axis_distance = nil
-  
-      return 0, 0 if points.length <= 1
-    
+      
       points.each_with_index do |point_1, index|
-        next_index = (index+1)%points.length
+        next_index = (index + 1) % points.length
         point_2 = points[next_index]
-        
         next if condition && !condition.call(point_1, point_2)
-    
-        line_length, axis_x_point_12, axis_y_point_12 = ShapeHelper::Line.line_length_and_axis_point_12 point_1, point_2
-    
+        
         dx = x - point_1[0]
         dy = y - point_1[1]
-    
+        
+        line_length, axis_x_point_12, axis_y_point_12 = ShapeHelper::Line.line_length_and_axis_point_12 point_1, point_2
         axis_distance = ShapeHelper.distance_along_axis(dx, dy, axis_x_point_12, axis_y_point_12) >> 12
-    
+        
         if axis_distance > 0 && axis_distance < line_length
           # distance along normal axis
           normal_x_point_12   = -axis_y_point_12
@@ -54,12 +50,12 @@ module ShapeHelper::Point
           distance_to_point = IntMath.distance x, y, *point_1
           if distance_to_point < result_distance
             result_distance      = distance_to_point
-            result_index         = next_index
+            result_index         = index
             result_axis_distance = 0
           end
-        end   
+        end
       end
-  
+
       return result_index, result_axis_distance
     end
   end

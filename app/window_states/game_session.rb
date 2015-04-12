@@ -82,13 +82,14 @@ class WindowStates::GameSession < WindowState
   
   def draw
     $window.fill 0xFF222222
-    $window.translate -$drawable.x+$window.width/2, -$drawable.y+$window.height*2/3 do
-      ShapeHelper::WalkRender.draw_non_walkable @current_shape, 0xFFFF0000
-      ShapeHelper::WalkRender.draw_walkable @current_shape, 0xFF00FF00
-      @graphics_system.draw
-      
+    $window.scale 0.9, 0.9, $window.width/2, $window.height/2 do
+      $window.translate -$drawable.x+$window.width/2, -$drawable.y+$window.height*2/3 do
+        ShapeHelper::WalkRender.draw_non_walkable @current_shape, 0xFFFF0000
+        ShapeHelper::WalkRender.draw_walkable @current_shape, 0xFF00FF00
+        @graphics_system.draw
+      end
     end
-      time = Time.at($window.scoreboard['time']/60.0).strftime("%M:%S:%L")
-      @font.draw_rel time, $window.width-24, 24, Z, 1.0, 0.0
+    time = Time.at($window.scoreboard['time']/60.0).strftime("%M:%S:%L")
+    @font.draw_rel time, $window.width-24, 24, Z, 1.0, 0.0
   end
 end

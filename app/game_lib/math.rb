@@ -1,1 +1,1 @@
-Dir[File.join(GAME_LIB, 'math', '*.rb')].each { |rb| require rb }
+Dir[File.join(GAME_LIB_PATH, 'math', '*.rb')].each { |rb| require rb }

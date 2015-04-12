@@ -36,17 +36,20 @@ class WindowStates::GameSession::Systems::CharacterAnimationState
       'duration'             => duration
   end
   
-  def set_free_motion entity
+  def set_free_motion entity, time
     drawable = @entity_manager.get_component entity, :Drawable
+    
+    #speed_x_point_10 = WindowStates::GameSession::SystemHelpers::PathMotion.speed_point_10 @entity_manager, entity, 0
+    
     free_motion_x = WindowStates::GameSession::Components::FreeMotionX.new \
-      'start_time'            => 0,
+      'start_time'            => time,
       'start_x'               => drawable.x,
       'start_speed_point_10'  => 0,
       'end_speed_point_10'    => 0,
       'transition_time'       => 10
         
     free_motion_y = WindowStates::GameSession::Components::FreeMotionY.new \
-      'start_time'            => 0,
+      'start_time'            => time,
       'start_y'               => drawable.y,
       'start_speed_point_10'  => 0,
       'end_speed_point_10'    => 0,
@@ -54,6 +57,10 @@ class WindowStates::GameSession::Systems::CharacterAnimationState
     
     @entity_manager.add_component entity, free_motion_x
     @entity_manager.add_component entity, free_motion_y
+    
+    @entity_manager.remove_component entity, :PathStart
+    @entity_manager.remove_component entity, :PathMotionContinuous
+    @entity_manager.remove_component entity, :PathMotionTween
   end
   
   def free_motion_x entity, time, options
@@ -87,7 +94,8 @@ class WindowStates::GameSession::Systems::CharacterAnimationState
       'start_y'               => drawable.y,
       'start_speed_point_10'  => options['start_speed_point_10'],
       'end_speed_point_10'    => options['end_speed_point_10'],
-      'transition_time'       => options['transition_time']
+      'transition_time'       => options['transition_time'],
+      'easer'                 => options['easer']
     
     @entity_manager.add_component entity, component
   end

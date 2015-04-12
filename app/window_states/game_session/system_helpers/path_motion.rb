@@ -6,11 +6,11 @@ module WindowStates::GameSession::SystemHelpers::PathMotion
       pmt          = entity_manager.get_component entity, :PathMotionTween
       
       if pmc
-        speed_point_10 += QuadraticOutEaser.value_point_10(pmc.duration, (time - pmc.start_time), pmc.start_speed_point_10, pmc.end_speed_point_10)
+        speed_point_10 += Easers::QuadraticOut.value_point_10(pmc.duration, (time - pmc.start_time), pmc.start_speed_point_10, pmc.end_speed_point_10)
       end
       
       if pmt
-        speed_point_10 += QuadraticOutEaser.derivative_point_20(pmt.duration, time - pmt.start_time, 0, pmt.distance) >> 20
+        speed_point_10 += Easers::QuadraticOut.derivative_point_20(pmt.duration, time - pmt.start_time, 0, pmt.distance) >> 20
       end
       
       speed_point_10
@@ -30,7 +30,7 @@ module WindowStates::GameSession::SystemHelpers::PathMotion
       pmc = entity_manager.get_component entity, :PathMotionContinuous
       
       if pmc
-        return QuadraticOutEaser.integral_point_10(pmc.duration, time - pmc.start_time, pmc.start_speed_point_10, pmc.end_speed_point_10) >> 10
+        return Easers::QuadraticOut.integral_point_10(pmc.duration, time - pmc.start_time, pmc.start_speed_point_10, pmc.end_speed_point_10) >> 10
       else
         return 0
       end      
@@ -40,7 +40,7 @@ module WindowStates::GameSession::SystemHelpers::PathMotion
       pmt = entity_manager.get_component entity, :PathMotionTween
       
       if pmt
-        return QuadraticOutEaser.value_point_10(pmt.duration, time - pmt.start_time, 0, pmt.distance) >> 10
+        return Easers::QuadraticOut.value_point_10(pmt.duration, time - pmt.start_time, 0, pmt.distance) >> 10
       else
         return 0
       end
