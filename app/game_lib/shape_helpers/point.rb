@@ -26,9 +26,22 @@ module ShapeHelper::Point
       result_axis_distance = nil
       
       points.each_with_index do |point_1, index|
-        next_index = (index + 1) % points.length
-        point_2 = points[next_index]
-        next if condition && !condition.call(point_1, point_2)
+        point_0 = points[(index - 1) % points.length]
+        point_2 = points[(index + 1) % points.length]
+        
+        line_forward_valid  = condition.nil? || condition.call(point_1, point_2)
+        line_backward_valid = condition.nil? || condition.call(point_0, point_1)
+        
+        if line_forward_valid || line_backward_valid
+          distance_to_point = IntMath.distance x, y, point_1[0], point_1[1]
+          if distance_to_point < result_distance
+            result_distance      = distance_to_point
+            result_index         = index
+            result_axis_distance = 0
+          end
+        end
+        
+        next unless line_forward_valid
         
         dx = x - point_1[0]
         dy = y - point_1[1]
@@ -46,16 +59,10 @@ module ShapeHelper::Point
             result_index         = index
             result_axis_distance = axis_distance
           end
-        else
-          distance_to_point = IntMath.distance x, y, *point_1
-          if distance_to_point < result_distance
-            result_distance      = distance_to_point
-            result_index         = index
-            result_axis_distance = 0
-          end
         end
+        
       end
-
+      p [result_index, result_axis_distance]
       return result_index, result_axis_distance
     end
   end

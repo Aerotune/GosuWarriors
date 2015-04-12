@@ -14,8 +14,15 @@ class WindowStates::GameSession::Systems::PathMotion
       distance = WindowStates::GameSession::SystemHelpers::PathMotion.distance @entity_manager, entity, time
       shape    = stage['shapes'][path_start['shape_index']]
       
-      position = ShapeHelper::Walk.position shape['outline'], path_start['start_point_index'], distance
+      points = shape['outline']
+      point_index, distance_along_line, distance_to_point = ShapeHelper::Walk.point_index_and_distance_along_line points, path_start['start_point_index'], distance
+      if distance != distance_to_point+distance_along_line
+        #!!! this is fine offline but I don't want a ton of commands every time this happens online
+        path_start.distance -= distance - (distance_to_point+distance_along_line) 
+      end
       
+      position = ShapeHelper::Path.position(points, point_index, distance_along_line)
+            
       drawable.x = position[0]
       drawable.y = position[1]
     end

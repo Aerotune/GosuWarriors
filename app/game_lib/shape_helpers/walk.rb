@@ -13,10 +13,11 @@ module ShapeHelper::Walk
       walkable === angle
     end
     
-    def position points, start_point_index, walk_distance, max_walkable_degrees=MAX_WALKABLE_DEGREES
-      point_index, distance_along_line = point_index_and_distance_along_line points, start_point_index, walk_distance, max_walkable_degrees
-      ShapeHelper::Path.position points, point_index, distance_along_line
-    end
+    #def position points, start_point_index, walk_distance, max_walkable_degrees=MAX_WALKABLE_DEGREES
+    #  point_index, distance_along_line, distance_to_point = point_index_and_distance_along_line points, start_point_index, walk_distance, max_walkable_degrees
+    #  #p [distance_along_line+distance_to_point, walk_distance]
+    #  ShapeHelper::Path.position(points, point_index, distance_along_line)
+    #end
     
     
     def point_index_and_distance_along_line points, start_point_index, walk_distance, max_walkable_degrees=MAX_WALKABLE_DEGREES
@@ -31,7 +32,7 @@ module ShapeHelper::Walk
         walkable? point_1, point_2, max_walkable_degrees
       end
       
-      return point_index, distance_along_line
+      return point_index, distance_along_line, distance_to_point
     end
         
     
