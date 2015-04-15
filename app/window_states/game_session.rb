@@ -74,6 +74,7 @@ class WindowStates::GameSession < WindowState
     @free_motion_system                 .update @time
     @character_stage_collision_system   .update @time
     @character_animation_states_system  .update @time
+    
     @path_motion_system                 .update @time    
     @graphics_system                    .update @time
     @hits_system                        .update @time

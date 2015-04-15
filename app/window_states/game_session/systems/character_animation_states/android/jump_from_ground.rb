@@ -17,9 +17,13 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     transition_to_speed_point_10 entity, time, speed, transition_time    
   end
   
+  
   ANDROID_JUMP_SPEED_POINT_10 = -24_000
   ANDROID_END_SPEED_POINT_10  = 0#29_400
   ANDROID_TRANSITION_TIME_Y   = 31
+  
+  ANDROID_JUMP_IN_AIR_SPEED_POINT_10 = ANDROID_JUMP_SPEED_POINT_10 * 8 / 10
+  ANDROID_JUMP_IN_AIR_TRANSITION_TIME_Y = ANDROID_TRANSITION_TIME_Y * 12 / 10
   
   def control_down entity, control, time
     sprite = @entity_manager.get_component entity, :Sprite

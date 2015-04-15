@@ -21,10 +21,10 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     #set_free_motion entity, time, drawable.x, drawable.y
     
     free_motion_y entity, time, \
-      'start_speed_point_10' => ANDROID_JUMP_SPEED_POINT_10 * 8 / 10, 
+      'start_speed_point_10' => ANDROID_JUMP_IN_AIR_SPEED_POINT_10, 
       'end_speed_point_10' => ANDROID_END_SPEED_POINT_10,
-      'transition_time' => ANDROID_TRANSITION_TIME_Y * 8 / 10,
-      'easer' => 'sin_out'
+      'transition_time' => ANDROID_JUMP_IN_AIR_TRANSITION_TIME_Y,
+      'easer' => 'quad_in_out'
       
     controls = @entity_manager.get_component entity, :Controls
     _free_motion_x = @entity_manager.get_component entity, :FreeMotionX
@@ -82,15 +82,15 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
   def fall entity, time
     _free_motion_y = @entity_manager.get_component(entity, :FreeMotionY)
     
-    if _free_motion_y['start_speed_point_10'] == JUMP_SPEED_POINT_10 # !!! crash_logs/jump_in_air:84.txt
+    if _free_motion_y['start_speed_point_10'] == ANDROID_JUMP_IN_AIR_SPEED_POINT_10 # !!! crash, no FreeMotionY??
       speed_y_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_y_point_10 @entity_manager, entity, time
       progress_point_10 = ((time - _free_motion_y['start_time'])<<10) / _free_motion_y['transition_time'] 
       remaining_transition_time = (((1<<10) - progress_point_10) * _free_motion_y['transition_time']) >> 10
       free_motion_y entity, time, \
         'start_speed_point_10' => speed_y_point_10, 
         'end_speed_point_10' => END_SPEED_POINT_10,
-        'transition_time' => remaining_transition_time / 2,
-        'easer' => 'sin_out'
+        'transition_time' => remaining_transition_time * 4 / 10,
+        'easer' => 'quad_in_out'
     end
   end
   
