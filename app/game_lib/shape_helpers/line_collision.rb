@@ -8,6 +8,13 @@ module ShapeHelper::LineCollision
         next if condition && !condition.call(point_1, point_2)
         status, x, y = line_intersection [point_1, point_2], line
         intersections << [x, y, index] if status == :intersection
+        ## is a little troublesome...
+        #if status == :parallel
+        #  if point_on_line?( line[0], [point_1, point_2], 5) || point_on_line?( line[1], [point_1, point_2], 5)
+        #    intersections << [x, y, index]
+        #  else
+        #  end
+        #end
       end
       
       line_point_x, line_point_y = *line[0]
@@ -27,6 +34,11 @@ module ShapeHelper::LineCollision
       end
     end
     
+    def point_on_line? point, line, max_offset=3
+      delta = (IntMath.distance(*line[0], *line[1]) - (IntMath.distance(*line[0], *point) + IntMath.distance(*point, *line[1]))).abs
+      delta <= max_offset
+    end
+    
     # Line in the format:
     # [[x1, y1], [x2, y2]]
     def line_intersection line_1, line_2
@@ -38,13 +50,13 @@ module ShapeHelper::LineCollision
       det = (line_2_dx * line_1_dy) - (line_1_dx * line_2_dy)
   
       # lines are parallel
-      return :parralel, nil, nil if det == 0
+      return :parallel, nil, nil if det == 0
         
       progress_1_point_12 = (-(-(line_1[0][0] - line_2[0][0]) * line_2_dy + (line_1[0][1] - line_2[0][1]) * line_2_dx) << 12) / det
       progress_2_point_12 = ( ( (line_1[0][0] - line_2[0][0]) * line_1_dy - (line_1[0][1] - line_2[0][1]) * line_1_dx) << 12) / det
   
-      if progress_1_point_12 > 0 && progress_1_point_12 <= (1<<12)
-        if progress_2_point_12 > 0 && progress_2_point_12 <= (1<<12)
+      if progress_1_point_12 >= 0 && progress_1_point_12 <= (1<<12)
+        if progress_2_point_12 >= 0 && progress_2_point_12 <= (1<<12)
           x = line_1[0][0] + ((line_1_dx * progress_1_point_12)>>12)
           y = line_1[0][1] + ((line_1_dy * progress_1_point_12)>>12)
       

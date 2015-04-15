@@ -9,8 +9,8 @@ class Window < Gosu::Window
   attr_accessor :cursor_visible
   
   def initialize
-    _width  = 0#Gosu.available_width*7/8
-    _height = 0#Gosu.available_height*7/8
+    _width  = Gosu.available_width
+    _height = Gosu.available_height
     
     min_width = 1280
     min_height = 720

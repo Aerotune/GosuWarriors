@@ -4,6 +4,6 @@ class WindowStates::GameSession::Components::PathStart < Component
     shape_index
     start_point_index
     distance
-    surface_only
+    walkable_only
   ]
 end

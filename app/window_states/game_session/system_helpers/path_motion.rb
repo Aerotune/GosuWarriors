@@ -16,6 +16,48 @@ module WindowStates::GameSession::SystemHelpers::PathMotion
       speed_point_10
     end
     
+    def axis_point_12 entity_manager, entity, time, stage
+      path_start = entity_manager.get_component entity, :PathStart
+      path_start.distance
+      
+      _distance = distance entity_manager, entity, time
+      
+      shape = stage['shapes'][path_start['shape_index']]
+      points = shape['outline']
+      
+      
+      point_index, distance_along_line, distance_to_point = ShapeHelper::Walk.point_index_and_distance_along_line points, path_start['start_point_index'], _distance
+      #point_index, distance_to_point = ShapeHelper::Path.point_index_and_distance_to_point points, path_start['start_point_index'], _distance do |point_1, point_2|
+      #  ShapeHelper::Walk.walkable? point_1, point_2
+      #end      
+      
+      #
+      if distance_along_line >= 0
+        point_1_index = (point_index    ) % points.length
+        point_2_index = (point_index + 1) % points.length
+      else
+        point_1_index = (point_index - 1) % points.length
+        point_2_index = (point_index    ) % points.length
+      end
+      
+      #point_1_index = (point_index    ) % points.length
+      #point_2_index = (point_index + 1) % points.length
+      
+      #if speed_point_10(entity_manager, entity, time) < 0
+      #  point_1_index = (path_start['start_point_index'] - 1) % shape['outline'].length
+      #  point_2_index = (path_start['start_point_index']    ) % shape['outline'].length
+      #else
+      #  point_1_index = (path_start['start_point_index']    ) % shape['outline'].length
+      #  point_2_index = (path_start['start_point_index'] + 1) % shape['outline'].length
+      #end
+      
+      point_1 = shape['outline'][point_1_index]
+      point_2 = shape['outline'][point_2_index]
+      
+      line_length, axis_x_point_12, axis_y_point_12 = ShapeHelper::Line.line_length_and_axis_point_12 point_1, point_2
+      return line_length, axis_x_point_12, axis_y_point_12
+    end
+    
     def distance entity_manager, entity, time
       path_start = entity_manager.get_component entity, :PathStart
       

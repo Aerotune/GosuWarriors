@@ -6,8 +6,9 @@ class EditShapeTool
     @shape = shape
   end
   
-  def initialize shape
+  def initialize shape, level_editor
     @shape = shape
+    @level_editor = level_editor
   end
   
   def update
@@ -21,13 +22,13 @@ class EditShapeTool
     
     if @drag_point_index
       drag_point    = outline[@drag_point_index]
-      drag_point[0] = $window.mouse_x
-      drag_point[1] = $window.mouse_y
+      drag_point[0] = @level_editor.mouse_x
+      drag_point[1] = @level_editor.mouse_y
     end
   end
   
   def mouse_over_point_index
-    outline.find_index { |point| 4 > IntMath.distance($window.mouse_x, $window.mouse_y, *point) }
+    outline.find_index { |point| 4 > IntMath.distance(@level_editor.mouse_x, @level_editor.mouse_y, *point) }
   end
   
   def key_down key
@@ -35,18 +36,19 @@ class EditShapeTool
     
     case key
     when 'backspace', 'delete'
-      index = outline.index outline.min_by { |point| IntMath.distance(*point, $window.mouse_x, $window.mouse_y) }
+      index = outline.index outline.min_by { |point| IntMath.distance(*point, @level_editor.mouse_x, @level_editor.mouse_y) }
       outline.delete_at index if index
+      update_convexes!
     when 'mouse_left'
       if MouseTrap.capture self
-        new_point = [$window.mouse_x, $window.mouse_y]
+        new_point = [@level_editor.mouse_x, @level_editor.mouse_y]
         
         if drag_point_index = mouse_over_point_index
           @drag_point_index = drag_point_index
         else
-          index, _axis_distance = *ShapeHelper::Point.point_index_and_distance_along_line(outline, $window.mouse_x, $window.mouse_y)
-          index = (index + 1) % outline.length
+          index, _axis_distance = *ShapeHelper::Point.point_index_and_distance_along_line(outline, @level_editor.mouse_x, @level_editor.mouse_y)
           if index
+            index = (index + 1) % outline.length
             outline.insert index, new_point
             @drag_point_index = index
           else
@@ -62,6 +64,21 @@ class EditShapeTool
     @shape['outline']
   end
   
+  def release!
+    key_up 'mouse_left'
+  end
+  
+  def update_convexes!
+    ConvexDecomposer.set_polygon outline
+    convexes = ConvexDecomposer.decompose
+    @shape['convexes'].clear
+    if ConvexDecomposer.is_simple?
+      @shape['convexes'].push *convexes 
+    else
+      puts "INVALID LEVEL #{Time.now}"
+    end
+  end
+  
   def key_up key
     case key
     when 'mouse_left'
@@ -69,15 +86,8 @@ class EditShapeTool
         if @drag_point_index
           @drag_point_index = nil
         end
-        
-        ConvexDecomposer.set_polygon outline
-        convexes = ConvexDecomposer.decompose
-        @shape['convexes'].clear
-        if ConvexDecomposer.is_simple?
-          @shape['convexes'].push *convexes 
-        else
-          puts "INVALID LEVEL #{Time.now}"
-        end
+        outline.reverse! unless ShapeHelper.cw? outline
+        update_convexes!
       end
     end
   end

@@ -20,10 +20,39 @@ module ShapeHelper::Point
       true
     end
     
+    def distance_to_point points, x, y
+      distance_to_point = nil
+      
+      points.each_with_index do |point, index|
+        next_point = points[(index+1)%points.length]
+        
+        dx = next_point[0] - point[0]
+        dy = next_point[1] - point[1]
+        
+        normal_x = -dy
+        normal_y =  dx
+        
+        point_dot_product = x * normal_x + y * normal_y
+        
+        min, max = ShapeHelper.project points, normal_x, normal_y
+        
+        max_distance = (point_dot_product - max).abs
+        min_distance = (point_dot_product - min).abs
+        
+        distance_to_point ||= max_distance
+        distance_to_point = max_distance if max_distance < distance_to_point
+        distance_to_ponit = min_distance if min_distance < distance_to_point        
+      end
+      
+      distance_to_point
+    end
+    
     def point_index_and_distance_along_line points, x, y, &condition      
       result_distance = 1.0/0.0
       result_index = nil
       result_axis_distance = nil
+      
+      return nil, nil if points.length < 3
       
       points.each_with_index do |point_1, index|
         point_0 = points[(index - 1) % points.length]
@@ -62,7 +91,7 @@ module ShapeHelper::Point
         end
         
       end
-      p [result_index, result_axis_distance]
+
       return result_index, result_axis_distance
     end
   end

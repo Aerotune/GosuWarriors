@@ -36,21 +36,19 @@ class WindowStates::GameSession::Systems::CharacterAnimationState
       'duration'             => duration
   end
   
-  def set_free_motion entity, time
-    drawable = @entity_manager.get_component entity, :Drawable
-    
+  def set_free_motion entity, time, x, y    
     #speed_x_point_10 = WindowStates::GameSession::SystemHelpers::PathMotion.speed_point_10 @entity_manager, entity, 0
     
     free_motion_x = WindowStates::GameSession::Components::FreeMotionX.new \
       'start_time'            => time,
-      'start_x'               => drawable.x,
+      'start_x'               => x,
       'start_speed_point_10'  => 0,
       'end_speed_point_10'    => 0,
       'transition_time'       => 10
         
     free_motion_y = WindowStates::GameSession::Components::FreeMotionY.new \
       'start_time'            => time,
-      'start_y'               => drawable.y,
+      'start_y'               => y,
       'start_speed_point_10'  => 0,
       'end_speed_point_10'    => 0,
       'transition_time'       => 10

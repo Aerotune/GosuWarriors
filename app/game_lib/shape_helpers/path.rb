@@ -1,4 +1,4 @@
-module ShapeHelper::Path  
+module ShapeHelper::Path
   class << self
     def position points, point_index, distance_along_line
       if distance_along_line >= 0

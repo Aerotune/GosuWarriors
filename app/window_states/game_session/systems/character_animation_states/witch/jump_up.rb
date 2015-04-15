@@ -94,7 +94,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     if sprite.index == 4 && sprite.prev_index != 4
       path_speed_point_10 = WindowStates::GameSession::SystemHelpers::PathMotion.speed_point_10 @entity_manager, entity, time
       
-      set_free_motion entity, time
+      set_free_motion entity, time, drawable.x, drawable.y
       
       free_motion_y entity, time, \
         'start_speed_point_10' => JUMP_SPEED_POINT_10, 

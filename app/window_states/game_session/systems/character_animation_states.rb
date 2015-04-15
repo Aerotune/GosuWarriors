@@ -72,9 +72,7 @@ class WindowStates::GameSession::Systems::CharacterAnimationStates
       end      
     end
   end
-  
-  private
-  
+    
   def animation_state character
     @animation_state[character.type][character.animation_state]
   end

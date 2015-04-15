@@ -29,7 +29,8 @@ module Resources::Sprites
             'id'             => msgpack['id'] || sprite_resource_path.last,
             'face_direction' => msgpack['face_direction'] || -1,
             'fps'            => msgpack['fps'] || 27,
-            'frames'         => []
+            'frames'         => [],
+            'feet_line'      => [[-3, 0], [3, 0]]
           }
           
           msgpack["frames"].each do |frame|
@@ -61,6 +62,13 @@ module Resources::Sprites
           end
         end
       end
+      
+      #frames.each_with_index do |frame, index|
+      #  frame['shapes'].each do |shape|
+      #    shape['convex_hull'] = ShapeHelper.convex_hull shape['outline']
+      #  end
+      #end
+      
       sprite['frames'] = frames
       
       return Marshal.load(Marshal.dump(sprite))
@@ -82,7 +90,7 @@ module Resources::Sprites
     end
     
     def create_shapes_hash
-      Array.new(10) {{'tags' => [], 'outline' => [], 'convexes' => []}}
+      Array.new(10) {{'tags' => [], 'outline' => [], 'convexes' => [], 'convex_hull' => []}}
     end
   
   
@@ -108,9 +116,12 @@ module Resources::Sprites
       loaded_frame['shapes'].each do |shape|
         shape['convexes'].each do |convex|
           convex.each_with_index do |point, index|
+            #!!! shouldn't be needed anymore
             convex[index] = [point[0].to_i, point[1].to_i]
           end
         end
+        
+        #shape['convex_hull'] ||= ShapeHelper.convex_hull shape['outline']
       end
       
       loaded_frames << loaded_frame

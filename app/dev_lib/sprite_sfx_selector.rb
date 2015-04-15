@@ -1,6 +1,6 @@
 class SpriteSFXSelector  
   def initialize
-    @helper_text = "resources/sounds/sfx/"
+    @helper_text = "resources/sound/sfx/"
     @helper_text_width = 115#@font.text_width("resources/sounds/sfx/")
     @x = 203+100+3+77+28+@helper_text_width+2
     @y = 20

@@ -12,8 +12,8 @@ class WindowStates::GameSession < WindowState
     @character_stage_collision_system  = WindowStates::GameSession::Systems::CharacterStageCollisionSystem.new @entity_manager
     player_entity = WindowStates::GameSession::Factories::Character.build @entity_manager, @character_animation_states_system, character_name, 'player'
     WindowStates::GameSession::Factories::Target.build @entity_manager, 150, 370
-    WindowStates::GameSession::Factories::Target.build @entity_manager, $window.width+100, 320
-    WindowStates::GameSession::Factories::Target.build @entity_manager, $window.width-305, 370
+    WindowStates::GameSession::Factories::Target.build @entity_manager, 1280+100, 320
+    WindowStates::GameSession::Factories::Target.build @entity_manager, 1280-305, 370
     
     @font = Resources::Fonts[:Arial24]
     
@@ -21,7 +21,7 @@ class WindowStates::GameSession < WindowState
     @session_timer.start
     
     @stage         = Resources::Stages['test_level']
-    @current_shape = @stage['shapes'][0]
+    #@current_shape = @stage['shapes'][0]
   end
   
   def key_down key
@@ -72,8 +72,8 @@ class WindowStates::GameSession < WindowState
     @controls_system.update
     @graphics_system                    .update_each_frame @time
     @free_motion_system                 .update @time
-    @character_animation_states_system  .update @time
     @character_stage_collision_system   .update @time
+    @character_animation_states_system  .update @time
     @path_motion_system                 .update @time    
     @graphics_system                    .update @time
     @hits_system                        .update @time
@@ -82,10 +82,12 @@ class WindowStates::GameSession < WindowState
   
   def draw
     $window.fill 0xFF222222
-    $window.scale 0.9, 0.9, $window.width/2, $window.height/2 do
+    $window.scale 0.82, 0.82, $window.width/2, $window.height/2 do
       $window.translate -$drawable.x+$window.width/2, -$drawable.y+$window.height*2/3 do
-        ShapeHelper::WalkRender.draw_non_walkable @current_shape, 0xFFFF0000
-        ShapeHelper::WalkRender.draw_walkable @current_shape, 0xFF00FF00
+        @stage['shapes'].each do |shape|
+          ShapeHelper::WalkRender.draw_non_walkable shape, 0xFFFF0000
+          ShapeHelper::WalkRender.draw_walkable shape, 0xFF00FF00
+        end
         @graphics_system.draw
       end
     end

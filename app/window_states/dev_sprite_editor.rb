@@ -223,6 +223,7 @@ class WindowStates::DevSpriteEditor < WindowState
       
       outline.push *new_outline
       convexes.push *new_convexes
+      frame['shapes'][@sprite_layer_ui.layer]['convex_hull'] = ShapeHelper.convex_hull outline
     end
   end
   
@@ -295,6 +296,7 @@ class WindowStates::DevSpriteEditor < WindowState
     
     if @current_frame
       WindowStates::GameSession::Systems::Graphics::Sprite.draw_frame @current_frame, x, y, Z, @factor_x
+      #WindowStates::GameSession::Systems::Graphics::Sprite.draw_lines @sprite_frames_ui.sprite, x, y, Z, @factor_x
       shape_tool = get_current_shape_tool
       shape_tool.draw x+@delta_shape_drag_x, y+@delta_shape_drag_y if shape_tool
     end

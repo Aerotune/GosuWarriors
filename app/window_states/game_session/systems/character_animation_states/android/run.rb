@@ -36,6 +36,8 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       end
     when 'attack'
       character.set_animation_state = 'punch_1'
+    when 'jump'
+      character.set_animation_state = 'jump_from_ground'
     end
   end
   

@@ -36,7 +36,23 @@ module ShapeHelper
       end
     end
     
+    def translate! shape, dx, dy
+      shape['outline'].each do |point|
+        point[0] += dx
+        point[1] += dy
+      end
+      
+      shape['convexes'].each do |convex|
+        convex.each do |point|
+          point[0] += dx
+          point[1] += dy
+        end
+      end
+    end
+    
     def project points, axis_x, axis_y
+      return "Can't project #{points.length} points against axis!" if points.length <= 1
+      
       min = 1.0/0.0
       max = -1.0/0.0
     
@@ -51,6 +67,27 @@ module ShapeHelper
     
     def distance_along_axis x, y, axis_x, axis_y
       x * axis_x + axis_y * y
+    end
+    
+    # source:
+    # http://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#Ruby
+    def convex_hull points
+      points.sort!.uniq!
+      return points if points.length < 3
+      def cross(o, a, b)
+        (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
+      end
+      lower = Array.new
+      points.each{|p|
+        while lower.length > 1 and cross(lower[-2], lower[-1], p) <= 0 do lower.pop end
+        lower.push(p)
+      }
+      upper = Array.new
+      points.reverse_each{|p|
+        while upper.length > 1 and cross(upper[-2], upper[-1], p) <= 0 do upper.pop end
+        upper.push(p)
+      }
+      return lower[0...-1] + upper[0...-1]
     end
   end
 end

@@ -24,6 +24,13 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable
     
+    case control
+    when 'attack'
+      character.queued_animation_state = 'punch_1'
+    when 'jump'
+      character.set_animation_state = 'jump_from_ground'
+    end
+    
     if control == 'right' && drawable.factor_x == 1
       _stats = stats(entity)
       speed           = _stats['run_speed']*drawable.factor_x
@@ -38,10 +45,6 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       transition_time = _stats['run_transition_time']
       transition_to_speed_point_10 entity, time, speed, transition_time
       character.queued_animation_state = 'run'
-    end
-    
-    if control == 'attack'
-      character.queued_animation_state = 'punch_1'
     end
   end
   

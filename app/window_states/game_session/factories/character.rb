@@ -6,7 +6,10 @@ module WindowStates::GameSession::Factories::Character
       character = WindowStates::GameSession::Components::Character.new \
         'type' => character_type,
         'set_animation_state' => set_animation_state, 
-        'control_type' => control_type
+        'control_type' => control_type,
+        'cooldown' => {
+          'jump_in_air' => false
+        }
       
       controls  = WindowStates::GameSession::Components::Controls.new \
         'pressed' => [],
@@ -18,6 +21,7 @@ module WindowStates::GameSession::Factories::Character
         'y' => 0, 
         'z_order' => ZOrder::CHARACTER,
         'factor_x' => 1
+        
       $drawable = drawable
       WindowStates::GameSession::Systems::Commands::PathStartSpawn.do entity_manager, entity, 'stage' => 'test_level'
             

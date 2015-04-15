@@ -66,6 +66,17 @@ class WindowStates::GameSession::Systems::Graphics::Sprite
     self.class.draw_frame frame, drawable.x, drawable.y, Z, factor_x
   end
   
+  #def self.draw_lines sprite, x, y, z, factor_x
+  #  return unless sprite
+  #  
+  #  $window.translate x, y do
+  #    ShapeHelper::Render.draw_line *sprite['front_line'], 0xFF00FF00
+  #    ShapeHelper::Render.draw_line *sprite['back_line'], 0xFF00FF00
+  #    ShapeHelper::Render.draw_line *sprite['feet_line'], 0xFF00FF00
+  #    ShapeHelper::Render.draw_line *sprite['head_line'], 0xFF00FF00
+  #  end
+  #end
+  
   def self.draw_frame frame, x, y, z, factor_x
     return unless frame
     

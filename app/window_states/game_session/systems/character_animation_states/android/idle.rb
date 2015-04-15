@@ -1,7 +1,8 @@
 WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE__ do
   def on_set entity, time
     character = @entity_manager.get_component entity, :Character
-        
+    character['cooldown']['jump_in_air'] = false
+    
     WindowStates::GameSession::Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
       'start_time' => time,
@@ -34,6 +35,8 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       drawable.factor_x = -1
     when 'attack'
       character.set_animation_state = 'punch_1'
+    when 'jump'
+      character.set_animation_state = 'jump_from_ground'
     end    
   end
 end
