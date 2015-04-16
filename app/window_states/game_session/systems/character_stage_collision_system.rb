@@ -9,8 +9,13 @@ class WindowStates::GameSession::Systems::CharacterStageCollisionSystem
     #@entity_manager.each_entity_with_component :Character do |entity, character|
     #  sprite_resource = WindowStates::GameSession::SystemHelpers::Sprite.sprite_resource @entity_manager, entity
     #end
+    # Use only vertical and horizontal walls and ceilings
+    # Push character out of ceilings
+    # Push character out of walls
+    # Place character on walkable surfaces
     
     @entity_manager.each_entity_with_component :FreeMotionX do |entity, free_motion_x|
+      free_motion_y = @entity_manager.get_component entity, :FreeMotionY
       drawable = @entity_manager.get_component entity, :Drawable
       character = @entity_manager.get_component entity, :Character
       
@@ -23,27 +28,53 @@ class WindowStates::GameSession::Systems::CharacterStageCollisionSystem
       
       prev_x = WindowStates::GameSession::SystemHelpers::FreeMotion.x(@entity_manager, entity, time-1)
       prev_y = WindowStates::GameSession::SystemHelpers::FreeMotion.y(@entity_manager, entity, time-1)
+      #next_x = WindowStates::GameSession::SystemHelpers::FreeMotion.x(@entity_manager, entity, time-1)
+      #next_y = WindowStates::GameSession::SystemHelpers::FreeMotion.y(@entity_manager, entity, time-1)
       
-      sprite_frame = WindowStates::GameSession::SystemHelpers::Sprite.current_frame @entity_manager, entity      
-      
-      
-      #Front hit test
-      
-      #front_line = sprite_resource['front_line']
+      sprite_frame = WindowStates::GameSession::SystemHelpers::Sprite.current_frame @entity_manager, entity            
+      #whole_body_shapes = sprite_frame['shapes'].select { |shape| shape['tags'].include? 'whole_body' }
+      #mtv_x_result = nil
+      #mtv_y_result = nil
+      #mtv_x_max = nil
+      #mtv_y_max = nil
+      #mtv_result_square_dist = nil
       #
-      #front_hit_shape = [
-      #  [prev_x+front_line[0][0], prev_y+front_line[0][1]],
-      #  [prev_x+front_line[1][0], prev_y+front_line[1][1]],
-      #  [x+front_line[1][0], y+front_line[1][1]],
-      #  [x+front_line[0][0], y+front_line[0][1]]
-      #]
-      
       #stage['shapes'].each_with_index do |shape, shape_index|
       #  shape['convexes'].each do |convex_points|
-      #    if ShapeHelper::ShapeCollision.overlap? convex_points, front_hit_shape
-      #      puts "Front hit!: #{shape_index}"
+      #    whole_body_shapes.each do |whole_body_shape|
+      #      points = ShapeHelper.translate whole_body_shape['convex_hull'], x, y
+      #      mtv_x, mtv_y = ShapeHelper::ShapeCollision.mtv convex_points, points
+      #      if mtv_x && mtv_y
+      #        mtv_result_square_dist ||= mtv_x**2 + mtv_y**2
+      #        mtv_x_result       ||= mtv_x
+      #        mtv_y_result       ||= mtv_y
+      #        
+      #        mtv_square_dist = mtv_x**2 + mtv_y**2
+      #        
+      #        if mtv_square_dist > mtv_result_square_dist
+      #          mtv_x_result = mtv_x #if mtv_x.abs < mtv_x_min.abs
+      #          mtv_y_result = mtv_y #if mtv_y.abs < mtv_y_min.abs
+      #          #mtv_x_max = mtv_x if mtv_x.abs < mtv_x_max.abs
+      #          #mtv_y_max = mtv_y if mtv_y.abs < mtv_y_max.abs
+      #        end
+      #        
+      #        
+      #        
+      #        #min, max = ShapeHelper.project(convex_points, 1, 0)
+      #        #free_motion_x.start_x = x-air_speed/2-1 + (x-next_x)
+      #        #free_motion_x.start_time = time
+      #        #free_motion_x.start_speed_point_10 = 0
+      #      end
       #    end
       #  end
+      #end
+      
+      #if mtv_x_result && mtv_y_result
+      #  free_motion_x.start_x += mtv_x_result
+      #  free_motion_y.start_y += mtv_y_result
+      #  x += mtv_x_result
+      #  y += mtv_y_result
+      #  #p [mtv_x_min, mtv_y_min]
       #end
       
       # Feet hit test
@@ -60,6 +91,7 @@ class WindowStates::GameSession::Systems::CharacterStageCollisionSystem
       
       hit = false
       hit_shape_indexes = []
+      dx, dy = nil, nil
             
       stage['shapes'].each_with_index do |shape, shape_index|
         shape['convexes'].each do |convex_points|
@@ -67,12 +99,9 @@ class WindowStates::GameSession::Systems::CharacterStageCollisionSystem
             hit = true
             hit_shape_indexes << shape_index unless hit_shape_indexes.include? shape_index
           end
-          
-          #if ShapeHelper::ShapeCollision.overlap? convex_points, front_hit_shape
-          #  puts "Front hit!: #{shape_index}"
-          #end
         end
       end
+      
       
       warn "Multiple hit shapes when character hit map" if hit_shape_indexes.length > 1
       hit_shape_index = hit_shape_indexes.first
@@ -94,7 +123,7 @@ class WindowStates::GameSession::Systems::CharacterStageCollisionSystem
           land_x, land_y = ShapeHelper::Path.position shape['outline'], start_point_index, start_point_distance
           land_distance = [IntMath.distance(x, y, land_x, land_y), IntMath.distance(prev_x, prev_y, land_x, land_y)].min
           
-          if line_collision || (land_distance < (air_speed*3+75))
+          if line_collision || (land_distance < (air_speed*5+25))
             @entity_manager.remove_component entity, :FreeMotionX
             @entity_manager.remove_component entity, :FreeMotionY
             

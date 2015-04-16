@@ -36,7 +36,7 @@ module ShapeHelper
       end
     end
     
-    def translate! shape, dx, dy
+    def translate_shape! shape, dx, dy
       shape['outline'].each do |point|
         point[0] += dx
         point[1] += dy
@@ -48,6 +48,14 @@ module ShapeHelper
           point[1] += dy
         end
       end
+    end
+    
+    def translate points, x, y
+      result = []
+      points.each do |point|
+        result << [point[0]+x, point[1]+y]
+      end
+      result
     end
     
     def project points, axis_x, axis_y

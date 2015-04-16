@@ -20,10 +20,35 @@ class EditShapeTool
       NeutralCursor.set_state :normal
     end
     
+    
     if @drag_point_index
-      drag_point    = outline[@drag_point_index]
+      drag_point      = outline[@drag_point_index]
       drag_point[0] = @level_editor.mouse_x
       drag_point[1] = @level_editor.mouse_y
+      
+      if $window.key_down_match?('alt')
+        next_drag_point = outline[(@drag_point_index+1)%outline.length]
+        next_dx = next_drag_point[0] - drag_point[0]
+        next_dy = next_drag_point[1] - drag_point[1]
+      
+        if next_dx.abs < next_dy.abs
+          drag_point[0] = next_drag_point[0]
+        else
+          drag_point[1] = next_drag_point[1]
+        end
+      end
+      
+      if $window.key_down_match?('shift')
+        prev_drag_point = outline[(@drag_point_index-1)%outline.length]
+        prev_dx = prev_drag_point[0] - drag_point[0]
+        prev_dy = prev_drag_point[1] - drag_point[1]
+        
+        if prev_dx.abs < prev_dy.abs
+          drag_point[0] = prev_drag_point[0]
+        else
+          drag_point[1] = prev_drag_point[1]
+        end
+      end      
     end
   end
   
@@ -52,6 +77,7 @@ class EditShapeTool
             outline.insert index, new_point
             @drag_point_index = index
           else
+            index = outline.length
             outline << new_point
             @drag_point_index = index
           end       

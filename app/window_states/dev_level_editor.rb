@@ -119,7 +119,7 @@ class WindowStates::DevLevelEditor < WindowState
   def stop_drag_current_shape
     dx = mouse_x - @start_drag_x
     dy = mouse_y - @start_drag_y
-    ShapeHelper.translate! @drag_shape, dx, dy
+    ShapeHelper.translate_shape! @drag_shape, dx, dy
     @drag_shape = nil
     @start_drag_x = 0
     @start_drag_y = 0
@@ -189,12 +189,16 @@ class WindowStates::DevLevelEditor < WindowState
     @camera.view do
       @stage['shapes'].each do |shape|
         ShapeHelper::Render.draw_convexes shape, 0x55FFFFFF
-        ShapeHelper::WalkRender.draw_non_walkable shape, 0xAAFF3333
+        ShapeHelper::WalkRender.draw_non_walkable shape, 0x55FF3333
+        ShapeHelper::Render.draw_walls shape, 0x550000FF
+        ShapeHelper::Render.draw_ceilings shape, 0x550000FF
         ShapeHelper::WalkRender.draw_walkable shape, 0xAA33FF33
       end
       
       if @current_shape
-        ShapeHelper::WalkRender.draw_non_walkable @current_shape, 0xFFFF0000
+        ShapeHelper::WalkRender.draw_non_walkable @current_shape, 0x55FF0000
+        ShapeHelper::Render.draw_walls @current_shape, 0xFF0000FF
+        ShapeHelper::Render.draw_ceilings @current_shape, 0xFF0000FF
         ShapeHelper::WalkRender.draw_walkable @current_shape, 0xFF00FF00
       end
       

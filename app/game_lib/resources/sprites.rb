@@ -30,7 +30,9 @@ module Resources::Sprites
             'face_direction' => msgpack['face_direction'] || -1,
             'fps'            => msgpack['fps'] || 27,
             'frames'         => [],
-            'feet_line'      => [[-3, 0], [3, 0]]
+            'feet_line'      => [[-3, 0], [3, 0]],
+            'front_line'     => [[15, -25], [15, -190]],
+            'head_line'      => [[-5, -195], [5, -195]]
           }
           
           msgpack["frames"].each do |frame|
@@ -63,11 +65,11 @@ module Resources::Sprites
         end
       end
       
-      #frames.each_with_index do |frame, index|
-      #  frame['shapes'].each do |shape|
-      #    shape['convex_hull'] = ShapeHelper.convex_hull shape['outline']
-      #  end
-      #end
+      frames.each_with_index do |frame, index|
+        frame['shapes'].each do |shape|
+          shape['convex_hull'] = ShapeHelper.convex_hull shape['outline']
+        end
+      end
       
       sprite['frames'] = frames
       
@@ -121,7 +123,7 @@ module Resources::Sprites
           end
         end
         
-        #shape['convex_hull'] ||= ShapeHelper.convex_hull shape['outline']
+        shape['convex_hull'] ||= ShapeHelper.convex_hull shape['outline']
       end
       
       loaded_frames << loaded_frame

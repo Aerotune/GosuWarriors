@@ -25,5 +25,40 @@ module ShapeHelper::Render
     def draw_line point_1, point_2, color
       $window.draw_line point_1[0], point_1[1], color, point_2[0], point_2[1], color, Z
     end
+    
+    def draw_walls shape, color
+      shape['outline'].each_with_index do |point_1, index|
+        point_2 = shape['outline'][(index+1)%shape['outline'].length]
+        
+        wall_facing_right_angle = 1024
+        wall_facing_left_angle = -1024
+        
+        dx = point_2[0] - point_1[0]
+        dy = point_2[1] - point_1[1]
+        
+        if dx == 0
+          draw_line point_1, point_2, color
+        end
+        
+        #angle = IntMath.atan2_point_12 dy, dx
+        #
+        #if angle == wall_facing_right_angle || angle == wall_facing_left_angle
+        #  draw_line point_1, point_2, color
+        #end
+      end
+    end
+    
+    def draw_ceilings shape, color      
+      shape['outline'].each_with_index do |point_1, index|
+        point_2 = shape['outline'][(index+1)%shape['outline'].length]
+        
+        dx = point_2[0] - point_1[0]
+        dy = point_2[1] - point_1[1]
+        
+        if dy == 0 && dx < 0
+          draw_line point_1, point_2, color
+        end
+      end
+    end
   end
 end

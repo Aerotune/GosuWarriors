@@ -34,6 +34,8 @@ module ShapeHelper::ShapeCollision
             result_normal_y_point_12 = normal_y_point_12
             result_offset_point_12   = offset_2_point_12
           end
+        else
+          return nil, nil
         end
       end
       
@@ -66,11 +68,13 @@ module ShapeHelper::ShapeCollision
             result_normal_y_point_12 = normal_y_point_12
             result_offset_point_12   = offset_2_point_12
           end
+        else
+          return nil, nil
         end 
       end
       
       if result_normal_x_point_12
-        return result_offset_point_12 >> 12, (result_normal_x_point_12*result_offset_point_12)>>24, (result_normal_y_point_12*result_offset_point_12)>>24
+        return (result_normal_x_point_12*result_offset_point_12)>>24, (result_normal_y_point_12*result_offset_point_12)>>24
       else
         return nil, nil
       end
