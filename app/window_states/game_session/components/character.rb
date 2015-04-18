@@ -5,6 +5,7 @@ class WindowStates::GameSession::Components::Character < Component
     animation_state
     set_animation_state
     queued_animation_state
+    stage_collisions
     cooldown
   ]
 end

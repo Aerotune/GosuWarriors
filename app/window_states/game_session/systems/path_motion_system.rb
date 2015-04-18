@@ -11,19 +11,24 @@ class WindowStates::GameSession::Systems::PathMotion
     
     @entity_manager.each_entity_with_component :PathStart do |entity, path_start|
       drawable = @entity_manager.get_component entity, :Drawable
+      character = @entity_manager.get_component entity, :Character
       distance = WindowStates::GameSession::SystemHelpers::PathMotion.distance @entity_manager, entity, time
       shape    = stage['shapes'][path_start['shape_index']]
       
       points = shape['outline']
       point_index, distance_along_line, distance_to_point = ShapeHelper::Walk.point_index_and_distance_along_line points, path_start['start_point_index'], distance
-      if distance != distance_to_point+distance_along_line
-        #!!! this is fine offline but I don't want a ton of commands every time this happens online
-        #path_start.distance -= distance - (distance_to_point+distance_along_line) 
-        character = @entity_manager.get_component entity, :Character
-        #animation_state = WindowStates::GameSession::Systems::CharacterAnimationStates.animation_state(character.type, 'jump_down')
-        #animation_state.set_free_motion entity, time
-        character.set_animation_state = 'fall_down'        
-      end
+      distance_along_path = distance_to_point+distance_along_line
+      distance_beyond_path = distance - distance_along_path
+      #if distance != distance_to_point+distance_along_line
+      #  character = @entity_manager.get_component entity, :Character
+      #  character.set_animation_state = 'fall_down'        
+      #end
+      
+      #change implicit
+      character['stage_collisions']['path_movement']['beyond_ledge'] = true if distance != distance_along_path
+      path_start.distance -= distance_beyond_path
+      path_start.distance += 1 if distance_beyond_path > 0
+      path_start.distance -= 1 if distance_beyond_path < 0
       
       position = ShapeHelper::Path.position(points, point_index, distance_along_line)
       

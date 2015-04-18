@@ -9,6 +9,14 @@ module WindowStates::GameSession::Factories::Character
         'control_type' => control_type,
         'cooldown' => {
           'jump_in_air' => false
+        },
+        'stage_collisions' => {
+          'wall_facing_right_x' => nil,
+          'wall_facing_left_x'  => nil,
+          'ceiling_y'           => nil,
+          'path_movement' => {
+            'beyond_ledge' => nil
+          }
         }
       
       controls  = WindowStates::GameSession::Components::Controls.new \

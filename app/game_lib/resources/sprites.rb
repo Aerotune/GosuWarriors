@@ -30,9 +30,7 @@ module Resources::Sprites
             'face_direction' => msgpack['face_direction'] || -1,
             'fps'            => msgpack['fps'] || 27,
             'frames'         => [],
-            'feet_line'      => [[-3, 0], [3, 0]],
-            'front_line'     => [[15, -25], [15, -190]],
-            'head_line'      => [[-5, -195], [5, -195]]
+            'bounding_box'   => [[-20, -200], [20, -200], [20, 10], [-20, 10]]
           }
           
           msgpack["frames"].each do |frame|
