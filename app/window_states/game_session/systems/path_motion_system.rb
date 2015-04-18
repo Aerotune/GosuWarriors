@@ -19,18 +19,24 @@ class WindowStates::GameSession::Systems::PathMotion
       point_index, distance_along_line, distance_to_point = ShapeHelper::Walk.point_index_and_distance_along_line points, path_start['start_point_index'], distance
       distance_along_path = distance_to_point+distance_along_line
       distance_beyond_path = distance - distance_along_path
-      #if distance != distance_to_point+distance_along_line
-      #  character = @entity_manager.get_component entity, :Character
-      #  character.set_animation_state = 'fall_down'        
-      #end
+      
+      push_beyond_ledge = WindowStates::GameSession::SystemHelpers::PathMotion.push_beyond_ledge? @entity_manager, entity
       
       #change implicit
-      character['stage_collisions']['path_movement']['beyond_ledge'] = true if distance != distance_along_path
       path_start.distance -= distance_beyond_path
-      path_start.distance += 1 if distance_beyond_path > 0
-      path_start.distance -= 1 if distance_beyond_path < 0
+      character['stage_collisions']['path_movement']['distance_beyond_ledge'] = distance_beyond_path
+      if distance_beyond_path > 0 && push_beyond_ledge
+        character['stage_collisions']['path_movement']['direction_beyond_ledge'] = 'right'
+      elsif distance_beyond_path < 0 && push_beyond_ledge
+        character['stage_collisions']['path_movement']['direction_beyond_ledge'] = 'left'
+      else
+        character['stage_collisions']['path_movement']['direction_beyond_ledge'] = nil
+      end
       
       position = ShapeHelper::Path.position(points, point_index, distance_along_line)
+      
+      drawable.prev_x = drawable.x
+      drawable.prev_y = drawable.y
       
       drawable.x = position[0]
       drawable.y = position[1]

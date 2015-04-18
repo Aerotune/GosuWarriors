@@ -15,7 +15,7 @@ module WindowStates::GameSession::Factories::Character
           'wall_facing_left_x'  => nil,
           'ceiling_y'           => nil,
           'path_movement' => {
-            'beyond_ledge' => nil
+            'direction_beyond_ledge' => nil
           }
         }
       

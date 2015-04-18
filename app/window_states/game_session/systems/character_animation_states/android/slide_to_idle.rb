@@ -19,7 +19,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     _stats          = stats(entity)
     speed           = 0
     transition_time = _stats['stop_transition_time']
-    transition_to_speed_point_10 entity, time, speed, transition_time
+    transition_to_speed_point_10 entity, time, speed, transition_time, 'push_beyond_ledge' => true
   end
   
   def control_down entity, control, time
@@ -43,6 +43,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       
       left_or_right = controls.held.select { |control| ['left', 'right'].include? control }
       if (drawable.factor_x > 0 && left_or_right.last == 'right') || (drawable.factor_x < 0 && left_or_right.last == 'left')
+        #change explicit
         WindowStates::GameSession::Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
           'sprite_resource_path' => ["characters", character.type, character.animation_state],
           'start_time' => time,
@@ -56,12 +57,14 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
         _stats = stats(entity)
         speed           = _stats['run_speed']*drawable.factor_x
         transition_time = _stats['run_transition_time']
-        transition_to_speed_point_10 entity, time, speed, transition_time
+        transition_to_speed_point_10 entity, time, speed, transition_time, 'push_beyond_ledge' => true
       end
     end
     
     if sprite.done
       character.set_animation_state = character.queued_animation_state
     end
+    
+    character.set_animation_state = 'fall_down' if character['stage_collisions']['path_movement']['direction_beyond_ledge']
   end
 end

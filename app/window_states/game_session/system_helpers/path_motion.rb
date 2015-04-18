@@ -16,6 +16,14 @@ module WindowStates::GameSession::SystemHelpers::PathMotion
       speed_point_10
     end
     
+    def push_beyond_ledge? entity_manager, entity
+      pmc          = entity_manager.get_component entity, :PathMotionContinuous
+      pmt          = entity_manager.get_component entity, :PathMotionTween
+      return true if pmc && pmc['push_beyond_ledge']
+      return true if pmt && pmt['push_beyond_ledge']
+      return false
+    end
+    
     def axis_point_12 entity_manager, entity, time, stage
       path_start = entity_manager.get_component entity, :PathStart
       path_start.distance
@@ -27,11 +35,7 @@ module WindowStates::GameSession::SystemHelpers::PathMotion
       
       
       point_index, distance_along_line, distance_to_point = ShapeHelper::Walk.point_index_and_distance_along_line points, path_start['start_point_index'], _distance
-      #point_index, distance_to_point = ShapeHelper::Path.point_index_and_distance_to_point points, path_start['start_point_index'], _distance do |point_1, point_2|
-      #  ShapeHelper::Walk.walkable? point_1, point_2
-      #end      
-      
-      #
+
       if distance_along_line >= 0
         point_1_index = (point_index    ) % points.length
         point_2_index = (point_index + 1) % points.length

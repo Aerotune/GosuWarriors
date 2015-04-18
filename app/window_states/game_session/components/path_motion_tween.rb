@@ -3,5 +3,6 @@ class WindowStates::GameSession::Components::PathMotionTween < Component
     distance
     duration
     start_time
+    push_beyond_ledge
   ]
 end

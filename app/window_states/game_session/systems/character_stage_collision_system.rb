@@ -71,13 +71,14 @@ class WindowStates::GameSession::Systems::CharacterStageCollisionSystem
       
       x = drawable.x
       y = drawable.y
+      prev_x = drawable.prev_x
+      prev_y = drawable.prev_y
       
       speed_x_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_x_point_10(@entity_manager, entity, time)
       speed_y_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_y_point_10(@entity_manager, entity, time)      
       
-      prev_x = WindowStates::GameSession::SystemHelpers::FreeMotion.x(@entity_manager, entity, time-1)
-      prev_y = WindowStates::GameSession::SystemHelpers::FreeMotion.y(@entity_manager, entity, time-1)
-      next unless speed_y_point_10 > 0
+      
+      #next unless speed_y_point_10 > -5000
       
       hit_shape_indexes = []
       
@@ -99,8 +100,10 @@ class WindowStates::GameSession::Systems::CharacterStageCollisionSystem
         line = [[prev_x, prev_y], [x, y]]
       
         start_point_index, start_point_distance = ShapeHelper::LineCollision.point_index_and_distance_along_line shape['outline'], line, &walkable_condition
+        #p 'line hit' if start_point_index
         if start_point_index.nil?
           start_point_index, start_point_distance = ShapeHelper::Point.point_index_and_distance_along_line shape['outline'], x, y, &walkable_condition
+          #p 'point hit' if start_point_index
         end
         
         if start_point_index && start_point_distance

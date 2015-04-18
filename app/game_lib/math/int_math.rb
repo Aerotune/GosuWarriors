@@ -11,6 +11,9 @@ module IntMath
   HALF_CIRCLE_POINT_12    = 2048
   CIRCLE_POINT_12         = 4096
   
+  PI_POINT_10 = 3217
+  TAU_POINT_10 = 6434
+  
   class << self
     def distance x1, y1, x2, y2
       sqrt((x2-x1)**2 + (y2-y1)**2)

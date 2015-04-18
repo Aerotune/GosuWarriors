@@ -15,11 +15,14 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     _stats = stats(entity)
     
   #speed_y_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_y_point_10 @entity_manager, entity, time
-    free_motion_y entity, time, \
-      'start_speed_point_10' => 0, 
-      'end_speed_point_10' => 19_500,
-      'transition_time' => 29,
-      'easer' => 'sin_in'
+    _free_motion_y = @entity_manager.get_component entity, :FreeMotionY
+    unless _free_motion_y['end_speed_point_10'] == 19_500
+      free_motion_y entity, time, \
+        'start_speed_point_10' => 0, 
+        'end_speed_point_10' => 19_500,
+        'transition_time' => 29,
+        'easer' => 'sin_in'
+    end
     #speed           = 0
     #transition_time = _stats['stop_transition_time']
     #transition_to_speed_point_10 entity, time, speed, transition_time    
@@ -32,6 +35,14 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       float_speed entity, time, -1
     when 'right'
       float_speed entity, time, 1
+    when 'attack'
+      character = @entity_manager.get_component entity, :Character
+      controls = @entity_manager.get_component entity, :Controls
+      if controls.held.include? 'up'
+        character.set_animation_state = 'air_kick'
+      else
+        character.set_animation_state = 'air_spin'
+      end
     when 'jump'
       character = @entity_manager.get_component entity, :Character
       character.set_animation_state = 'jump_in_air' if character['cooldown']['jump_in_air'] == false

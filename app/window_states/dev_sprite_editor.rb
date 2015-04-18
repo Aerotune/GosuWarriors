@@ -223,7 +223,7 @@ class WindowStates::DevSpriteEditor < WindowState
       
       outline.push *new_outline
       convexes.push *new_convexes
-      frame['shapes'][@sprite_layer_ui.layer]['convex_hull'] = ShapeHelper.convex_hull outline
+      #frame['shapes'][@sprite_layer_ui.layer]['convex_hull'] = ShapeHelper.convex_hull outline
     end
   end
   

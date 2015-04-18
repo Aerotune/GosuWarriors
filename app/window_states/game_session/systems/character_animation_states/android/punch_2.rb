@@ -15,8 +15,8 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     _stats = stats(entity)
     speed           = 0
     transition_time = _stats['stop_transition_time']
-    transition_to_speed_point_10 entity, time, speed, transition_time
-    tween entity, time+15, (35<<10)*drawable.factor_x, 35
+    transition_to_speed_point_10 entity, time, speed, transition_time, 'push_beyond_ledge' => false
+    tween entity, time+5, (35<<10)*drawable.factor_x, 15, 'push_beyond_ledge' => false
   end
   
   def control_down entity, control, time

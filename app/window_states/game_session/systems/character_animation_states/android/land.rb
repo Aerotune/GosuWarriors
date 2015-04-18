@@ -19,12 +19,12 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       _stats = stats(entity)
       speed           = _stats['run_speed']*factor_x*8/10
       transition_time = _stats['run_transition_time']
-      transition_to_speed_point_10 entity, time, speed, transition_time
+      transition_to_speed_point_10 entity, time, speed, transition_time, 'push_beyond_ledge' => true
     else
       _stats = stats(entity)
       speed           = 0
       transition_time = _stats['stop_transition_time']
-      transition_to_speed_point_10 entity, time, speed, transition_time
+      transition_to_speed_point_10 entity, time, speed, transition_time, 'push_beyond_ledge' => true
     end
   end
   
@@ -65,5 +65,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     if sprite.done
       character.set_animation_state = 'idle'
     end
+    
+    character.set_animation_state = 'fall_down' if character['stage_collisions']['path_movement']['direction_beyond_ledge']
   end
 end

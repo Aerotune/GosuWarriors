@@ -29,6 +29,7 @@ begin
 
   if DEVELOPER_MODE
     require 'v8'
+    
     require 'json'
     require 'texplay'
     require dev_constants_path

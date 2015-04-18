@@ -17,7 +17,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     speed           = 0
     transition_time = _stats['stop_transition_time']
     transition_to_speed_point_10 entity, time, speed, transition_time
-    tween entity, time+15, (35<<10)*drawable.factor_x, 35
+    tween entity, time+7, (35<<10)*drawable.factor_x, 15
   end
   
   def control_down entity, control, time

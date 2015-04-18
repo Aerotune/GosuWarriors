@@ -5,5 +5,6 @@ class WindowStates::GameSession::Components::PathMotionContinuous < Component
     start_speed_point_10
     end_speed_point_10
     duration
+    push_beyond_ledge
   ]
 end

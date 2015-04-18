@@ -34,6 +34,14 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       float_speed entity, time, -1
     when 'right'
       float_speed entity, time, 1
+    when 'attack'
+      character = @entity_manager.get_component entity, :Character
+      controls = @entity_manager.get_component entity, :Controls
+      if controls.held.include? 'up'
+        character.set_animation_state = 'air_kick'
+      else
+        character.set_animation_state = 'air_spin'
+      end
     when 'jump'
       _free_motion_y = @entity_manager.get_component(entity, :FreeMotionY)
       character = @entity_manager.get_component entity, :Character

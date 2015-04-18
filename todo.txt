@@ -1,3 +1,7 @@
+* Move the landing code to the land state
+* Jumping movement fix for air attacks
+
+
 * Add effects overlay in sprite sheet editor (eg. glow)
 
 * Add spawn points in sprite sheet editor

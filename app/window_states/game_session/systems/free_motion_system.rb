@@ -10,6 +10,7 @@ class WindowStates::GameSession::Systems::FreeMotion
       drawable = @entity_manager.get_component entity, :Drawable
       
       if drawable
+        drawable.prev_x = drawable.x
         drawable.x = WindowStates::GameSession::SystemHelpers::FreeMotion.x(@entity_manager, entity, time)
       end
     end
@@ -18,6 +19,7 @@ class WindowStates::GameSession::Systems::FreeMotion
       drawable = @entity_manager.get_component entity, :Drawable
       
       if drawable
+        drawable.prev_y = drawable.y
         drawable.y = WindowStates::GameSession::SystemHelpers::FreeMotion.y(@entity_manager, entity, time)
       end
     end
