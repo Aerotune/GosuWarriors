@@ -26,7 +26,8 @@ begin
   enable_developer_mode = true
 
   DEVELOPER_MODE = enable_developer_mode && developer_mode_available
-
+  PROFILE = false
+  
   if DEVELOPER_MODE
     require 'v8'
     
@@ -36,7 +37,21 @@ begin
   end
 
   require File.join(APP_PATH, 'window')
+  
+  if PROFILE
+    require 'ruby-prof'
+    RubyProf.start
+  end
+  
   Window.new.show
+  
+  if PROFILE
+    result = RubyProf.stop
+
+    # Print a flat profile to text
+    printer = RubyProf::FlatPrinter.new(result)
+    printer.print(STDOUT)
+  end
   
 rescue Exception => e
   write_error_log e

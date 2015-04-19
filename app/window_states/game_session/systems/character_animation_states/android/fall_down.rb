@@ -23,7 +23,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     
       drawable.x += 7*factor_x
       drawable.y -= 1
-      set_free_motion entity, time, drawable.x, drawable.y
+      set_free_motion entity, time, drawable.x, drawable.y-2
       start_speed_y = (axis_y_point_12*speed_point_10)>>12
       
       
@@ -72,7 +72,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       puts "speed_point_10: #{speed_point_10}"
       
       
-      set_free_motion entity, time, drawable.x, drawable.y
+      set_free_motion entity, time, drawable.x, drawable.y-2
       free_motion_y entity, time, \
         'start_speed_point_10' => 0, 
         'end_speed_point_10' => 19_500,

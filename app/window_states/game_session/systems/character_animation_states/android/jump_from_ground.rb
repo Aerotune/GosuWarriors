@@ -77,7 +77,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
   def fall entity, time
     _free_motion_y = @entity_manager.get_component(entity, :FreeMotionY)
     
-    if _free_motion_y['start_speed_point_10'] == ANDROID_JUMP_SPEED_POINT_10
+    if _free_motion_y && _free_motion_y['start_speed_point_10'] == ANDROID_JUMP_SPEED_POINT_10
       speed_y_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_y_point_10 @entity_manager, entity, time
       progress_point_10 = ((time - _free_motion_y['start_time'])<<10) / _free_motion_y['transition_time'] 
       remaining_transition_time = (((1<<10) - progress_point_10) * _free_motion_y['transition_time']) >> 10
@@ -112,6 +112,8 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     if sprite.index == 4 && sprite.prev_index != 4
       path_speed_point_10 = WindowStates::GameSession::SystemHelpers::PathMotion.speed_point_10 @entity_manager, entity, time
       
+      drawable.prev_y -= 2
+      drawable.y      -= 2
       set_free_motion entity, time, drawable.x, drawable.y
       
       free_motion_y entity, time, \

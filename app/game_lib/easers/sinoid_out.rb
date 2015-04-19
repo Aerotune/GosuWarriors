@@ -1,6 +1,5 @@
 module Easers::SinoidOut
 #module SinoidOut
-  HALF_PI_POINT_10 = 1608
   class << self
     def value_point_10 duration, time, start_value_point_10, end_value_point_10
       change_point_10 = end_value_point_10 - start_value_point_10
@@ -13,8 +12,8 @@ module Easers::SinoidOut
       elsif time <= 0
         0
       else
-        angle_point_12 = time * IntMath::QUARTER_CIRCLE_POINT_12 / duration
-        IntMath.sin_point_16(angle_point_12) >> 6
+        radians_point_10 = time * IntMath::HALF_PI_POINT_10 / duration
+        IntMath.sin_point_10(radians_point_10)
       end
     end
     
@@ -23,13 +22,13 @@ module Easers::SinoidOut
         0
       elsif time > duration
         change_point_10 = end_value_point_10 - start_value_point_10
-        cos_point_10 = IntMath.cos_point_16(IntMath::QUARTER_CIRCLE_POINT_12) >> 6
-        integral_of_duration = start_value_point_10 * duration - ((change_point_10 * cos_point_10) / HALF_PI_POINT_10 * duration) + (change_point_10 * (1<<10) * duration / HALF_PI_POINT_10)
+        cos_point_10 = IntMath.cos_point_10(IntMath::HALF_PI_POINT_10)
+        integral_of_duration = start_value_point_10 * duration - ((change_point_10 * cos_point_10) / IntMath::HALF_PI_POINT_10 * duration) + (change_point_10 * (1<<10) * duration / IntMath::HALF_PI_POINT_10)
         integral_of_duration + end_value_point_10 * time
       else
         change_point_10 = end_value_point_10 - start_value_point_10
-        cos_point_10 = IntMath.cos_point_16(time * IntMath::QUARTER_CIRCLE_POINT_12 / duration) >> 6
-        start_value_point_10 * time - ((change_point_10 * cos_point_10) / HALF_PI_POINT_10 * duration) + (change_point_10 * (1<<10) * duration / HALF_PI_POINT_10)
+        cos_point_10 = IntMath.cos_point_10(time * IntMath::HALF_PI_POINT_10 / duration)
+        start_value_point_10 * time - ((change_point_10 * cos_point_10) / IntMath::HALF_PI_POINT_10 * duration) + (change_point_10 * (1<<10) * duration / IntMath::HALF_PI_POINT_10)
       end
     end
   
@@ -40,8 +39,8 @@ module Easers::SinoidOut
         0
       else
         change_point_10 = end_value_point_10 - start_value_point_10
-        cos_point_10 = IntMath.cos_point_16(time * IntMath::QUARTER_CIRCLE_POINT_12 / duration) >> 6
-        ((((HALF_PI_POINT_10 * change_point_10)>>10) * cos_point_10)>>10) / duration
+        cos_point_10 = IntMath.cos_point_10(time * IntMath::HALF_PI_POINT_10 / duration)
+        ((((IntMath::HALF_PI_POINT_10 * change_point_10)>>10) * cos_point_10)>>10) / duration
       end
     end
     

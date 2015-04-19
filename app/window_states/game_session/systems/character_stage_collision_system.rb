@@ -72,14 +72,8 @@ class WindowStates::GameSession::Systems::CharacterStageCollisionSystem
       x = drawable.x
       y = drawable.y
       prev_x = drawable.prev_x
-      prev_y = drawable.prev_y
-      
-      speed_x_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_x_point_10(@entity_manager, entity, time)
-      speed_y_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_y_point_10(@entity_manager, entity, time)      
-      
-      
-      #next unless speed_y_point_10 > -5000
-      
+      prev_y = drawable.prev_y    
+            
       hit_shape_indexes = []
       
       stage['shapes'].each_with_index do |shape, shape_index|
@@ -100,52 +94,11 @@ class WindowStates::GameSession::Systems::CharacterStageCollisionSystem
         line = [[prev_x, prev_y], [x, y]]
       
         start_point_index, start_point_distance = ShapeHelper::LineCollision.point_index_and_distance_along_line shape['outline'], line, &walkable_condition
-        #p 'line hit' if start_point_index
-        if start_point_index.nil?
-          start_point_index, start_point_distance = ShapeHelper::Point.point_index_and_distance_along_line shape['outline'], x, y, &walkable_condition
-          #p 'point hit' if start_point_index
-        end
         
         if start_point_index && start_point_distance
-          #change explicit
-          @entity_manager.remove_component entity, :FreeMotionX
-          @entity_manager.remove_component entity, :FreeMotionY
-          
-          WindowStates::GameSession::Systems::Commands::PathStartSet.do @entity_manager, entity, \
-          'shape_index' => hit_shape_index,
-          'start_point_index' => start_point_index,
-          'start_point_distance' => start_point_distance
-          
-          if start_point_distance == 0
-            if speed_x_point_10 < 0
-              point_1_index = (start_point_index - 1) % shape['outline'].length
-              point_2_index = (start_point_index    ) % shape['outline'].length
-            else
-              point_1_index = (start_point_index    ) % shape['outline'].length
-              point_2_index = (start_point_index + 1) % shape['outline'].length
-            end
-          elsif start_point_distance > 0
-            point_1_index = (start_point_index    ) % shape['outline'].length
-            point_2_index = (start_point_index + 1) % shape['outline'].length
-          elsif start_point_distance < 0
-            point_1_index = (start_point_index - 1) % shape['outline'].length
-            point_2_index = (start_point_index    ) % shape['outline'].length
-          end
-          
-          point_1 = shape['outline'][point_1_index]
-          point_2 = shape['outline'][point_2_index]
-          
-          line_length, axis_x_point_12, axis_y_point_12 = ShapeHelper::Line.line_length_and_axis_point_12 point_1, point_2
-          
-          start_speed_point_10 = ((axis_x_point_12 * speed_x_point_10) >> 12)*8/10 + ((axis_y_point_12 * speed_y_point_10)>>12)
-          
-          @entity_manager.add_component entity, WindowStates::GameSession::Components::PathMotionContinuous.new(
-            'id'                   => 0,
-            'start_time'           => time,
-            'start_speed_point_10' => start_speed_point_10,
-            'end_speed_point_10'   => 0,
-            'duration'             => 60
-          )
+          character['stage_collisions']['path_movement']['hit_shape_index'] = hit_shape_index
+          character['stage_collisions']['path_movement']['start_point_index'] = start_point_index
+          character['stage_collisions']['path_movement']['start_point_distance'] = start_point_distance
           
           character.set_animation_state = 'land'
           break

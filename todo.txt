@@ -1,6 +1,6 @@
 * Move the landing code to the land state
 * Jumping movement fix for air attacks
-
+* Refactor the motion system with ids and cleanups
 
 * Add effects overlay in sprite sheet editor (eg. glow)
 

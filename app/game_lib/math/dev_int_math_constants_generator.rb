@@ -1,39 +1,34 @@
 if __FILE__ == $0
   # Table Generator
-  @sin_table = []
-  @cos_table = []
-  @atan_table = []
-  one_circle_point_12 = 1 << 12
-  one_point_16 = 1 << 16
+  sin_table_point_10 = []
+  cos_table_point_10 = []
+  atan_table_point_10 = []
+  ln_cosh_table_point_10 = []
+  tau = Math::PI * 2
+  tau_point_10 = ((Math::PI * 2) * (1<<10)).round
+  pi_point_10 = tau_point_10 / 2
 
-  one_circle_point_12.times do |rotation|
-    radians = (rotation.to_f * (Math::PI * 2) / one_circle_point_12.to_f)
-    point_16 = (Math.sin(radians) * one_point_16.to_f).round
-    @sin_table[rotation] = point_16
-  end
-
-  one_circle_point_12.times do |rotation|
-    radians = (rotation.to_f * (Math::PI * 2) / one_circle_point_12.to_f)
-    point_16 = (Math.cos(radians) * one_point_16.to_f).round
-    @cos_table[rotation] = point_16
-  end
+  #tau_point_10.times do |i|
+  #  sin_table_point_10[i]  = (Math.sin(i.to_f / (1<<10).to_f) * (1<<10)).round
+  #  cos_table_point_10[i]  = (Math.cos(i.to_f / (1<<10).to_f) * (1<<10)).round
+  #  atan_table_point_10[i] = (Math.atan(i.to_f / (1<<5).to_f) * (1<<10)).round
+  #end
   
-  one_circle_point_12.times do |i|
-    #(x range is 0.0..64.0)
-    x = i.to_f / 64.0 # like i >> 6
-    point_12 = (Math.atan(x) / (Math::PI) * one_circle_point_12.to_f/2.0).round
-    @atan_table[i] = point_12
+  256.times do |i|
+    sin_table_point_10[i]  = (Math.sin( i / 256.0 * tau) * (1<<10)).round
+    cos_table_point_10[i]  = (Math.cos( i / 256.0 * tau) * (1<<10)).round
+    atan_table_point_10[i] = (Math.atan(i / 8.0   * tau) * (1<<10)).round
+    ln_cosh_table_point_10[i] = (Math.log(Math.cosh(i / 64.0)) * (1<<10)).round
   end
+  p ln_cosh_table_point_10
+  atan_table_point_10.delete(atan_table_point_10.last)
     
   File.open(File.join(File.dirname(__FILE__), 'int_math_constants.rb'), 'w+') do |file|
     file << <<-MODULE
 module IntMath
-  SIN_TABLE_POINT_16  = #{@sin_table.inspect}
-  COS_TABLE_POINT_16  = #{@cos_table.inspect}
-  ATAN_TABLE_POINT_12 = #{@atan_table.inspect}
-  SIN_TABLE_POINT_16.freeze
-  COS_TABLE_POINT_16.freeze
-  ATAN_TABLE_POINT_12.freeze
+  SIN_TABLE_POINT_10  = #{sin_table_point_10.inspect}.freeze
+  COS_TABLE_POINT_10  = #{cos_table_point_10.inspect}.freeze
+  ATAN_TABLE_POINT_10 = #{atan_table_point_10.inspect}.freeze
 end
 MODULE
   end

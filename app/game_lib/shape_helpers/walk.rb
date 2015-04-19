@@ -3,13 +3,13 @@ module ShapeHelper::Walk
   
   class << self
     def walkable? point1, point2, max_walkable_degrees=MAX_WALKABLE_DEGREES
-      max_walkable_angle    = IntMath::CIRCLE_POINT_12 * max_walkable_degrees / 360 
+      max_walkable_angle    = IntMath::TAU_POINT_10 * max_walkable_degrees / 360 
       walkable              = -max_walkable_angle .. max_walkable_angle
       
       dx = point2[0] - point1[0]
       dy = point2[1] - point1[1]
       
-      angle = IntMath.atan2_point_12 dy, dx
+      angle = IntMath.atan2_point_10 dy, dx
       walkable === angle
     end
     

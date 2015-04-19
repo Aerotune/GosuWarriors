@@ -16,7 +16,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     speed_point_10 = WindowStates::GameSession::SystemHelpers::PathMotion.speed_point_10 @entity_manager, entity, time
     #speed_y_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_y_point_10 @entity_manager, entity, time
   
-    set_free_motion entity, time, drawable.x, drawable.y
+    set_free_motion entity, time, drawable.x, drawable.y-2
     
     free_motion_y entity, time, \
       'start_speed_point_10' => -500, 
