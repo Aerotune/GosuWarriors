@@ -95,6 +95,24 @@ module IntMath
       result * factor
     end
     
+    def ln_cosh_point_10 x_point_10
+      progress = x_point_10 % (1<<10)
+      index1 = (x_point_10 * 64) >> 10
+      index2 = index1 + 1
+      last_index = LN_COSH_TABLE_POINT_10.length-1
+      
+      if index2 > last_index
+        extension = index1 - last_index
+        result = LN_COSH_TABLE_POINT_10.last + extension * 16 + ((progress * 16)>>10)
+      else
+        ln_cosh1 = LN_COSH_TABLE_POINT_10[index1]
+        ln_cosh2 = LN_COSH_TABLE_POINT_10[index2]
+        result = (((ln_cosh1) * ((1<<10) - progress) + (1<<9)) >> 10) + (((ln_cosh2 * progress) + (1<<9)) >> 10)
+      end
+      
+      result
+    end
+    
     def rotate_vector x, y, radians_point_10
       sin_point_10 = self.sin_point_10(radians_point_10)
       cos_point_10 = self.cos_point_10(radians_point_10)
@@ -119,9 +137,9 @@ module IntMath
       return result_x, result_y
     end
     
-    def scale_and_rotate_vector_around_point x, y, around_x, around_y, rotation_point_10, factor_x_point_10, factor_y_point_10
-      sin_point_10 = self.sin_point_10(rotation_point_10)
-      cos_point_10 = self.cos_point_10(rotation_point_10)
+    def scale_and_rotate_vector_around_point x, y, around_x, around_y, radians_point_10, factor_x_point_10, factor_y_point_10
+      sin_point_10 = self.sin_point_10(radians_point_10)
+      cos_point_10 = self.cos_point_10(radians_point_10)
       result_x = around_x - ((   (((around_x - x) * cos_point_10 * factor_x_point_10) - ((y - around_y) * sin_point_10 * factor_y_point_10))   ) >> 20)
       result_y = around_y - ((   (((around_y - y) * cos_point_10 * factor_y_point_10) + ((x - around_x) * sin_point_10 * factor_x_point_10))   ) >> 20)
       return result_x, result_y

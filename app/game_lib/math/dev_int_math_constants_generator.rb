@@ -20,7 +20,7 @@ if __FILE__ == $0
     atan_table_point_10[i] = (Math.atan(i / 8.0   * tau) * (1<<10)).round
     ln_cosh_table_point_10[i] = (Math.log(Math.cosh(i / 64.0)) * (1<<10)).round
   end
-  p ln_cosh_table_point_10
+
   atan_table_point_10.delete(atan_table_point_10.last)
     
   File.open(File.join(File.dirname(__FILE__), 'int_math_constants.rb'), 'w+') do |file|
@@ -29,6 +29,7 @@ module IntMath
   SIN_TABLE_POINT_10  = #{sin_table_point_10.inspect}.freeze
   COS_TABLE_POINT_10  = #{cos_table_point_10.inspect}.freeze
   ATAN_TABLE_POINT_10 = #{atan_table_point_10.inspect}.freeze
+  LN_COSH_TABLE_POINT_10 = #{ln_cosh_table_point_10.inspect}.freeze
 end
 MODULE
   end
