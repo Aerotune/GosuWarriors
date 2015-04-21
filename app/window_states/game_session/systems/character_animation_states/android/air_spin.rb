@@ -11,38 +11,38 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       'index' => 0,
       'start_index' => 0
     }
-    _free_motion_y = @entity_manager.get_component entity, :FreeMotionY
-    if _free_motion_y['end_speed_point_10'] == 19_500
-      speed_y_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_y_point_10 @entity_manager, entity, time
-      free_motion_y entity, time, \
-        'start_speed_point_10' => speed_y_point_10, 
-        'end_speed_point_10' => 19_500/3,
-        'transition_time' => 40,
-        'easer' => 'sin_out'
-    end
-    
-    _stats = stats(entity)
-    controls = @entity_manager.get_component entity, :Controls
-    left_or_right = controls.held.select { |control| ['left', 'right'].include? control }
-    case left_or_right.last
-    when 'left'
-      float_speed entity, time, -1, _stats['run_speed']/2
-    when 'right'
-      float_speed entity, time, 1, _stats['run_speed']/2
-    else
-      float_speed entity, time, 0      
-    end
+    #_free_motion_y = @entity_manager.get_component entity, :FreeMotionY
+    #if _free_motion_y['end_speed_point_10'] == 19_500
+    #  speed_y_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_y_point_10 @entity_manager, entity, time
+    #  free_motion_y entity, time, \
+    #    'start_speed_point_10' => speed_y_point_10, 
+    #    'end_speed_point_10' => 19_500/3,
+    #    'transition_time' => 40,
+    #    'easer' => 'sin_out'
+    #end
+    #
+    #_stats = stats(entity)
+    #controls = @entity_manager.get_component entity, :Controls
+    #left_or_right = controls.held.select { |control| ['left', 'right'].include? control }
+    #case left_or_right.last
+    #when 'left'
+    #  float_speed entity, time, -1, _stats['run_speed']/2
+    #when 'right'
+    #  float_speed entity, time, 1, _stats['run_speed']/2
+    #else
+    #  float_speed entity, time, 0      
+    #end
   end
   
-  def control_down entity, control, time
-    _stats = stats(entity)
-    case control
-    when 'left'
-      float_speed entity, time, -1, _stats['run_speed']/2
-    when 'right'
-      float_speed entity, time, 1, _stats['run_speed']/2
-    end
-  end
+  #def control_down entity, control, time
+  #  _stats = stats(entity)
+  #  case control
+  #  when 'left'
+  #    float_speed entity, time, -1, _stats['run_speed']/2
+  #  when 'right'
+  #    float_speed entity, time, 1, _stats['run_speed']/2
+  #  end
+  #end
   
   #def control_down entity, control, time
   #  character = @entity_manager.get_component entity, :Character

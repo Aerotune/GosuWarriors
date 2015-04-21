@@ -15,10 +15,11 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       'start_index' => 0
     }    
     
-    _stats = stats(entity)
-    speed           = _stats['run_speed']*drawable.factor_x
-    transition_time = _stats['run_transition_time']
-    transition_to_speed_point_10 entity, time, speed, transition_time, 'push_beyond_ledge' => true 
+    character.set_motion_state = "Run"
+    #_stats = stats(entity)
+    #speed           = _stats['run_speed']*drawable.factor_x
+    #transition_time = _stats['run_transition_time']
+    #transition_to_speed_point_10 entity, time, speed, transition_time, 'push_beyond_ledge' => true 
   end
   
   def control_down entity, control, time

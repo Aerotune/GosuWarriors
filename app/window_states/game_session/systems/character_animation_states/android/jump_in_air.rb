@@ -6,6 +6,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     character['cooldown']['jump_in_air'] = true
     
     character.queued_animation_state = 'jump_down'
+    character.set_motion_state = 'JumpInAir'
     WindowStates::GameSession::Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
       'start_time' => time,
@@ -13,33 +14,6 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       'index' => 0,
       'start_index' => 0
     }
-    _stats = stats(entity)
-    #speed           = 0
-    #transition_time = _stats['stop_transition_time']*2
-    #transition_to_speed_point_10 entity, time, speed, transition_time    
-    #path_speed_point_10 = WindowStates::GameSession::SystemHelpers::PathMotion.speed_point_10 @entity_manager, entity, time
-    #set_free_motion entity, time, drawable.x, drawable.y
-    
-    free_motion_y entity, time, \
-      'start_speed_point_10' => ANDROID_JUMP_IN_AIR_SPEED_POINT_10, 
-      'end_speed_point_10' => ANDROID_END_SPEED_POINT_10,
-      'transition_time' => ANDROID_JUMP_IN_AIR_TRANSITION_TIME_Y,
-      'easer' => 'quad_in_out'
-      
-    controls = @entity_manager.get_component entity, :Controls
-    _free_motion_x = @entity_manager.get_component entity, :FreeMotionX
-    
-    speed_x_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_x_point_10(@entity_manager, entity, time)
-    x_speed = case controls.held.select { |control| ['left', 'right'].include? control }.last
-    when 'left'; -_stats['run_speed']
-    when 'right'; _stats['run_speed']
-    else
-      0
-    end
-    free_motion_x entity, time, \
-      'start_speed_point_10' => speed_x_point_10,
-      'end_speed_point_10' => x_speed,
-      'transition_time' => 5_0
   end
   
   JUMP_SPEED_POINT_10 = -24_000

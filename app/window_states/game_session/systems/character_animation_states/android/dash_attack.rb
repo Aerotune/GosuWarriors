@@ -17,7 +17,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     speed           = 0
     transition_time = _stats['stop_transition_time']
     transition_to_speed_point_10 entity, time, speed, transition_time, 'push_beyond_ledge' => true 
-    tween entity, time+10, (120<<10)*drawable.factor_x, 30
+    tween entity, time+10, (150<<10)*drawable.factor_x, 25
   end
 
   def update entity, time

@@ -46,15 +46,21 @@ class WindowStates::GameSession::Systems::CharacterAnimationStates
   def update time
     @entity_manager.each_entity_with_component :Character do |entity, character|
       animation_state = @animation_state[character.type][character.animation_state]
+      motion_state = WindowStates::GameSession::Systems::MotionStates.const_get character.motion_state if character.motion_state
       
       if animation_state && character.control_type == "player"
         controls = @entity_manager.get_component entity, :Controls
         if controls
-          controls.released.each { |control| animation_state.control_up entity, control, time }
-          controls.pressed.each { |control| animation_state.control_down entity, control, time }
+          controls.released.each { |control| motion_state     .control_up   @entity_manager, entity, control, time }
+          controls.pressed.each  { |control| motion_state     .control_down @entity_manager, entity, control, time }
+          controls.released.each { |control| animation_state  .control_up   entity, control, time }
+          controls.pressed.each  { |control| animation_state  .control_down entity, control, time }
         end
       end
       
+      
+      
+      motion_state.update @entity_manager, entity, time if motion_state
       animation_state.update entity, time if animation_state
       
       

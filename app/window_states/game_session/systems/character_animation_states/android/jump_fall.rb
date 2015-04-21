@@ -12,21 +12,9 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       'start_index' => 0
     }
         
-    _stats = stats(entity)
+    #_stats = stats(entity)
     
-  #speed_y_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_y_point_10 @entity_manager, entity, time
-    _free_motion_y = @entity_manager.get_component entity, :FreeMotionY
-    unless _free_motion_y['end_speed_point_10'] == 19_500
-      free_motion_y entity, time, \
-        'start_speed_point_10' => 0, 
-        'end_speed_point_10' => 19_500,
-        'transition_time' => 29,
-        'easer' => 'sin_in'
-    end
-    #speed           = 0
-    #transition_time = _stats['stop_transition_time']
-    #transition_to_speed_point_10 entity, time, speed, transition_time    
-    #tween entity, time, (50<<10)*drawable.factor_x, 16
+    character.set_motion_state = "Fall"
   end
   
   def control_down entity, control, time

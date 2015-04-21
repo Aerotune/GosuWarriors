@@ -12,35 +12,35 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     controls = @entity_manager.get_component entity, :Controls
   end
   
-  def control_down entity, control, time
-    case control
-    when 'left'
-      _stats = stats(entity)
-      speed           = (_stats['run_speed']*-1)*8/10
-      transition_time = _stats['run_transition_time']
-      transition_to_speed_point_10 entity, time, speed, transition_time
-    when 'right'
-      _stats = stats(entity)
-      speed           = (_stats['run_speed']*1)*8/10
-      transition_time = _stats['run_transition_time']
-      transition_to_speed_point_10 entity, time, speed, transition_time
-    end
-  end
-  
-  def control_up entity, control, time
-    case control
-    when 'left'
-      _stats = stats(entity)
-      speed           = 0#(_stats['run_speed']*-1)*8/10 #!!! check if the other direction control is held
-      transition_time = _stats['stop_transition_time']
-      transition_to_speed_point_10 entity, time, speed, transition_time
-    when 'right'
-      _stats = stats(entity)
-      speed           = 0#(_stats['run_speed']*1)*8/10 #!!! check if the other direction control is held
-      transition_time = _stats['stop_transition_time']
-      transition_to_speed_point_10 entity, time, speed, transition_time
-    end
-  end
+  #def control_down entity, control, time
+  #  case control
+  #  when 'left'
+  #    _stats = stats(entity)
+  #    speed           = (_stats['run_speed']*-1)*8/10
+  #    transition_time = _stats['run_transition_time']
+  #    transition_to_speed_point_10 entity, time, speed, transition_time
+  #  when 'right'
+  #    _stats = stats(entity)
+  #    speed           = (_stats['run_speed']*1)*8/10
+  #    transition_time = _stats['run_transition_time']
+  #    transition_to_speed_point_10 entity, time, speed, transition_time
+  #  end
+  #end
+  #
+  #def control_up entity, control, time
+  #  case control
+  #  when 'left'
+  #    _stats = stats(entity)
+  #    speed           = 0#(_stats['run_speed']*-1)*8/10 #!!! check if the other direction control is held
+  #    transition_time = _stats['stop_transition_time']
+  #    transition_to_speed_point_10 entity, time, speed, transition_time
+  #  when 'right'
+  #    _stats = stats(entity)
+  #    speed           = 0#(_stats['run_speed']*1)*8/10 #!!! check if the other direction control is held
+  #    transition_time = _stats['stop_transition_time']
+  #    transition_to_speed_point_10 entity, time, speed, transition_time
+  #  end
+  #end
   
   def update entity, time
     sprite    = @entity_manager.get_component entity, :Sprite

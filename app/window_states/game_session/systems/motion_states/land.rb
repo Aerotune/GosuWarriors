@@ -2,6 +2,42 @@ module WindowStates::GameSession::Systems::MotionStates::Land
   extend WindowStates::GameSession::Systems::MotionState
   
   class << self
+    def control_down entity_manager, entity, control, time
+      case control
+      when 'left'
+        stats = character_stats entity_manager, entity
+        transition_to_speed_point_10 entity_manager, entity, time,
+          'speed_point_10'    => (stats['run_speed']*-1)*8/10,
+          'duration'          => stats['run_transition_time'],
+          'push_beyond_ledge' => true
+      when 'right'
+        stats = character_stats entity_manager, entity
+        transition_to_speed_point_10 entity_manager, entity, time,
+          'speed_point_10'    => (stats['run_speed']*1)*8/10,
+          'duration'          => stats['run_transition_time'],
+          'push_beyond_ledge' => true
+      end
+    end
+  
+    def control_up entity_manager, entity, control, time
+      case control
+      when 'left'
+        #!!! check if right is down
+        stats = character_stats entity_manager, entity
+        transition_to_speed_point_10 entity_manager, entity, time,
+          'speed_point_10'    => 0,
+          'duration'          => stats['stop_transition_time'],
+          'push_beyond_ledge' => true
+      when 'right'
+        #!!! check if left is down
+        stats = character_stats entity_manager, entity
+        transition_to_speed_point_10 entity_manager, entity, time,
+          'speed_point_10'    => 0,
+          'duration'          => stats['stop_transition_time'],
+          'push_beyond_ledge' => true
+      end
+    end
+    
     def set entity_manager, entity, time
       #change explicit
       stats     = character_stats entity_manager, entity
