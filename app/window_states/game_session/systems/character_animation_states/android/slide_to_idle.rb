@@ -15,15 +15,12 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     }
     
     character.queued_animation_state = 'idle'
-    
-    _stats          = stats(entity)
-    speed           = 0
-    transition_time = _stats['stop_transition_time']
-    transition_to_speed_point_10 entity, time, speed, transition_time, 'push_beyond_ledge' => true
+    character.set_motion_state = 'Stand'
   end
   
   def control_down entity, control, time
     character = @entity_manager.get_component entity, :Character
+    sprite    = @entity_manager.get_component entity, :Sprite
     
     case control
     when 'attack'

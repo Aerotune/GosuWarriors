@@ -80,6 +80,7 @@ module ShapeHelper
     # source:
     # http://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#Ruby
     def convex_hull points
+      points = Marshal.load(Marshal.dump(points))
       points.sort!.uniq!
       return points if points.length < 3
       def cross(o, a, b)

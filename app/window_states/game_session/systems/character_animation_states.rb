@@ -58,6 +58,7 @@ class WindowStates::GameSession::Systems::CharacterAnimationStates
       animation_state.update entity, time if animation_state
       
       
+      
       if character.set_animation_state        
         next_animation_state = @animation_state[character.type][character.set_animation_state]
         if next_animation_state
@@ -66,10 +67,28 @@ class WindowStates::GameSession::Systems::CharacterAnimationStates
           character.animation_state = character.set_animation_state
           character.set_animation_state = nil
           
+          
           prev_animation_state.on_unset entity, time if prev_animation_state
           next_animation_state.on_set   entity, time
         end
-      end      
+      end
+      
+      if character.set_motion_state
+        next_motion_state_name = character.set_motion_state
+        character.set_motion_state = nil
+        
+        next_motion_state = WindowStates::GameSession::Systems::MotionStates.const_get next_motion_state_name
+        
+        
+        if next_motion_state
+          prev_motion_state = WindowStates::GameSession::Systems::MotionStates.const_get character.motion_state if character.motion_state
+          unless character.motion_state == next_motion_state_name
+            prev_motion_state.unset @entity_manager, entity, time if prev_motion_state
+            next_motion_state.set   @entity_manager, entity, time
+            character.motion_state = next_motion_state_name
+          end
+        end
+      end  
     end
   end
     

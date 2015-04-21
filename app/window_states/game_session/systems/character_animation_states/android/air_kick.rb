@@ -3,7 +3,6 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable
     
-    #character.queued_animation_state = 'idle'
     WindowStates::GameSession::Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
       'start_time' => time,
@@ -21,7 +20,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     when 'right'
       float_speed entity, time, 1, _stats['run_speed']/2
     else
-      float_speed entity, time, 0      
+      float_speed entity, time, 0
     end
   end
   
@@ -35,26 +34,9 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     end
   end
   
-  #def control_down entity, control, time
-  #  character = @entity_manager.get_component entity, :Character
-  #  sprite = @entity_manager.get_component entity, :Sprite
-  #  case control
-  #  when 'attack'
-  #    character.queued_animation_state = 'kick_1' 
-  #  when 'left'
-  #    character.queued_animation_state = 'idle'
-  #  when 'right'
-  #    character.queued_animation_state = 'idle'
-  #  end
-  #end
-  
   def update entity, time
     sprite = @entity_manager.get_component(entity, :Sprite)
     character = @entity_manager.get_component(entity, :Character)
-    
-    #if character.queued_animation_state == 'kick_1' && (8..15) === sprite.index
-    #  character.set_animation_state = character.queued_animation_state
-    #end
     
     if sprite.done
       character.set_animation_state = 'jump_fall'

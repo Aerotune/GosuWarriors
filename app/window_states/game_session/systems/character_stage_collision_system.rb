@@ -84,20 +84,20 @@ class WindowStates::GameSession::Systems::CharacterStageCollisionSystem
         end
       end
       
-      #warn "Multiple hit shapes when character hit map" if hit_shape_indexes.length > 1
-      
+      #!!!
       hit_shape_indexes.each do |hit_shape_index|
         shape = stage['shapes'][hit_shape_index]
         
         walkable_condition = ->(point_1, point_2) {ShapeHelper::Walk.walkable?(point_1, point_2)}
         
-        line = [[prev_x, prev_y], [x, y]]
-      
-        start_point_index, start_point_distance = ShapeHelper::LineCollision.point_index_and_distance_along_line shape['outline'], line, &walkable_condition
+        #line = [[prev_x, prev_y], [x, y]]
+        #start_point_index, start_point_distance = ShapeHelper::LineCollision.point_index_and_distance_along_line shape['outline'], line, &walkable_condition
+        
+        start_point_index, start_point_distance = ShapeHelper::Point.point_index_and_distance_along_line shape['outline'], x, y, &walkable_condition
         
         if start_point_index && start_point_distance
-          character['stage_collisions']['path_movement']['hit_shape_index'] = hit_shape_index
-          character['stage_collisions']['path_movement']['start_point_index'] = start_point_index
+          character['stage_collisions']['path_movement']['hit_shape_index']      = hit_shape_index
+          character['stage_collisions']['path_movement']['start_point_index']    = start_point_index
           character['stage_collisions']['path_movement']['start_point_distance'] = start_point_distance
           
           character.set_animation_state = 'land'

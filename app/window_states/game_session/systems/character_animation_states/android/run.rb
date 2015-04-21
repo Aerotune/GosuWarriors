@@ -35,7 +35,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
         character.set_animation_state = 'slide_to_idle'
       end
     when 'attack'
-      character.set_animation_state = 'punch_1'
+      character.set_animation_state = 'dash_attack'
     when 'jump'
       character.set_animation_state = 'jump_from_ground'
     end

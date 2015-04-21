@@ -26,9 +26,9 @@ class WindowStates::GameSession::Systems::PathMotion
       path_start.distance -= distance_beyond_path
       character['stage_collisions']['path_movement']['distance_beyond_ledge'] = distance_beyond_path
       if distance_beyond_path > 0 && push_beyond_ledge
-        character['stage_collisions']['path_movement']['direction_beyond_ledge'] = 'right'
+        character['stage_collisions']['path_movement']['direction_beyond_ledge'] = 1
       elsif distance_beyond_path < 0 && push_beyond_ledge
-        character['stage_collisions']['path_movement']['direction_beyond_ledge'] = 'left'
+        character['stage_collisions']['path_movement']['direction_beyond_ledge'] = -1
       else
         character['stage_collisions']['path_movement']['direction_beyond_ledge'] = nil
       end

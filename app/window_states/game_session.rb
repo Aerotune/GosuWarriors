@@ -83,7 +83,7 @@ class WindowStates::GameSession < WindowState
   
   def draw
     $window.fill 0xFF222222
-    $window.scale 0.82, 0.82, $window.width/2, $window.height/2 do
+    $window.scale 0.8, 0.8, $window.width/2, $window.height/2 do
       $window.translate -$drawable.x+$window.width/2, -$drawable.y+$window.height*2/3 do
         @stage['shapes'].each do |shape|
           ShapeHelper::WalkRender.draw_non_walkable shape, 0xFFFF0000

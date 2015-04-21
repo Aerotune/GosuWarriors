@@ -42,9 +42,9 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       'transition_time' => 5_0
   end
   
-  #JUMP_SPEED_POINT_10 = -24_000
-  #END_SPEED_POINT_10  = 0#29_400
-  #TRANSITION_TIME_Y   = 32
+  JUMP_SPEED_POINT_10 = -24_000
+  END_SPEED_POINT_10  = 0#29_400
+  TRANSITION_TIME_Y   = 32
   
   def control_down entity, control, time
     sprite = @entity_manager.get_component entity, :Sprite

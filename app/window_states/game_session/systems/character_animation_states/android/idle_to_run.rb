@@ -26,7 +26,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     
     case control
     when 'attack'
-      character.queued_animation_state = 'punch_1'
+      character.queued_animation_state = 'dash_attack'
     when 'jump'
       character.set_animation_state = 'jump_from_ground'
     end

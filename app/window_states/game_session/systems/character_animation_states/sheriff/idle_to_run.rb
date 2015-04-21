@@ -1,1 +1,0 @@
-WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE__, :idle_to_run
