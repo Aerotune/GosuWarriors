@@ -18,13 +18,14 @@ class WindowStates::GameSession::Systems::CharacterAnimationStates
   Dir[File.join(GAME_SESSION_PATH, *%w[systems character_animation_states general *.rb])].each { |file| require file }
   Dir[File.join(GAME_SESSION_PATH, *%w[systems character_animation_states ** *.rb])].each { |file| require file }
   
-  def initialize entity_manager
-    @entity_manager = entity_manager
+  def initialize game_session
+    @game_session   = game_session
+    @entity_manager = game_session.entity_manager
     @animation_state = {}
     @@animation_state_classes.each do |character_type, animation_state_classes|
       @animation_state[character_type] ||= {}
       animation_state_classes.each do |animation_state, animation_state_klass|
-        @animation_state[character_type][animation_state] = animation_state_klass.new(@entity_manager)
+        @animation_state[character_type][animation_state] = animation_state_klass.new(@game_session)
       end
     end
   end
@@ -89,8 +90,8 @@ class WindowStates::GameSession::Systems::CharacterAnimationStates
         if next_motion_state
           prev_motion_state = WindowStates::GameSession::Systems::MotionStates.const_get character.motion_state if character.motion_state
           unless character.motion_state == next_motion_state_name
-            prev_motion_state.unset @entity_manager, entity, time if prev_motion_state
-            next_motion_state.set   @entity_manager, entity, time
+            prev_motion_state.unset @game_session, entity, time if prev_motion_state
+            next_motion_state.set   @game_session, entity, time
             character.motion_state = next_motion_state_name
           end
         end

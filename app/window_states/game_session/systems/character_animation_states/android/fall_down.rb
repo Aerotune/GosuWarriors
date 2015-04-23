@@ -59,5 +59,9 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     sprite    = @entity_manager.get_component entity, :Sprite
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable
+    
+    if character['stage_collisions']['path_movement']['start_point_distance']
+      character.set_animation_state = 'land'
+    end
   end
 end

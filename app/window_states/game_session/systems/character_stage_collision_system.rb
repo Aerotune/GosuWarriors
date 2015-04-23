@@ -1,11 +1,11 @@
 class WindowStates::GameSession::Systems::CharacterStageCollisionSystem
-  def initialize entity_manager
-    @entity_manager = entity_manager
+  def initialize game_session
+    @stage = game_session.stage
+    @entity_manager = game_session.entity_manager
   end
   
   def update time
-    stage = Resources::Stages['test_level']
-    $stage = stage #!!!
+    stage = @stage
     
     @entity_manager.each_entity_with_component :Character do |entity, character|
       sprite = @entity_manager.get_component entity, :Sprite
@@ -100,7 +100,7 @@ class WindowStates::GameSession::Systems::CharacterStageCollisionSystem
           character['stage_collisions']['path_movement']['start_point_index']    = start_point_index
           character['stage_collisions']['path_movement']['start_point_distance'] = start_point_distance
           
-          character.set_animation_state = 'land'
+          #character.set_animation_state = 'land'
           break
         end
         

@@ -5,7 +5,8 @@ class WindowStates::DevLevelEditor < WindowState
   
   def initialize
     Resources::Stages.require!
-    @stage         = Resources::Stages['test_level']
+    @stage         = Resources::Stages['android_capsule_lab']
+    @stage['shapes'] ||= []
     @stage['shapes'][0] ||= ShapeHelper.create_shape
     
     set_shape_index 0

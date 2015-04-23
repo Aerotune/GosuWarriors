@@ -2,7 +2,8 @@ module WindowStates::GameSession::Systems::MotionStates::Run
   extend WindowStates::GameSession::Systems::MotionState
   
   class << self
-    def set entity_manager, entity, time
+    def set game_session, entity, time
+      entity_manager = game_session.entity_manager
       stats = character_stats entity_manager, entity
       drawable = entity_manager.get_component entity, :Drawable
     

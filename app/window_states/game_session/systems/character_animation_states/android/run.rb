@@ -1,8 +1,4 @@
 WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE__ do
-  def initialize entity_manager
-    @entity_manager = entity_manager
-  end
-  
   def on_set entity, time
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable

@@ -1,13 +1,11 @@
 class WindowStates::GameSession::Systems::PathMotion
-  def initialize entity_manager
-    @entity_manager = entity_manager
+  def initialize game_session
+    @game_session   = game_session
+    @entity_manager = game_session.entity_manager
   end
   
   def update time
-    stage = Resources::Stages['test_level']
-    #spawn       = stage['spawn']
-    #shape_index = spawn['shape_index']
-    #shape       = stage['shapes'][shape_index]
+    stage = @game_session.stage
     
     @entity_manager.each_entity_with_component :PathStart do |entity, path_start|
       drawable = @entity_manager.get_component entity, :Drawable

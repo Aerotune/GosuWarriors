@@ -1,38 +1,40 @@
 class WindowStates::GameSession::Systems::Controls  
-  def initialize entity_manager
-    @entity_manager = entity_manager
+  def initialize game_session
+    @game_session   = game_session
+    @entity_manager = game_session.entity_manager
     @control_resource = Resources::Controls.new
-    @pressed = []
-    @released = []
   end
   
   def key_down key
     @entity_manager.each_entity_with_component :Controls do |entity, controls|
-      @pressed << @control_resource.control_for_key(key)
+      controls.pressed << @control_resource.control_for_key(key)
+      controls.held    << @control_resource.control_for_key(key)
     end
   end
   
   def key_up key
     @entity_manager.each_entity_with_component :Controls do |entity, controls|
-      @released << @control_resource.control_for_key(key)
+      control_id = @control_resource.control_for_key(key)
+      controls.pressed.delete control_id
+      controls.held.delete control_id
+      controls.released << control_id
     end
   end
   
   def update
     @entity_manager.each_entity_with_component :Controls do |entity, controls|
-      controls.held.clear
       KEY_SYMBOLS.values.each do |key|
         control_id = @control_resource.control_for_key(key)
-        controls.held << control_id if $window.key_down? key
+        
+        controls.pressed.each do |control_id|
+          if $window.key_down? key
+            controls.held << control_id
+          end
+        end
+        
+        controls.pressed.clear
+        controls.released.clear
       end
-      
-      controls.pressed.clear
-      controls.released.clear
-      
-      controls.pressed.push *@pressed
-      controls.released.push *@released
     end
-    @pressed.clear
-    @released.clear
   end
 end

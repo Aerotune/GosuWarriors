@@ -26,7 +26,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
   def control_down entity, control, time
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable
-    
+    controls  = @entity_manager.get_component entity, :Controls
     case control
     when 'right'
       character.set_animation_state = 'idle_to_run'
@@ -35,7 +35,22 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       character.set_animation_state = 'idle_to_run'
       drawable.factor_x = -1
     when 'attack'
-      character.set_animation_state = 'punch_1'
+      case drawable.factor_x
+      when 1
+        if controls.held.include?('right')
+          character.set_animation_state = 'dash_attack'
+        else
+          character.set_animation_state = 'punch_1'
+        end
+      when -1
+        if controls.held.include?('left')
+          character.set_animation_state = 'dash_attack'
+        else
+          character.set_animation_state = 'punch_1'
+        end
+      end
+      
+      
     when 'jump'
       character.set_animation_state = 'jump_from_ground'
     end    

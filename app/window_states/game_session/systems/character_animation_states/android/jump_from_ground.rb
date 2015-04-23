@@ -3,7 +3,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable
     
-    character.queued_animation_state = 'jump_down'
+    character.queued_animation_state = nil
     WindowStates::GameSession::Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
       'start_time' => time,
@@ -26,21 +26,27 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
   ANDROID_JUMP_IN_AIR_TRANSITION_TIME_Y = ANDROID_TRANSITION_TIME_Y * 12 / 10
   
   def control_down entity, control, time
-    sprite = @entity_manager.get_component entity, :Sprite
-    return unless sprite.index > 4
-      
+    character = @entity_manager.get_component entity, :Character
+    controls = @entity_manager.get_component entity, :Controls
+    
     case control
-    when 'left'
-      float_speed entity, time, -1
-    when 'right'
-      float_speed entity, time, 1
+    #when 'left'
+    #  float_speed entity, time, -1 if character.motion_state == 'Jump'
+    #when 'right'
+    #  float_speed entity, time, 1 if character.motion_state == 'Jump'
     when 'attack'
-      character = @entity_manager.get_component entity, :Character
-      controls = @entity_manager.get_component entity, :Controls
-      if controls.held.include? 'up'
-        character.set_animation_state = 'air_kick'
+      if character.motion_state == 'Jump'
+        if controls.held.include? 'up'
+          character.set_animation_state = 'air_kick'
+        else
+          character.set_animation_state = 'air_spin'
+        end
       else
-        character.set_animation_state = 'air_spin'
+        if controls.held.include? 'up'
+          character.queued_animation_state = 'air_kick'
+        else
+          character.queued_animation_state = 'air_spin'
+        end
       end
     when 'jump'
       _free_motion_y = @entity_manager.get_component(entity, :FreeMotionY)
@@ -51,28 +57,28 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     end
   end
   
-  def control_up entity, control, time
-    sprite = @entity_manager.get_component entity, :Sprite
-    return unless sprite.index > 4
-    
-    controls = @entity_manager.get_component entity, :Controls
-    case control
-    when 'right'
-      if controls.held.detect { |control| control == 'left' }
-        #float_speed entity, time, -1
-      else
-        #float_speed entity, time, 0
-      end
-    when 'left'
-      if controls.held.detect { |control| control == 'right' }
-        #float_speed entity, time, 1
-      else
-        #float_speed entity, time, 0
-      end
-    when 'jump'
-      #fall entity, time
-    end
-  end
+  #def control_up entity, control, time
+  #  sprite = @entity_manager.get_component entity, :Sprite
+  #  return unless sprite.index > 4
+  #  
+  #  controls = @entity_manager.get_component entity, :Controls
+  #  case control
+  #  when 'right'
+  #    if controls.held.detect { |control| control == 'left' }
+  #      #float_speed entity, time, -1
+  #    else
+  #      #float_speed entity, time, 0
+  #    end
+  #  when 'left'
+  #    if controls.held.detect { |control| control == 'right' }
+  #      #float_speed entity, time, 1
+  #    else
+  #      #float_speed entity, time, 0
+  #    end
+  #  when 'jump'
+  #    #fall entity, time
+  #  end
+  #end
   
   #def fall entity, time
   #  _free_motion_y = @entity_manager.get_component(entity, :FreeMotionY)
@@ -110,10 +116,19 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     
     if character.motion_state == "Fall"
       character.set_animation_state = 'jump_fall'
+      character.set_motion_state = "Fall"
     end
     
     if sprite.index == 4 && sprite.prev_index != 4
+      character.set_animation_state = character.queued_animation_state if character.queued_animation_state
       character.set_motion_state = "Jump"
     end
+    
+    if character.motion_state == "Jump"
+      if character['stage_collisions']['path_movement']['start_point_distance']
+        character.set_animation_state = 'land'
+      end
+    end
+    
   end
 end

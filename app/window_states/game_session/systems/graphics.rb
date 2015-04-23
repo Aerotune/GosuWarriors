@@ -1,8 +1,9 @@
 class WindowStates::GameSession::Systems::Graphics
   Dir[File.join(GAME_SESSION_PATH, *%w[systems graphics *.rb])].each { |file| require file }
   
-  def initialize entity_manager
-    @entity_manager = entity_manager
+  def initialize game_session
+    @game_session   = game_session
+    @entity_manager = game_session.entity_manager
     @drawable_entities = []
     @sprite_system = WindowStates::GameSession::Systems::Graphics::Sprite.new @entity_manager
   end

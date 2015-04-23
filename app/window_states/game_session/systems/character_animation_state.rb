@@ -1,6 +1,7 @@
 class WindowStates::GameSession::Systems::CharacterAnimationState
-  def initialize entity_manager
-    @entity_manager = entity_manager
+  def initialize game_session
+    @game_session   = game_session
+    @entity_manager = game_session.entity_manager
   end
   
   def float_speed entity, time, factor_x, speed=nil

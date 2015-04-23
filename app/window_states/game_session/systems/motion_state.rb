@@ -72,22 +72,30 @@ module WindowStates::GameSession::Systems::MotionState
   def set_free_motion entity_manager, entity, time, x, y    
     #speed_x_point_10 = WindowStates::GameSession::SystemHelpers::PathMotion.speed_point_10 @entity_manager, entity, 0
     #change explicit
-    free_motion_x = WindowStates::GameSession::Components::FreeMotionX.new \
-      'start_time'            => time,
-      'start_x'               => x,
-      'start_speed_point_10'  => 0,
-      'end_speed_point_10'    => 0,
-      'transition_time'       => 10
-        
-    free_motion_y = WindowStates::GameSession::Components::FreeMotionY.new \
-      'start_time'            => time,
-      'start_y'               => y,
-      'start_speed_point_10'  => 0,
-      'end_speed_point_10'    => 0,
-      'transition_time'       => 10
+    free_motion_x = entity_manager.get_component entity, :FreeMotionX
+    free_motion_y = entity_manager.get_component entity, :FreeMotionY
     
-    entity_manager.add_component entity, free_motion_x
-    entity_manager.add_component entity, free_motion_y
+    unless free_motion_x
+      free_motion_x = WindowStates::GameSession::Components::FreeMotionX.new \
+        'start_time'            => time,
+        'start_x'               => x,
+        'start_speed_point_10'  => 0,
+        'end_speed_point_10'    => 0,
+        'transition_time'       => 10
+    
+      entity_manager.add_component entity, free_motion_x
+    end
+    
+    unless free_motion_y
+      free_motion_y = WindowStates::GameSession::Components::FreeMotionY.new \
+        'start_time'            => time,
+        'start_y'               => y,
+        'start_speed_point_10'  => 0,
+        'end_speed_point_10'    => 0,
+        'transition_time'       => 10
+    
+      entity_manager.add_component entity, free_motion_y
+    end
     
     entity_manager.remove_component entity, :PathStart
     entity_manager.remove_component entity, :PathMotionContinuous

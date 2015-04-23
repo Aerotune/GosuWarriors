@@ -2,8 +2,8 @@ module WindowStates::GameSession::Systems::MotionStates::JumpInAir
   extend WindowStates::GameSession::Systems::MotionState
   
   class << self
-    def set entity_manager, entity, time
-      #sprite    = @entity_manager.get_component entity, :Sprite
+    def set game_session, entity, time
+      entity_manager = game_session.entity_manager
       character = entity_manager.get_component entity, :Character
       drawable  = entity_manager.get_component entity, :Drawable
       controls  = entity_manager.get_component entity, :Controls
@@ -95,6 +95,8 @@ module WindowStates::GameSession::Systems::MotionStates::JumpInAir
         if time_left <= _free_motion_y['transition_time']/6
           character.set_motion_state = 'Fall'
         end
+      else
+        character.set_motion_state = 'Fall'
       end
     end
   end

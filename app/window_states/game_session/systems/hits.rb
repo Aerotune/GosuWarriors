@@ -1,8 +1,9 @@
 class WindowStates::GameSession::Systems::Hits
   SystemHelpers = WindowStates::GameSession::SystemHelpers
   
-  def initialize entity_manager
-    @entity_manager = entity_manager
+  def initialize game_session
+    @game_session   = game_session
+    @entity_manager = game_session.entity_manager
   end
   
   def update time

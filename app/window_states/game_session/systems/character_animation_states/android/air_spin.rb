@@ -65,8 +65,24 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     #  character.set_animation_state = character.queued_animation_state
     #end
     
-    if sprite.done
-      character.set_animation_state = 'jump_fall'
+    if character['stage_collisions']['path_movement']['direction_beyond_ledge']
+      character.set_motion_state = 'Fall'
     end
+    
+    if character['stage_collisions']['path_movement']['start_point_distance']
+      character.set_motion_state = 'Land'
+    end
+    
+    if sprite.done
+      motion_state = character.motion_state
+      motion_state = character.set_motion_state if character.set_motion_state
+      
+      case motion_state
+      when 'Land'
+        character.set_animation_state = 'land'
+      else
+        character.set_animation_state = 'jump_fall'
+      end
+    end    
   end
 end

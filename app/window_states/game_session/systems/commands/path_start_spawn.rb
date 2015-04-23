@@ -1,7 +1,7 @@
 module WindowStates::GameSession::Systems::Commands::PathStartSpawn
   class << self
     def do entity_manager, entity, options
-      stage       = Resources::Stages[options['stage']]
+      stage       = options['stage']
       spawn       = stage['spawn']
       shape_index = spawn['shape_index']
       shape       = stage['shapes'][shape_index]

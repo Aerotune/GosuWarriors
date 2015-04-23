@@ -1,6 +1,7 @@
 module WindowStates::GameSession::Factories::Target
   class << self
-    def build entity_manager, x, y
+    def build game_session, x, y
+      entity_manager = game_session.entity_manager
       entity = entity_manager.create_entity
       
       drawable  = WindowStates::GameSession::Components::Drawable.new(

@@ -13,7 +13,8 @@ module Resources::Stages
       
       Dir[File.join(STAGE_RESOURCE_PATH, '*.msgpack')].each do |msgpack_path|
         stage_id = File.basename(msgpack_path, '.msgpack')
-        msgpack  = MessagePack.unpack_file(msgpack_path)
+        msgpack  = MessagePack.unpack_file(msgpack_path) || {}
+        
         @stages[stage_id] = {
           'id' => stage_id,
           'shapes' => msgpack['shapes'] || [],

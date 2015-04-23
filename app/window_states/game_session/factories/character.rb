@@ -1,6 +1,7 @@
 module WindowStates::GameSession::Factories::Character
   class << self
-    def build entity_manager, character_animation_states_system, character_type, control_type, set_animation_state="idle"
+    def build game_session, character_animation_states_system, character_type, control_type, set_animation_state="idle"
+      entity_manager = game_session.entity_manager
       entity = entity_manager.create_entity
       
       character = WindowStates::GameSession::Components::Character.new \
@@ -31,7 +32,7 @@ module WindowStates::GameSession::Factories::Character
         'factor_x' => 1
         
       $drawable = drawable
-      WindowStates::GameSession::Systems::Commands::PathStartSpawn.do entity_manager, entity, 'stage' => 'test_level'
+      WindowStates::GameSession::Systems::Commands::PathStartSpawn.do entity_manager, entity, 'stage' => game_session.stage
             
       entity_manager.add_component entity, character
       entity_manager.add_component entity, controls

@@ -20,32 +20,42 @@ module WindowStates::GameSession::Systems::MotionStates::Land
     end
   
     def control_up entity_manager, entity, control, time
+      controls = entity_manager.get_component entity, :Controls
       case control
       when 'left'
-        #!!! check if right is down
-        stats = character_stats entity_manager, entity
-        transition_to_speed_point_10 entity_manager, entity, time,
-          'speed_point_10'    => 0,
-          'duration'          => stats['stop_transition_time'],
-          'push_beyond_ledge' => true
+        if controls.held.include? 'right'
+          control_down entity_manager, entity, 'right', time
+        else
+          stats = character_stats entity_manager, entity
+          transition_to_speed_point_10 entity_manager, entity, time,
+            'speed_point_10'    => 0,
+            'duration'          => stats['stop_transition_time'],
+            'push_beyond_ledge' => true
+        end
       when 'right'
-        #!!! check if left is down
-        stats = character_stats entity_manager, entity
-        transition_to_speed_point_10 entity_manager, entity, time,
-          'speed_point_10'    => 0,
-          'duration'          => stats['stop_transition_time'],
-          'push_beyond_ledge' => true
+        if controls.held.include? 'left'
+          control_down entity_manager, entity, 'left', time
+        else
+          stats = character_stats entity_manager, entity
+          transition_to_speed_point_10 entity_manager, entity, time,
+            'speed_point_10'    => 0,
+            'duration'          => stats['stop_transition_time'],
+            'push_beyond_ledge' => true
+        end
       end
     end
     
-    def set entity_manager, entity, time
+    def set game_session, entity, time
       #change explicit
+      stage          = game_session.stage
+      entity_manager = game_session.entity_manager
       stats     = character_stats entity_manager, entity
       character = entity_manager.get_component entity, :Character
       controls  = entity_manager.get_component entity, :Controls
       hit_shape_index      = character['stage_collisions']['path_movement']['hit_shape_index']
       start_point_index    = character['stage_collisions']['path_movement']['start_point_index']
       start_point_distance = character['stage_collisions']['path_movement']['start_point_distance']
+      character['stage_collisions']['path_movement'].clear
     
       speed_x_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_x_point_10 entity_manager, entity, time
       speed_y_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_y_point_10 entity_manager, entity, time
@@ -58,7 +68,7 @@ module WindowStates::GameSession::Systems::MotionStates::Land
       'start_point_index'    => start_point_index,
       'start_point_distance' => start_point_distance
     
-      shape = $stage['shapes'][hit_shape_index]
+      shape = stage['shapes'][hit_shape_index]
     
       if start_point_distance == 0
         if speed_x_point_10 < 0
@@ -92,16 +102,10 @@ module WindowStates::GameSession::Systems::MotionStates::Land
         'duration'             => 60
       )
       
-      #change explicit
-      ## Move if direction key held
-      
+      #change explicit      
       left_or_right = controls.held.select { |control| ['left', 'right'].include? control }
       if left_or_right.last
-        factor_x = left_or_right.last == 'right' ? 1 : -1
-        transition_to_speed_point_10 entity_manager, entity, time,
-          'speed_point_10'    => stats['run_speed']*factor_x*8/10,
-          'duration'          => stats['run_transition_time'],
-          'push_beyond_ledge' => true
+        control_down entity_manager, entity, left_or_right.last, time
       else
         transition_to_speed_point_10 entity_manager, entity, time,
           'speed_point_10'    => 0,

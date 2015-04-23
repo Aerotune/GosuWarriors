@@ -2,8 +2,8 @@ module WindowStates::GameSession::Systems::MotionStates::Jump
   extend WindowStates::GameSession::Systems::MotionState
   
   class << self
-    def set entity_manager, entity, time
-      #sprite    = @entity_manager.get_component entity, :Sprite
+    def set game_session, entity, time
+      entity_manager = game_session.entity_manager
       character = entity_manager.get_component entity, :Character
       drawable  = entity_manager.get_component entity, :Drawable
       controls  = entity_manager.get_component entity, :Controls
@@ -27,10 +27,8 @@ module WindowStates::GameSession::Systems::MotionStates::Jump
       stats = character_stats entity_manager, entity
       x_speed_point_10 = \
       case controls.held.select { |control| ['left', 'right'].include? control }.last
-      when 'left'
-        -stats['run_speed']
-      when 'right'
-        stats['run_speed']
+      when 'left'; -stats['run_speed']
+      when 'right'; stats['run_speed']
       else
         0
       end
@@ -42,18 +40,16 @@ module WindowStates::GameSession::Systems::MotionStates::Jump
   
     def update entity_manager, entity, time
       character      = entity_manager.get_component entity, :Character
-      _free_motion_y = entity_manager.get_component entity, :FreeMotionY
-      if _free_motion_y
-        _free_motion_y_time = time - _free_motion_y['start_time']
-        time_left = _free_motion_y['transition_time'] - _free_motion_y_time
-        character.set_motion_state = 'Fall' if time_left <= _free_motion_y['transition_time']/6
-      end
+      _free_motion_y = entity_manager.get_component entity, :FreeMotionY      
+      _free_motion_y_time = time - _free_motion_y['start_time']
+      time_left = _free_motion_y['transition_time'] - _free_motion_y_time
+      character.set_motion_state = 'Fall' if time_left <= _free_motion_y['transition_time']/6
     end
     
     def fall entity_manager, entity, time
       _free_motion_y = entity_manager.get_component entity, :FreeMotionY
     
-      if _free_motion_y && _free_motion_y['start_speed_point_10'] == ANDROID_JUMP_SPEED_POINT_10
+      if _free_motion_y['start_speed_point_10'] == ANDROID_JUMP_SPEED_POINT_10
         speed_y_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_y_point_10 entity_manager, entity, time
         progress_point_10 = ((time - _free_motion_y['start_time'])<<10) / _free_motion_y['transition_time'] 
         remaining_transition_time = (((1<<10) - progress_point_10) * _free_motion_y['transition_time']) >> 10

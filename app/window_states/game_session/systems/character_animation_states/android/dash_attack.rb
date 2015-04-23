@@ -24,17 +24,22 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     sprite = @entity_manager.get_component entity, :Sprite
     character = @entity_manager.get_component entity, :Character
     
+    
+    character.set_motion_state = 'Fall' if character['stage_collisions']['path_movement']['direction_beyond_ledge']
+    
+    if character['stage_collisions']['path_movement']['start_point_distance']
+      character.set_motion_state = 'Land'
+    end
+    
     if sprite.done
-      case character.motion_state
+      motion_state = character.motion_state
+      motion_state = character.set_motion_state if character.set_motion_state
+      case motion_state
       when 'Fall'
         character.set_animation_state = 'fall_down'
       else
         character.set_animation_state = 'idle'
       end
-      #character.set_animation_state = 'idle'
-    end
-    
-    character.set_motion_state = 'Fall' if character['stage_collisions']['path_movement']['direction_beyond_ledge']
-    #character.set_animation_state = 'fall_down' if character['stage_collisions']['path_movement']['direction_beyond_ledge']
+    end    
   end
 end

@@ -99,5 +99,9 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
         character.set_animation_state = 'jump_fall'
       end
     end
+    
+    if character['stage_collisions']['path_movement']['start_point_distance']
+      character.set_animation_state = 'land'
+    end
   end
 end
