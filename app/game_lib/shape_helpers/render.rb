@@ -23,7 +23,8 @@ module ShapeHelper::Render
     end
   
     def draw_line point_1, point_2, color
-      $window.draw_line point_1[0], point_1[1], color, point_2[0], point_2[1], color, Z
+      #$window.draw_line point_1[0], point_1[1], color, point_2[0], point_2[1], color, Z
+      $window.draw_image_line point_1[0], point_1[1], point_2[0], point_2[1], color, Z
     end
     
     def draw_walls shape, color

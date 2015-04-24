@@ -17,6 +17,15 @@ class WindowStates::DevToolsMenu < WindowState
       $window.set_state state
     end
     
+    @menu.add_menu_item "Export Level Shape Images" do
+      state = WindowStates::DevLoader.new false do
+        Resources::Stages.require!
+        Resources::Stages.save_as_images!
+        $window.set_state :main_menu
+      end
+      $window.set_state state
+    end
+    
     @menu.add_menu_item "Level Editor" do
       state = WindowStates::DevLoader.new false do
         $window.set_state WindowStates::DevLevelEditor.new

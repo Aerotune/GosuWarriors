@@ -15,6 +15,7 @@ end
 begin
   require 'rubygems'
   require 'gosu'
+  
   #require 'yaml'
   require 'msgpack'
   require 'pathname'
@@ -30,7 +31,7 @@ begin
   
   if DEVELOPER_MODE
     require 'v8'
-    
+    require 'ashton'
     require 'json'
     require 'texplay'
     require dev_constants_path

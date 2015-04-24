@@ -1,8 +1,10 @@
-module WindowStates::GameSession::Factories::Character
+module WindowStates::GameSession::Systems::Commands::CharacterSpawn
   class << self
-    def build game_session, character_animation_states_system, character_type, control_type, set_animation_state="idle"
+    def do game_session, options#character_animation_states_system, character_type, control_type, set_animation_state="idle"
       entity_manager = game_session.entity_manager
       entity = entity_manager.create_entity
+      
+      options['entity'] = entity
       
       character = WindowStates::GameSession::Components::Character.new \
         'type' => character_type,

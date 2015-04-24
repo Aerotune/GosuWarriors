@@ -22,7 +22,7 @@ class WindowStates::GameSession < WindowState
     
     @session_timer = SessionTimer.new
     @session_timer.start
-    
+    update
     
     #@current_shape = @stage['shapes'][0]
   end

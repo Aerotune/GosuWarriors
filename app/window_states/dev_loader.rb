@@ -23,6 +23,7 @@ class WindowStates::DevLoader < WindowState
         @loader_loaded = true
       end
       DevLoader.require!
+      @after_load
     end
   end
   

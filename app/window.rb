@@ -12,8 +12,15 @@ class Window < Gosu::Window
     _width  = Gosu.available_width
     _height = Gosu.available_height
     
-    min_width = 1280
-    min_height = 720
+    
+    
+    if DEVELOPER_MODE
+      min_width = 1280
+      min_height = 1022
+    else
+      min_width = 1280
+      min_height = 720
+    end
     
     _width = min_width if _width < min_width
     _height = min_height if _height < min_height
@@ -35,6 +42,8 @@ class Window < Gosu::Window
     end
     
     @state = @states[:main_menu]
+    
+    @line_image = Gosu::Image.new $window, 'resources/line_image.png', true
   end
   
   def needs_cursor?
@@ -111,6 +120,13 @@ class Window < Gosu::Window
     y4 = height
     
     $window.draw_quad x1, y1, c1, x2, y2, c2, x3, y3, c3, x4, y4, c4
+  end
+  
+  def draw_image_line x1, y1, x2, y2, color, z
+    angle = Gosu.angle x2, y2, x1, y1
+    factor_x = Gosu.distance(x1, y1, x2, y2) / @line_image.width
+    factor_y = 1
+    @line_image.draw_rot x1, y1, z, angle+90, 0, 0.5, factor_x, factor_y, color
   end
 end
 
