@@ -1,4 +1,4 @@
-class WindowStates::GameSession::Systems::Controls  
+class Systems::Controls  
   def initialize game_session
     @game_session   = game_session
     @entity_manager = game_session.entity_manager

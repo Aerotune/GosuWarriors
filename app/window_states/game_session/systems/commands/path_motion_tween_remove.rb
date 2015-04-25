@@ -1,4 +1,4 @@
-module WindowStates::GameSession::Systems::PathMotionTweenRemove
+module Systems::PathMotionTweenRemove
   class << self
     def do entity_manager, entity, options
       

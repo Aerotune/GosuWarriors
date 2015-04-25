@@ -1,8 +1,9 @@
-module WindowStates::GameSession::Systems::MotionStates::Land
-  extend WindowStates::GameSession::Systems::MotionState
+module Systems::MotionStates::Land
+  extend Systems::MotionState
   
   class << self
-    def control_down entity_manager, entity, control, time
+    def control_down game_session, entity, control, time
+      entity_manager = game_session.entity_manager
       case control
       when 'left'
         stats = character_stats entity_manager, entity
@@ -19,12 +20,13 @@ module WindowStates::GameSession::Systems::MotionStates::Land
       end
     end
   
-    def control_up entity_manager, entity, control, time
+    def control_up game_session, entity, control, time
+      entity_manager = game_session.entity_manager
       controls = entity_manager.get_component entity, :Controls
       case control
       when 'left'
         if controls.held.include? 'right'
-          control_down entity_manager, entity, 'right', time
+          control_down game_session, entity, 'right', time
         else
           stats = character_stats entity_manager, entity
           transition_to_speed_point_10 entity_manager, entity, time,
@@ -34,7 +36,7 @@ module WindowStates::GameSession::Systems::MotionStates::Land
         end
       when 'right'
         if controls.held.include? 'left'
-          control_down entity_manager, entity, 'left', time
+          control_down game_session, entity, 'left', time
         else
           stats = character_stats entity_manager, entity
           transition_to_speed_point_10 entity_manager, entity, time,
@@ -57,13 +59,13 @@ module WindowStates::GameSession::Systems::MotionStates::Land
       start_point_distance = character['stage_collisions']['path_movement']['start_point_distance']
       character['stage_collisions']['path_movement'].clear
     
-      speed_x_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_x_point_10 entity_manager, entity, time
-      speed_y_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_y_point_10 entity_manager, entity, time
+      speed_x_point_10 = SystemHelpers::FreeMotion.speed_x_point_10 entity_manager, entity, time
+      speed_y_point_10 = SystemHelpers::FreeMotion.speed_y_point_10 entity_manager, entity, time
       #change explicit
       entity_manager.remove_component entity, :FreeMotionX
       entity_manager.remove_component entity, :FreeMotionY
     
-      WindowStates::GameSession::Systems::Commands::PathStartSet.do entity_manager, entity, \
+      Systems::Commands::PathStartSet.do entity_manager, entity, \
       'shape_index'          => hit_shape_index,
       'start_point_index'    => start_point_index,
       'start_point_distance' => start_point_distance
@@ -105,7 +107,7 @@ module WindowStates::GameSession::Systems::MotionStates::Land
       #change explicit      
       left_or_right = controls.held.select { |control| ['left', 'right'].include? control }
       if left_or_right.last
-        control_down entity_manager, entity, left_or_right.last, time
+        control_down game_session, entity, left_or_right.last, time
       else
         transition_to_speed_point_10 entity_manager, entity, time,
           'speed_point_10'    => 0,

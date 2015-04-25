@@ -1,9 +1,9 @@
-WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE__ do
+Systems::CharacterAnimationStates.create_class __FILE__ do
   def on_set entity, time
     character = @entity_manager.get_component entity, :Character
     character['cooldown']['jump_in_air'] = false
     
-    WindowStates::GameSession::Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
+    Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
       'start_time' => time,
       'mode' => 'loop',
@@ -17,10 +17,6 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     end
     
     character.set_motion_state = 'Stand'
-    #_stats = stats(entity)
-    #speed           = 0
-    #transition_time = _stats['stop_transition_time']
-    #transition_to_speed_point_10 entity, time, speed, transition_time, 'push_beyond_ledge' => true
   end
   
   def control_down entity, control, time

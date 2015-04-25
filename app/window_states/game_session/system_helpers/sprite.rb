@@ -1,4 +1,4 @@
-module WindowStates::GameSession::SystemHelpers::Sprite
+module SystemHelpers::Sprite
   class << self
     def sprite_resource entity_manager, entity
       sprite = entity_manager.get_component(entity, :Sprite)
@@ -8,7 +8,6 @@ module WindowStates::GameSession::SystemHelpers::Sprite
       else
         return nil
       end
-      
     end
     
     def current_frame entity_manager, entity

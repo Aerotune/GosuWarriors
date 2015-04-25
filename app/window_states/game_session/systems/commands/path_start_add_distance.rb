@@ -1,4 +1,4 @@
-module WindowStates::GameSession::Systems::Commands::PathStartAddDistance
+module Systems::Commands::PathStartAddDistance
   class << self
     def do entity_manager, entity, options
       path_start = entity_manager.get_component entity, :PathStart

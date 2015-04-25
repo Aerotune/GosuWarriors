@@ -1,4 +1,4 @@
-module WindowStates::GameSession::SystemHelpers::PathMotion
+module SystemHelpers::PathMotion
   class << self
     def speed_point_10 entity_manager, entity, time
       speed_point_10 = 0

@@ -1,4 +1,4 @@
-class WindowStates::GameSession::Systems::PathMotion
+class Systems::PathMotion
   def initialize game_session
     @game_session   = game_session
     @entity_manager = game_session.entity_manager
@@ -10,7 +10,7 @@ class WindowStates::GameSession::Systems::PathMotion
     @entity_manager.each_entity_with_component :PathStart do |entity, path_start|
       drawable = @entity_manager.get_component entity, :Drawable
       character = @entity_manager.get_component entity, :Character
-      distance = WindowStates::GameSession::SystemHelpers::PathMotion.distance @entity_manager, entity, time
+      distance = SystemHelpers::PathMotion.distance @entity_manager, entity, time
       shape    = stage['shapes'][path_start['shape_index']]
       
       points = shape['outline']
@@ -18,7 +18,7 @@ class WindowStates::GameSession::Systems::PathMotion
       distance_along_path = distance_to_point+distance_along_line
       distance_beyond_path = distance - distance_along_path
       
-      push_beyond_ledge = WindowStates::GameSession::SystemHelpers::PathMotion.push_beyond_ledge? @entity_manager, entity
+      push_beyond_ledge = SystemHelpers::PathMotion.push_beyond_ledge? @entity_manager, entity
       
       #change implicit
       path_start.distance -= distance_beyond_path

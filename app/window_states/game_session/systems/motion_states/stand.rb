@@ -1,5 +1,5 @@
-module WindowStates::GameSession::Systems::MotionStates::Stand
-  extend WindowStates::GameSession::Systems::MotionState
+module Systems::MotionStates::Stand
+  extend Systems::MotionState
   
   class << self
     def set game_session, entity, time

@@ -1,4 +1,4 @@
-module WindowStates::GameSession::SystemHelpers::Hit
+module SystemHelpers::Hit
   class << self
     def hit_id entity_manager, entity, shape
       sprite = entity_manager.get_component entity, :Sprite

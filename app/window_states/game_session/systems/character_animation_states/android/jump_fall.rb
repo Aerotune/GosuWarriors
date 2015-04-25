@@ -1,10 +1,10 @@
-WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE__ do
+Systems::CharacterAnimationStates.create_class __FILE__ do
   def on_set entity, time
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable
     
     character.queued_animation_state = 'idle'
-    WindowStates::GameSession::Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
+    Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
       'start_time' => time,
       'mode' => 'forward',
@@ -12,16 +12,12 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       'start_index' => 0
     }
         
-    #_stats = stats(entity)
+    #_stats = SystemHelpers::Character.stats(game_session, entity)
     #character.set_motion_state = "Fall"
   end
   
   def control_down entity, control, time
     case control
-    when 'left'
-      float_speed entity, time, -1
-    when 'right'
-      float_speed entity, time, 1
     when 'attack'
       character = @entity_manager.get_component entity, :Character
       controls = @entity_manager.get_component entity, :Controls
@@ -36,24 +32,6 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     end
   end
   
-  def control_up entity, control, time
-    controls = @entity_manager.get_component entity, :Controls
-    case control
-    when 'right'
-      if controls.held.detect { |control| control == 'left' }
-        float_speed entity, time, -1
-      else
-        float_speed entity, time, 0
-      end
-    when 'left'
-      if controls.held.detect { |control| control == 'right' }
-        float_speed entity, time, 1
-      else
-        float_speed entity, time, 0
-      end
-    end
-  end
-  
   def update entity, time
     sprite    = @entity_manager.get_component entity, :Sprite
     character = @entity_manager.get_component entity, :Character
@@ -62,14 +40,5 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     if character['stage_collisions']['path_movement']['start_point_distance']
       character.set_animation_state = 'land'
     end
-  end
-  
-  def float_speed entity, time, factor_x
-    speed_x_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_x_point_10 @entity_manager, entity, time
-    _stats = stats(entity)
-    free_motion_x entity, time, \
-      'start_speed_point_10' => speed_x_point_10,
-      'end_speed_point_10' => _stats['run_speed']*factor_x,
-      'transition_time' => 5_0
   end
 end

@@ -1,10 +1,10 @@
-WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE__ do
+Systems::CharacterAnimationStates.create_class __FILE__ do
   def on_set entity, time
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable
     
     character.queued_animation_state = 'idle'
-    WindowStates::GameSession::Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
+    Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
       'start_time' => time,
       'mode' => 'forward',
@@ -12,12 +12,10 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       'start_index' => 0
     }
     
-    
-    _stats = stats(entity)
-    speed           = 0
-    transition_time = _stats['stop_transition_time']
-    transition_to_speed_point_10 entity, time, speed, transition_time, 'push_beyond_ledge' => true 
-    tween entity, time+10, (150<<10)*drawable.factor_x, 25
+    #motion_state = Systems::MotionStates.const_get character.motion_state
+    #motion_state.tween game_session, entity, time+10,
+    #'distance' => (150<<10)*drawable.factor_x,
+    #'duration' => 25
   end
 
   def update entity, time
@@ -25,11 +23,9 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     character = @entity_manager.get_component entity, :Character
     
     
-    character.set_motion_state = 'Fall' if character['stage_collisions']['path_movement']['direction_beyond_ledge']
-    
-    if character['stage_collisions']['path_movement']['start_point_distance']
-      character.set_motion_state = 'Land'
-    end
+    character.set_motion_state = "Stand" if sprite.index == 5 && sprite.prev_index != sprite.index
+    character.set_motion_state = 'Fall'  if character['stage_collisions']['path_movement']['direction_beyond_ledge']
+    character.set_motion_state = 'Land'  if character['stage_collisions']['path_movement']['start_point_distance']
     
     if sprite.done
       motion_state = character.motion_state

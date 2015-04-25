@@ -1,8 +1,8 @@
-WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE__ do
+Systems::CharacterAnimationStates.create_class __FILE__ do
   def on_set entity, time
     character = @entity_manager.get_component entity, :Character
     
-    WindowStates::GameSession::Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
+    Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
       'start_time' => time,
       'mode' => 'forward',
@@ -11,7 +11,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     }
     
     character.queued_animation_state = 'idle'
-    character.set_motion_state = 'Stand'
+    character.set_motion_state = 'Stand' unless character.motion_state == 'Stand'
   end
   
   def control_down entity, control, time
@@ -37,7 +37,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       left_or_right = controls.held.select { |control| ['left', 'right'].include? control }
       if (drawable.factor_x > 0 && left_or_right.last == 'right') || (drawable.factor_x < 0 && left_or_right.last == 'left')
         #change explicit
-        WindowStates::GameSession::Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
+        Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
           'sprite_resource_path' => ["characters", character.type, character.animation_state],
           'start_time' => time,
           'mode' => 'backward',
@@ -46,18 +46,11 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
         }
     
         character.queued_animation_state = 'run'
-        
-        _stats = stats(entity)
-        speed           = _stats['run_speed']*drawable.factor_x
-        transition_time = _stats['run_transition_time']
-        transition_to_speed_point_10 entity, time, speed, transition_time, 'push_beyond_ledge' => true
+        character.set_motion_state = 'Run'
       end
     end
     
-    if sprite.done
-      character.set_animation_state = character.queued_animation_state
-    end
-    
+    character.set_animation_state = character.queued_animation_state if sprite.done
     character.set_animation_state = 'fall_down' if character['stage_collisions']['path_movement']['direction_beyond_ledge']
   end
 end

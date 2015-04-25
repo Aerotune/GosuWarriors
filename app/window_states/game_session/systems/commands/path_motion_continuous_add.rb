@@ -1,4 +1,4 @@
-module WindowStates::GameSession::Systems::PathMotionContinuousAdd
+module Systems::PathMotionContinuousAdd
   class << self
     def do entity_manager, entity, pmc_hash
       pmc = WindowStates::GameSession::Components::PathMotionContinuous.new pmc_hash

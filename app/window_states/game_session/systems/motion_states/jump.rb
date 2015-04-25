@@ -1,5 +1,5 @@
-module WindowStates::GameSession::Systems::MotionStates::Jump
-  extend WindowStates::GameSession::Systems::MotionState
+module Systems::MotionStates::Jump
+  extend Systems::MotionState
   
   class << self
     def set game_session, entity, time
@@ -8,7 +8,7 @@ module WindowStates::GameSession::Systems::MotionStates::Jump
       drawable  = entity_manager.get_component entity, :Drawable
       controls  = entity_manager.get_component entity, :Controls
       
-      path_speed_point_10 = WindowStates::GameSession::SystemHelpers::PathMotion.speed_point_10 entity_manager, entity, time
+      path_speed_point_10 = SystemHelpers::PathMotion.speed_point_10 entity_manager, entity, time
       
       drawable.prev_y -= 2
       drawable.y      -= 2
@@ -50,7 +50,7 @@ module WindowStates::GameSession::Systems::MotionStates::Jump
       _free_motion_y = entity_manager.get_component entity, :FreeMotionY
     
       if _free_motion_y['start_speed_point_10'] == ANDROID_JUMP_SPEED_POINT_10
-        speed_y_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_y_point_10 entity_manager, entity, time
+        speed_y_point_10 = SystemHelpers::FreeMotion.speed_y_point_10 entity_manager, entity, time
         progress_point_10 = ((time - _free_motion_y['start_time'])<<10) / _free_motion_y['transition_time'] 
         remaining_transition_time = (((1<<10) - progress_point_10) * _free_motion_y['transition_time']) >> 10
         free_motion_y entity_manager, entity, time, \
@@ -61,7 +61,8 @@ module WindowStates::GameSession::Systems::MotionStates::Jump
       end
     end
     
-    def control_down entity_manager, entity, control, time
+    def control_down game_session, entity, control, time
+      entity_manager = game_session.entity_manager
       case control
       when 'left'
         float_speed entity_manager, entity, time, -1
@@ -70,7 +71,8 @@ module WindowStates::GameSession::Systems::MotionStates::Jump
       end
     end
   
-    def control_up entity_manager, entity, control, time
+    def control_up game_session, entity, control, time
+      entity_manager = game_session.entity_manager
       controls = entity_manager.get_component entity, :Controls
       case control
       when 'right'

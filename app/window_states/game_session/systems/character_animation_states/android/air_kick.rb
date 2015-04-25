@@ -1,10 +1,10 @@
-WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE__ do
+Systems::CharacterAnimationStates.create_class __FILE__ do
   def on_set entity, time
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable
     
     character.queued_animation_state = 'jump_fall'
-    WindowStates::GameSession::Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
+    Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
       'start_time' => time,
       'mode' => 'forward',
@@ -12,7 +12,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       'start_index' => 0
     }
     
-    #_stats = stats(entity)
+    #_stats = SystemHelpers::Character.stats(game_session, entity)
     #controls = @entity_manager.get_component entity, :Controls
     #left_or_right = controls.held.select { |control| ['left', 'right'].include? control }
     #case left_or_right.last
@@ -26,7 +26,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
   end
   
   def control_down entity, control, time
-    _stats = stats(entity)
+    _stats = SystemHelpers::Character.stats(game_session, entity)
     controls  = @entity_manager.get_component entity, :Controls
     character = @entity_manager.get_component entity, :Character
     case control

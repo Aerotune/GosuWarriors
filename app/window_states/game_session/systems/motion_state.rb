@@ -1,4 +1,4 @@
-module WindowStates::GameSession::Systems::MotionState
+module Systems::MotionState
   def set entity_manager, entity, time
     
   end
@@ -7,11 +7,11 @@ module WindowStates::GameSession::Systems::MotionState
     
   end
 
-  def control_down entity_manager, entity, time, control
+  def control_down game_session, entity, time, control
     
   end
 
-  def control_up entity_manager, entity, time, control
+  def control_up game_session, entity, time, control
   
   end
 
@@ -21,8 +21,8 @@ module WindowStates::GameSession::Systems::MotionState
   
   def transition_to_speed_point_10 entity_manager, entity, time, options={}
     #change explicit
-    path_start_delta_distance = WindowStates::GameSession::SystemHelpers::PathMotion.pmc_distance   entity_manager, entity, time
-    start_speed_point_10      = WindowStates::GameSession::SystemHelpers::PathMotion.speed_point_10 entity_manager, entity, time
+    path_start_delta_distance = SystemHelpers::PathMotion.pmc_distance   entity_manager, entity, time
+    start_speed_point_10      = SystemHelpers::PathMotion.speed_point_10 entity_manager, entity, time
     
     pmc_options = {
       'id'                   => options['id'],
@@ -35,21 +35,22 @@ module WindowStates::GameSession::Systems::MotionState
     }
     
     entity_manager.remove_component entity, :PathMotionContinuous
-    WindowStates::GameSession::Systems::PathMotionContinuousAdd        .do entity_manager, entity, pmc_options
-    WindowStates::GameSession::Systems::Commands::PathStartAddDistance .do entity_manager, entity, 'distance' => path_start_delta_distance
+    Systems::PathMotionContinuousAdd        .do entity_manager, entity, pmc_options
+    Systems::Commands::PathStartAddDistance .do entity_manager, entity, 'distance' => path_start_delta_distance
   end
   
-  def tween entity_manager, entity, time, options={}
+  def tween game_session, entity, time, options={}
+    entity_manager = game_session.entity_manager
     #!!!
     # add pmt distance to path_start.distance when you despawn pmt
     #change explicit
-    pmt_distance = WindowStates::GameSession::SystemHelpers::PathMotion.pmt_distance entity_manager, entity, time
+    pmt_distance = SystemHelpers::PathMotion.pmt_distance entity_manager, entity, time
     
-    WindowStates::GameSession::Systems::Commands::PathStartAddDistance.do entity_manager, entity, 'distance' => pmt_distance
+    Systems::Commands::PathStartAddDistance.do entity_manager, entity, 'distance' => pmt_distance
     entity_manager.remove_component entity, :PathMotionTween
     
-    WindowStates::GameSession::Systems::PathMotionTweenAdd.do entity_manager, entity, \
-      'start_time'           => options['start_time'],
+    Systems::PathMotionTweenAdd.do entity_manager, entity, \
+      'start_time'           => time,
       'distance'             => options['distance'],
       'duration'             => options['duration'],
       'push_beyond_ledge'    => options['push_beyond_ledge']
@@ -61,7 +62,7 @@ module WindowStates::GameSession::Systems::MotionState
   end
   
   def float_speed entity_manager, entity, time, factor_x
-    speed_x_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_x_point_10 entity_manager, entity, time
+    speed_x_point_10 = SystemHelpers::FreeMotion.speed_x_point_10 entity_manager, entity, time
     stats = character_stats entity_manager, entity
     free_motion_x entity_manager, entity, time, \
       'start_speed_point_10' => speed_x_point_10,
@@ -70,7 +71,7 @@ module WindowStates::GameSession::Systems::MotionState
   end
   
   def set_free_motion entity_manager, entity, time, x, y    
-    #speed_x_point_10 = WindowStates::GameSession::SystemHelpers::PathMotion.speed_point_10 @entity_manager, entity, 0
+    #speed_x_point_10 = SystemHelpers::PathMotion.speed_point_10 @entity_manager, entity, 0
     #change explicit
     free_motion_x = entity_manager.get_component entity, :FreeMotionX
     free_motion_y = entity_manager.get_component entity, :FreeMotionY

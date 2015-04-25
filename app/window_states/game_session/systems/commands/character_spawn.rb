@@ -1,4 +1,4 @@
-module WindowStates::GameSession::Systems::Commands::CharacterSpawn
+module Systems::Commands::CharacterSpawn
   class << self
     def do game_session, options#character_animation_states_system, character_type, control_type, set_animation_state="idle"
       entity_manager = game_session.entity_manager
@@ -34,8 +34,8 @@ module WindowStates::GameSession::Systems::Commands::CharacterSpawn
         'factor_x' => 1
         
       $drawable = drawable
-      WindowStates::GameSession::Systems::Commands::PathStartSpawn.do game_session, \
-      'id' => Identifier.create_id
+      Systems::Commands::PathStartSpawn.do game_session, \
+      'id' => Identifier.create_id,
       'entity' => entity
         
       entity_manager.add_component entity, character

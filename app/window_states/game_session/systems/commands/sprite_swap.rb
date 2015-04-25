@@ -1,4 +1,4 @@
-module WindowStates::GameSession::Systems::Commands::SpriteSwap
+module Systems::Commands::SpriteSwap
   class << self
     def do entity_manager, entity, options
       prev_sprite = entity_manager.get_component(entity, :Sprite)

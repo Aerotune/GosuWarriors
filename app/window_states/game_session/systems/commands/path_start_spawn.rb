@@ -1,4 +1,4 @@
-module WindowStates::GameSession::Systems::Commands::PathStartSpawn
+module Systems::Commands::PathStartSpawn
   class << self
     def do game_session, command
       entity      = command['entity']

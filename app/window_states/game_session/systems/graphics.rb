@@ -1,11 +1,11 @@
-class WindowStates::GameSession::Systems::Graphics
+class Systems::Graphics
   Dir[File.join(GAME_SESSION_PATH, *%w[systems graphics *.rb])].each { |file| require file }
   
   def initialize game_session
     @game_session   = game_session
     @entity_manager = game_session.entity_manager
     @drawable_entities = []
-    @sprite_system = WindowStates::GameSession::Systems::Graphics::Sprite.new @entity_manager
+    @sprite_system = Systems::Graphics::Sprite.new @entity_manager
   end
   
   def update time

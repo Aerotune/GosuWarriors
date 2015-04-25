@@ -32,8 +32,8 @@ module WindowStates::GameSession::Factories::Character
         'factor_x' => 1
         
       $drawable = drawable
-      WindowStates::GameSession::Systems::Commands::PathStartSpawn.do game_session, \
-      'id' => Identifier.create_id
+      Systems::Commands::PathStartSpawn.do game_session, \
+      'id' => Identifier.create_id,
       'entity' => entity
         
       entity_manager.add_component entity, character

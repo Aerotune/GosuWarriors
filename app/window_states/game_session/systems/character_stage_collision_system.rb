@@ -1,4 +1,4 @@
-class WindowStates::GameSession::Systems::CharacterStageCollisionSystem
+class Systems::CharacterStageCollisionSystem
   def initialize game_session
     @stage = game_session.stage
     @entity_manager = game_session.entity_manager

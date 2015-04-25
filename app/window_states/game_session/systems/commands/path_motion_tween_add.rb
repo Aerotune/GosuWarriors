@@ -1,4 +1,4 @@
-module WindowStates::GameSession::Systems::PathMotionTweenAdd
+module Systems::PathMotionTweenAdd
   class << self
     def do entity_manager, entity, options
       entity_manager.add_component entity, WindowStates::GameSession::Components::PathMotionTween.new(options)

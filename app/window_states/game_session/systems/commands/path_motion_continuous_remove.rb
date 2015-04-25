@@ -1,4 +1,4 @@
-module WindowStates::GameSession::Systems::PathMotionContinuousRemove
+module Systems::PathMotionContinuousRemove
   class << self
     def do entity_manager, entity, pmc_hash
       pmc = @entity_manager.get_components(entity, :PathMotionContinuous).select { |pmc| pmc['id'] == pmc_hash['id'] }

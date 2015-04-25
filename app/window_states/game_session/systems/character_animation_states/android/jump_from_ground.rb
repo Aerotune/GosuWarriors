@@ -1,20 +1,20 @@
-WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE__ do
+Systems::CharacterAnimationStates.create_class __FILE__ do
   def on_set entity, time
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable
     
     character.queued_animation_state = nil
-    WindowStates::GameSession::Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
+    Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
       'start_time' => time,
       'mode' => 'forward',
       'index' => 0,
       'start_index' => 0
     }
-    _stats = stats(entity)
-    speed           = 0
-    transition_time = _stats['stop_transition_time']*2
-    transition_to_speed_point_10 entity, time, speed, transition_time    
+    #_stats = SystemHelpers::Character.stats(game_session, entity)
+    #speed           = 0
+    #transition_time = _stats['stop_transition_time']*2
+    #transition_to_speed_point_10 entity, time, speed, transition_time    
   end
   
   
@@ -30,10 +30,6 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     controls = @entity_manager.get_component entity, :Controls
     
     case control
-    #when 'left'
-    #  float_speed entity, time, -1 if character.motion_state == 'Jump'
-    #when 'right'
-    #  float_speed entity, time, 1 if character.motion_state == 'Jump'
     when 'attack'
       if character.motion_state == 'Jump'
         if controls.held.include? 'up'
@@ -52,57 +48,10 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       _free_motion_y = @entity_manager.get_component(entity, :FreeMotionY)
       character = @entity_manager.get_component entity, :Character
       if character['cooldown']['jump_in_air'] == false
-        character.set_animation_state = 'jump_in_air' #if _free_motion_y # !!! jump_in_air.rb:87 crashed because of no FreeMotionY
+        character.set_animation_state = 'jump_in_air'
       end
     end
   end
-  
-  #def control_up entity, control, time
-  #  sprite = @entity_manager.get_component entity, :Sprite
-  #  return unless sprite.index > 4
-  #  
-  #  controls = @entity_manager.get_component entity, :Controls
-  #  case control
-  #  when 'right'
-  #    if controls.held.detect { |control| control == 'left' }
-  #      #float_speed entity, time, -1
-  #    else
-  #      #float_speed entity, time, 0
-  #    end
-  #  when 'left'
-  #    if controls.held.detect { |control| control == 'right' }
-  #      #float_speed entity, time, 1
-  #    else
-  #      #float_speed entity, time, 0
-  #    end
-  #  when 'jump'
-  #    #fall entity, time
-  #  end
-  #end
-  
-  #def fall entity, time
-  #  _free_motion_y = @entity_manager.get_component(entity, :FreeMotionY)
-  #  
-  #  if _free_motion_y && _free_motion_y['start_speed_point_10'] == ANDROID_JUMP_SPEED_POINT_10
-  #    speed_y_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_y_point_10 @entity_manager, entity, time
-  #    progress_point_10 = ((time - _free_motion_y['start_time'])<<10) / _free_motion_y['transition_time'] 
-  #    remaining_transition_time = (((1<<10) - progress_point_10) * _free_motion_y['transition_time']) >> 10
-  #    free_motion_y entity, time, \
-  #      'start_speed_point_10' => speed_y_point_10, 
-  #      'end_speed_point_10' => ANDROID_END_SPEED_POINT_10,
-  #      'transition_time' => remaining_transition_time / 2,
-  #      'easer' => 'sin_out'
-  #  end
-  #end
-  
-  #def float_speed entity, time, factor_x
-  #  speed_x_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_x_point_10 @entity_manager, entity, time
-  #  _stats = stats(entity)
-  #  free_motion_x entity, time, \
-  #    'start_speed_point_10' => speed_x_point_10,
-  #    'end_speed_point_10' => _stats['run_speed']*factor_x,
-  #    'transition_time' => 5_0
-  #end
   
   def update entity, time
     sprite    = @entity_manager.get_component entity, :Sprite
@@ -110,9 +59,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
     drawable  = @entity_manager.get_component entity, :Drawable
     controls  = @entity_manager.get_component entity, :Controls
     
-    #speed_x_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_x_point_10 @entity_manager, entity, time
-    speed_y_point_10 = WindowStates::GameSession::SystemHelpers::FreeMotion.speed_y_point_10 @entity_manager, entity, time
-    
+    speed_y_point_10 = SystemHelpers::FreeMotion.speed_y_point_10 @entity_manager, entity, time
     
     if character.motion_state == "Fall"
       character.set_animation_state = 'jump_fall'
@@ -124,10 +71,8 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       character.set_motion_state = "Jump"
     end
     
-    if character.motion_state == "Jump"
-      if character['stage_collisions']['path_movement']['start_point_distance']
-        character.set_animation_state = 'land'
-      end
+    if character.motion_state == "Jump" && character['stage_collisions']['path_movement']['start_point_distance']
+      character.set_animation_state = 'land'
     end
     
   end

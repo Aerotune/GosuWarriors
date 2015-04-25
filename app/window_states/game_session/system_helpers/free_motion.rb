@@ -1,20 +1,5 @@
-module WindowStates::GameSession::SystemHelpers::FreeMotion
+module SystemHelpers::FreeMotion
   class << self
-    #def position entity_manager, entity, time
-    #  free_motion = entity_manager.get_component entity, :FreeMotion
-    #  drawable    = entity_manager.get_component entity, :Drawable
-    #  
-    #  current_time = time - free_motion['start_time']
-    #  
-    #  dx_point_10 = Easers::QuadraticOut.integral_point_10 free_motion['transition_time_x'], current_time, free_motion['start_speed_x_point_10'], free_motion['end_speed_x_point_10']
-    #  dy_point_10 = Easers::QuadraticOut.integral_point_10 free_motion['transition_time_y'], current_time, free_motion['start_speed_y_point_10'], free_motion['end_speed_y_point_10']
-    #  
-    #  x = free_motion['start_x'] + (dx_point_10 >> 10)
-    #  y = free_motion['start_y'] + (dy_point_10 >> 10)
-    #  
-    #  return x, y
-    #end
-    
     def x entity_manager, entity, time
       free_motion_x = entity_manager.get_component entity, :FreeMotionX
       current_time = time - free_motion_x['start_time']

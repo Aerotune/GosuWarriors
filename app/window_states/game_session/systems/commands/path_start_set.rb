@@ -1,4 +1,4 @@
-module WindowStates::GameSession::Systems::Commands::PathStartSet
+module Systems::Commands::PathStartSet
   class << self
     def do entity_manager, entity, options
       #stage       = Resources::Stages[options['stage']]

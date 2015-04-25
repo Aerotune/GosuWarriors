@@ -4,15 +4,15 @@ class WindowStates::GameSession < WindowState
   def initialize character_name
     $window.scoreboard['targets'] = 0
     $window.scoreboard['time']    = 0 
-    @stage                             = Resources::Stages['test_level']
+    @stage                             = Resources::Stages['android_capsule_lab']
     @entity_manager                    = EntityManager.new WindowStates::GameSession::Components
-    @graphics_system                   = WindowStates::GameSession::Systems::Graphics.new                 self
-    @character_animation_states_system = WindowStates::GameSession::Systems::CharacterAnimationStates.new self
-    @controls_system                   = WindowStates::GameSession::Systems::Controls.new                 self
-    @path_motion_system                = WindowStates::GameSession::Systems::PathMotion.new               self
-    @free_motion_system                = WindowStates::GameSession::Systems::FreeMotion.new               self
-    @hits_system                       = WindowStates::GameSession::Systems::Hits.new                     self
-    @character_stage_collision_system  = WindowStates::GameSession::Systems::CharacterStageCollisionSystem.new self
+    @graphics_system                   = Systems::Graphics.new                 self
+    @character_animation_states_system = Systems::CharacterAnimationStates.new self
+    @controls_system                   = Systems::Controls.new                 self
+    @path_motion_system                = Systems::PathMotion.new               self
+    @free_motion_system                = Systems::FreeMotion.new               self
+    @hits_system                       = Systems::Hits.new                     self
+    @character_stage_collision_system  = Systems::CharacterStageCollisionSystem.new self
     player_entity = WindowStates::GameSession::Factories::Character.build self, @character_animation_states_system, character_name, 'player'
     WindowStates::GameSession::Factories::Target.build self, 150, 370
     WindowStates::GameSession::Factories::Target.build self, 1280+100, 320

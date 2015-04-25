@@ -1,4 +1,4 @@
-class WindowStates::GameSession::Systems::FreeMotion
+class Systems::FreeMotion
   def initialize game_session
     @game_session   = game_session
     @entity_manager = game_session.entity_manager
@@ -12,7 +12,7 @@ class WindowStates::GameSession::Systems::FreeMotion
       
       if drawable
         drawable.prev_x = drawable.x
-        drawable.x = WindowStates::GameSession::SystemHelpers::FreeMotion.x(@entity_manager, entity, time)
+        drawable.x = SystemHelpers::FreeMotion.x(@entity_manager, entity, time)
       end
     end
     
@@ -21,7 +21,7 @@ class WindowStates::GameSession::Systems::FreeMotion
       
       if drawable
         drawable.prev_y = drawable.y
-        drawable.y = WindowStates::GameSession::SystemHelpers::FreeMotion.y(@entity_manager, entity, time)
+        drawable.y = SystemHelpers::FreeMotion.y(@entity_manager, entity, time)
       end
     end
   end

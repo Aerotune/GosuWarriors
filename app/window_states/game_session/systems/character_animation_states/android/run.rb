@@ -1,9 +1,9 @@
-WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE__ do
+Systems::CharacterAnimationStates.create_class __FILE__ do
   def on_set entity, time
     character = @entity_manager.get_component entity, :Character
     drawable  = @entity_manager.get_component entity, :Drawable
         
-    WindowStates::GameSession::Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
+    Systems::Commands::SpriteSwap.do @entity_manager, entity, 'sprite_hash' => {
       'sprite_resource_path' => ["characters", character.type, character.animation_state],
       'start_time' => time,
       'mode' => 'loop',
@@ -11,11 +11,7 @@ WindowStates::GameSession::Systems::CharacterAnimationStates.create_class __FILE
       'start_index' => 0
     }    
     
-    character.set_motion_state = "Run"
-    #_stats = stats(entity)
-    #speed           = _stats['run_speed']*drawable.factor_x
-    #transition_time = _stats['run_transition_time']
-    #transition_to_speed_point_10 entity, time, speed, transition_time, 'push_beyond_ledge' => true 
+    #character.set_motion_state = "Run"
   end
   
   def control_down entity, control, time
